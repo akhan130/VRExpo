@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">VRExpo</string>
+    <string name="hyperlink"><a href="https://www.youtube.com/watch?v=DhE9J_XbeK4">Test link</a></string>
 </resources>

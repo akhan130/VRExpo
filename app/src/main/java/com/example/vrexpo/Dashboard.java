@@ -3,10 +3,13 @@ package com.example.vrexpo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class Dashboard extends AppCompatActivity {
@@ -18,10 +21,16 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        //Setting up links
+        TextView test = findViewById(R.id.testLink);
+        test.setMovementMethod(LinkMovementMethod.getInstance());
+        test.setLinkTextColor(Color.BLUE);
+
         //Find the buttons
         Button presessionBtn = findViewById(R.id.presessionButton);
         Button postsessionBtn = findViewById(R.id.postsessionButton);
         Button historyBtn = findViewById(R.id.historyButton);
+        Button scheduleBtn = findViewById(R.id.scheduleButton);
         //Set the buttons behavior
         presessionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +66,18 @@ public class Dashboard extends AppCompatActivity {
                 //open history questions
                 Intent histIntent = new Intent(Dashboard.this, History.class);
                 startActivity(histIntent);
+            }
+        });
+        scheduleBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Schedule button clicked");
+                Toast.makeText(Dashboard.this, "Schedule button clicked", Toast.LENGTH_SHORT)
+                        .show();
+
+                //open history questions
+                Intent scheduleIntent = new Intent(Dashboard.this, TherapySchedulerActivity.class);
+                startActivity(scheduleIntent);
             }
         });
     }
