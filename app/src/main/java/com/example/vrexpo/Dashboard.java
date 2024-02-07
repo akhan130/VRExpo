@@ -31,6 +31,8 @@ public class Dashboard extends AppCompatActivity {
         Button postsessionBtn = findViewById(R.id.postsessionButton);
         Button historyBtn = findViewById(R.id.historyButton);
         Button scheduleBtn = findViewById(R.id.scheduleButton);
+        Button findTherapistBtn = findViewById(R.id.findTherapistButton);
+
         //Set the buttons behavior
         presessionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,10 +77,25 @@ public class Dashboard extends AppCompatActivity {
                 Toast.makeText(Dashboard.this, "Schedule button clicked", Toast.LENGTH_SHORT)
                         .show();
 
-                //open history questions
+                //open schedule
                 Intent scheduleIntent = new Intent(Dashboard.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);
             }
         });
+
+        findTherapistBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i(TAG, "Find Therapist button clicked");
+                Toast.makeText(Dashboard.this, "Find Therapist button clicked", Toast.LENGTH_SHORT)
+                        .show();
+
+                //open Find Therapist
+                Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
+                startActivity(findIntent);
+
+            }
+        });
+
     }
 }
