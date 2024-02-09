@@ -21,10 +21,9 @@ public class FindTherapist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_therapist);
-
-        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        toolbar = findViewById(R.id.toolbar);
         drawerLayout = findViewById(R.id.drawer);
 
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
