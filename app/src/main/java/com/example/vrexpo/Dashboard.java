@@ -91,8 +91,8 @@ public class Dashboard extends AppCompatActivity {
                         .show();
 
                 //open Find Therapist
-                Intent therapistIntent = new Intent(Dashboard.this, FindTherapist.class);
-                startActivity(therapistIntent);
+                Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
+                startActivity(findIntent);
 
             }
         });

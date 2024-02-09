@@ -34,8 +34,6 @@
         </activity>
         <activity android:name=".TherapySchedulerActivity">
         </activity>
-        <activity android:name=".FindTherapist">
-        </activity>
 
     </application>
 
