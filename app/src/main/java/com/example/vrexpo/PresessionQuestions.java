@@ -30,7 +30,7 @@ public class PresessionQuestions extends AppCompatActivity {
 
                 //open postsession questions
                 Intent sessionIntent = new Intent(PresessionQuestions.this, Session.class);
-                startActivity(sessionIntentd);
+                startActivity(sessionIntent);
             }
         });
     }
