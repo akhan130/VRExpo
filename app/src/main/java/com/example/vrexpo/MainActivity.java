@@ -20,17 +20,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Find the buttons
-        ImageButton menuBtn = findViewById(R.id.menuButton);
         Button loginButton = findViewById(R.id.loginButton);
         //Set button behavior
-        menuBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Menu button clicked");
-                Toast.makeText(MainActivity.this, "Menu button clicked", Toast.LENGTH_SHORT)
-                        .show();
-            }
-        });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

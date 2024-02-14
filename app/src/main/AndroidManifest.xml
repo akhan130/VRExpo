@@ -24,6 +24,9 @@
             android:name=".Dashboard"
             android:exported="false" />
         <activity
+            android:name=".Session"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
