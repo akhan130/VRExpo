@@ -9,6 +9,17 @@
 
     >
 
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableTop="@drawable/ic_time"
+        android:drawablePadding="16dp"
+        android:gravity="center"
+        android:hint="Schedule a session with your therapist."
+        android:textSize="19sp"
+        android:textStyle="bold" />
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -28,6 +39,18 @@
         android:layout_marginTop="16dp"
         android:background="@android:drawable/editbox_background"
         />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableTop="@drawable/ic_time"
+        android:drawablePadding="12dp"
+        android:gravity="center"
+        android:hint="If you don't see a time that works for you, please contact your therapist directly to schedule a different time."
+        android:textSize="16sp"
+        android:textStyle="" />
 
     <!--    Add times as buttons? -->
 <!--    <Button-->
