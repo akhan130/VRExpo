@@ -1,6 +1,7 @@
 package com.example.vrexpo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -25,6 +26,10 @@ public class Dashboard extends AppCompatActivity {
         TextView test = findViewById(R.id.testLink);
         test.setMovementMethod(LinkMovementMethod.getInstance());
         test.setLinkTextColor(Color.BLUE);
+
+        //Setting up the action bar
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
         //Find the buttons
         Button presessionBtn = findViewById(R.id.presessionButton);
