@@ -6,7 +6,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
@@ -17,6 +19,39 @@ public class FindTherapist extends AppCompatActivity {
     Toolbar toolbar;
     ActionBarDrawerToggle actionBarDrawerToggle;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(FindTherapist.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_pre:
+                Intent preIntent = new Intent(FindTherapist.this, PresessionQuestions.class);
+                startActivity(preIntent);
+                return true;
+            case R.id.action_post:
+                Intent postIntent = new Intent(FindTherapist.this, PostsessionQuestions.class);
+                startActivity(postIntent);
+                return true;
+            case R.id.action_history:
+                Intent histIntent = new Intent(FindTherapist.this, History.class);
+                startActivity(histIntent);
+                return true;
+            case R.id.action_schedule:
+                Intent scheduleIntent = new Intent(FindTherapist.this, TherapySchedulerActivity.class);
+                startActivity(scheduleIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,13 +69,4 @@ public class FindTherapist extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

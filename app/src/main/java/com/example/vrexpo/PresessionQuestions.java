@@ -1,11 +1,14 @@
 package com.example.vrexpo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -14,6 +17,38 @@ public class PresessionQuestions extends AppCompatActivity {
 
     private static final String TAG = "VRExpo";
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(PresessionQuestions.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_post:
+                Intent postIntent = new Intent(PresessionQuestions.this, PostsessionQuestions.class);
+                startActivity(postIntent);
+                return true;
+            case R.id.action_history:
+                Intent histIntent = new Intent(PresessionQuestions.this, History.class);
+                startActivity(histIntent);
+                return true;
+            case R.id.action_schedule:
+                Intent scheduleIntent = new Intent(PresessionQuestions.this, TherapySchedulerActivity.class);
+                startActivity(scheduleIntent);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(PresessionQuestions.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

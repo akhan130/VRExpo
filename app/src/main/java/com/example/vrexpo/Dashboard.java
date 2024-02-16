@@ -1,5 +1,6 @@
 package com.example.vrexpo;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -8,6 +9,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +19,41 @@ import android.widget.Toast;
 public class Dashboard extends AppCompatActivity {
 
     private static final String TAG = "VRExpo";
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_pre:
+                Intent preIntent = new Intent(Dashboard.this, PresessionQuestions.class);
+                startActivity(preIntent);
+                return true;
+            case R.id.action_post:
+                Intent postIntent = new Intent(Dashboard.this, PostsessionQuestions.class);
+                startActivity(postIntent);
+                return true;
+            case R.id.action_history:
+                Intent histIntent = new Intent(Dashboard.this, History.class);
+                startActivity(histIntent);
+                return true;
+            case R.id.action_schedule:
+                Intent scheduleIntent = new Intent(Dashboard.this, TherapySchedulerActivity.class);
+                startActivity(scheduleIntent);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,77 +68,5 @@ public class Dashboard extends AppCompatActivity {
         //Setting up the action bar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
-        //Find the buttons
-        Button presessionBtn = findViewById(R.id.presessionButton);
-        Button postsessionBtn = findViewById(R.id.postsessionButton);
-        Button historyBtn = findViewById(R.id.historyButton);
-        Button scheduleBtn = findViewById(R.id.scheduleButton);
-        Button findTherapistBtn = findViewById(R.id.findTherapistButton);
-
-        //Set the buttons behavior
-        presessionBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Presession button clicked");
-                Toast.makeText(Dashboard.this, "Presession button clicked", Toast.LENGTH_SHORT)
-                        .show();
-
-                //Open presession questions
-                Intent preIntent = new Intent(Dashboard.this, PresessionQuestions.class);
-                startActivity(preIntent);
-            }
-        });
-        postsessionBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Postsession button clicked");
-                Toast.makeText(Dashboard.this, "Postsession button clicked", Toast.LENGTH_SHORT)
-                        .show();
-
-                //open postsession questions
-                Intent postIntent = new Intent(Dashboard.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-            }
-        });
-        historyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "History button clicked");
-                Toast.makeText(Dashboard.this, "History button clicked", Toast.LENGTH_SHORT)
-                        .show();
-
-                //open history questions
-                Intent histIntent = new Intent(Dashboard.this, History.class);
-                startActivity(histIntent);
-            }
-        });
-        scheduleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Schedule button clicked");
-                Toast.makeText(Dashboard.this, "Schedule button clicked", Toast.LENGTH_SHORT)
-                        .show();
-
-                //open schedule
-                Intent scheduleIntent = new Intent(Dashboard.this, TherapySchedulerActivity.class);
-                startActivity(scheduleIntent);
-            }
-        });
-
-        findTherapistBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Find Therapist button clicked");
-                Toast.makeText(Dashboard.this, "Find Therapist button clicked", Toast.LENGTH_SHORT)
-                        .show();
-
-                //open Find Therapist
-                Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
-                startActivity(findIntent);
-
-            }
-        });
-
     }
 }

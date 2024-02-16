@@ -1,9 +1,12 @@
 package com.example.vrexpo;
 
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
 import android.widget.TextView;
@@ -28,6 +31,38 @@ public class TherapySchedulerActivity extends AppCompatActivity {
     TextView timer;
     int v1hour, v2minute;
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(TherapySchedulerActivity.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_pre:
+                Intent preIntent = new Intent(TherapySchedulerActivity.this, PresessionQuestions.class);
+                startActivity(preIntent);
+                return true;
+            case R.id.action_post:
+                Intent postIntent = new Intent(TherapySchedulerActivity.this, PostsessionQuestions.class);
+                startActivity(postIntent);
+                return true;
+            case R.id.action_history:
+                Intent histIntent = new Intent(TherapySchedulerActivity.this, History.class);
+                startActivity(histIntent);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(TherapySchedulerActivity.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
