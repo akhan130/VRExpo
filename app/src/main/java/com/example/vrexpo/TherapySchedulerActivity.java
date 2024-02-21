@@ -51,9 +51,9 @@ public class TherapySchedulerActivity extends AppCompatActivity {
                 Intent postIntent = new Intent(TherapySchedulerActivity.this, PostsessionQuestions.class);
                 startActivity(postIntent);
                 return true;
-            case R.id.action_history:
-                Intent histIntent = new Intent(TherapySchedulerActivity.this, History.class);
-                startActivity(histIntent);
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(TherapySchedulerActivity.this, AccountInfo.class);
+                startActivity(actInfoIntent);
                 return true;
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(TherapySchedulerActivity.this, FindTherapist.class);

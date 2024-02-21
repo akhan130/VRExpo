@@ -27,9 +27,9 @@ public class Session extends AppCompatActivity {
                 Intent postIntent = new Intent(Session.this, PostsessionQuestions.class);
                 startActivity(postIntent);
                 return true;
-            case R.id.action_history:
-                Intent histIntent = new Intent(Session.this, History.class);
-                startActivity(histIntent);
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(Session.this, AccountInfo.class);
+                startActivity(actInfoIntent);
                 return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(Session.this, TherapySchedulerActivity.class);

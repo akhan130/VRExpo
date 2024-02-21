@@ -40,9 +40,9 @@ public class FindTherapist extends AppCompatActivity {
                 Intent postIntent = new Intent(FindTherapist.this, PostsessionQuestions.class);
                 startActivity(postIntent);
                 return true;
-            case R.id.action_history:
-                Intent histIntent = new Intent(FindTherapist.this, History.class);
-                startActivity(histIntent);
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(FindTherapist.this, AccountInfo.class);
+                startActivity(actInfoIntent);
                 return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(FindTherapist.this, TherapySchedulerActivity.class);
@@ -58,7 +58,7 @@ public class FindTherapist extends AppCompatActivity {
         setContentView(R.layout.activity_find_therapist);
 
         //Setting up the action bar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         toolbar = findViewById(R.id.toolbar);

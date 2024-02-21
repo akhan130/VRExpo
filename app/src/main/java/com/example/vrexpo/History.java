@@ -39,6 +39,10 @@ public class History extends AppCompatActivity {
                 Intent findIntent = new Intent(History.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(History.this, AccountInfo.class);
+                startActivity(actInfoIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -49,7 +53,7 @@ public class History extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         //Setting up the action bar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
 }

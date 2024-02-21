@@ -33,9 +33,9 @@ public class PresessionQuestions extends AppCompatActivity {
                 Intent postIntent = new Intent(PresessionQuestions.this, PostsessionQuestions.class);
                 startActivity(postIntent);
                 return true;
-            case R.id.action_history:
-                Intent histIntent = new Intent(PresessionQuestions.this, History.class);
-                startActivity(histIntent);
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(PresessionQuestions.this, AccountInfo.class);
+                startActivity(actInfoIntent);
                 return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(PresessionQuestions.this, TherapySchedulerActivity.class);
@@ -64,10 +64,6 @@ public class PresessionQuestions extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "Submit button clicked");
-                Toast.makeText(PresessionQuestions.this, "Submit button clicked", Toast.LENGTH_SHORT)
-                        .show();
-
                 //open postsession questions
                 Intent sessionIntent = new Intent(PresessionQuestions.this, Session.class);
                 startActivity(sessionIntent);

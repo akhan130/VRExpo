@@ -5,20 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class Dashboard extends AppCompatActivity {
-
-    private static final String TAG = "VRExpo";
+public class PatientInfo extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -30,24 +21,24 @@ public class Dashboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(PatientInfo.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
             case R.id.action_pre:
-                Intent preIntent = new Intent(Dashboard.this, PresessionQuestions.class);
+                Intent preIntent = new Intent(PatientInfo.this, PresessionQuestions.class);
                 startActivity(preIntent);
                 return true;
             case R.id.action_post:
-                Intent postIntent = new Intent(Dashboard.this, PostsessionQuestions.class);
+                Intent postIntent = new Intent(PatientInfo.this, PostsessionQuestions.class);
                 startActivity(postIntent);
                 return true;
-            case R.id.action_accountInfo:
-                Intent actInfoIntent = new Intent(Dashboard.this, AccountInfo.class);
-                startActivity(actInfoIntent);
-                return true;
             case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(Dashboard.this, TherapySchedulerActivity.class);
+                Intent scheduleIntent = new Intent(PatientInfo.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:
-                Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
+                Intent findIntent = new Intent(PatientInfo.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
             default:
@@ -58,12 +49,7 @@ public class Dashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
-
-        //Setting up links
-        TextView test = findViewById(R.id.testLink);
-        test.setMovementMethod(LinkMovementMethod.getInstance());
-        test.setLinkTextColor(Color.BLUE);
+        setContentView(R.layout.activity_patient_info);
 
         //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);

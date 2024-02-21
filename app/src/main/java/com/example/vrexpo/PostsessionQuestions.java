@@ -27,9 +27,9 @@ public class PostsessionQuestions extends AppCompatActivity {
                 Intent preIntent = new Intent(PostsessionQuestions.this, PresessionQuestions.class);
                 startActivity(preIntent);
                 return true;
-            case R.id.action_history:
-                Intent histIntent = new Intent(PostsessionQuestions.this, History.class);
-                startActivity(histIntent);
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(PostsessionQuestions.this, AccountInfo.class);
+                startActivity(actInfoIntent);
                 return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(PostsessionQuestions.this, TherapySchedulerActivity.class);
@@ -49,7 +49,7 @@ public class PostsessionQuestions extends AppCompatActivity {
         setContentView(R.layout.activity_postsession_questions);
 
         //Setting up the action bar
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
     }
 }

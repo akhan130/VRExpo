@@ -21,9 +21,9 @@
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_history"
+        android:id="@+id/action_accountInfo"
         android:icon="@drawable/baseline_history_edu_24"
-        android:title="History"
+        android:title="Account Info"
         app:showAsAction="ifRoom"/>
 
     <item
