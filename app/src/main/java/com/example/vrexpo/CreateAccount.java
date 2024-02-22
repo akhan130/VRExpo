@@ -1,6 +1,7 @@
 package com.example.vrexpo;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -61,6 +62,8 @@ public class CreateAccount extends AppCompatActivity {
                 AccountHelperClass helperClass = new AccountHelperClass(name, dob, gender, email, phone, address, password);
 
                 reference.child(phone).setValue(helperClass);
+
+                startActivity(new Intent(CreateAccount.this, MainActivity.class));
             }
         });
 
