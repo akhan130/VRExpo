@@ -46,10 +46,6 @@ public class Dashboard extends AppCompatActivity {
                 Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_create_account:
-                Intent createIntent = new Intent(Dashboard.this, CreateAccount.class);
-                startActivity(createIntent);
-                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
