@@ -1,15 +1,14 @@
 package com.example.vrexpo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Find the buttons
         Button loginButton = findViewById(R.id.loginButton);
+
         //Set button behavior
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -38,4 +38,11 @@
         android:title="Find therapist"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/action_create_account"
+        android:icon="@drawable/baseline_add_call_24"
+        android:title="Create Account"
+        app:showAsAction="ifRoom"/>
+
+
 </menu>

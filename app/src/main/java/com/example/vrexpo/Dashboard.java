@@ -1,20 +1,16 @@
 package com.example.vrexpo;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 public class Dashboard extends AppCompatActivity {
 
@@ -50,6 +46,11 @@ public class Dashboard extends AppCompatActivity {
                 Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
+            case R.id.action_create_account:
+                Intent createIntent = new Intent(Dashboard.this, CreateAccount.class);
+                startActivity(createIntent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

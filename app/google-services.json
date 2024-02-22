@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "935220103945",
+    "project_id": "vrexpo-64a80",
+    "storage_bucket": "vrexpo-64a80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:935220103945:android:2daf25c75d924cc24c21d8",
+        "android_client_info": {
+          "package_name": "com.example.vrexpo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCtNKREj5VJ5fkSfpgJgeTlOUCb5SPkH38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
