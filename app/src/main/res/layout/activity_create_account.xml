@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/FullName"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="Full Name"
+        android:inputType="text"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/createAccountButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="664dp"
+        android:layout_marginEnd="10dp"
+        android:text="Create Account"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/insurance"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="552dp"
+        android:ems="10"
+        android:hint="Insurance"
+        android:inputType="text"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/Gender"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="192dp"
+        android:ems="10"
+        android:hint="Gender"
+        android:inputType="text"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="604dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/DOB"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="132dp"
+        android:ems="10"
+        android:hint="DOB"
+        android:inputType="text"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/emergencyContactName"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="432dp"
+        android:ems="10"
+        android:hint="Emergency Contact Name"
+        android:inputType="text"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/Address"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="372dp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPostalAddress"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="252dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/Phone"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="312dp"
+        android:ems="10"
+        android:hint="Phone Number"
+        android:inputType="phone"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/emergencyContactPhone"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="492dp"
+        android:ems="10"
+        android:hint="Emergency Contact Phone"
+        android:inputType="text"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/GetStarted"
+        android:layout_width="414dp"
+        android:layout_height="42dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="39dp"
+        android:fontFamily="@font/trend_sans_one_regular"
+        android:letterSpacing="-0.15"
+        android:text="CREATE YOUR ACCOUNT"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints" />
+
+</RelativeLayout>
