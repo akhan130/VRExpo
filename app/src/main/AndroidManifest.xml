@@ -40,6 +40,8 @@
         <activity
             android:name=".FindTherapist" />
 
+        <activity android:name=".Login" />
+
         <activity
             android:name=".SplashScreen"
             android:exported="true">
