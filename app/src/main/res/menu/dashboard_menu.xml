@@ -2,39 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_dashboard"
-        android:icon="@drawable/baseline_dashboard_24"
+        android:id="action_dashboard"
+        android:icon=""
         android:title="Dashboard"
         app:showAsAction="ifRoom"/>
 
 
     <item
-        android:id="@+id/action_pre"
-        android:icon="@drawable/baseline_question_answer_24"
+        android:id="action_pre"
+        android:icon=""
         android:title="Presession questions"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_post"
-        android:icon="@drawable/baseline_question_answer_24"
+        android:id="action_post"
+        android:icon=""
         android:title="Postsession questions"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_accountInfo"
-        android:icon="@drawable/baseline_history_edu_24"
+        android:id="action_accountInfo"
+        android:icon=""
         android:title="Account Info"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_schedule"
-        android:icon="@drawable/baseline_access_time_24"
+        android:id="action_schedule"
+        android:icon=""
         android:title="Schedule meeting"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/action_find_therapist"
-        android:icon="@drawable/baseline_add_call_24"
+        android:id="action_find_therapist"
+        android:icon=""
         android:title="Find therapist"
         app:showAsAction="ifRoom"/>
 
