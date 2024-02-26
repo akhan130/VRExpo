@@ -43,6 +43,12 @@
         <activity android:name=".Login" />
 
         <activity
+            android:name=".AccountInfo" />
+        
+        <activity
+            android:name=".PatientInfo" />
+
+        <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
