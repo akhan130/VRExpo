@@ -97,8 +97,6 @@ public class CreateAccount extends AppCompatActivity {
         }
     }
 
-    //        Condition for WhiteSpace: String noWhiteSpace = "\\A\\w(4,20)\\z";
-
     //VALIDATION METHODS FOR EACH FIELD
 
     private Boolean validateEmail(){
@@ -119,6 +117,8 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     //NEED TO FIX PASSWORD CONDITIONS:
+    // Condition for WhiteSpace: String noWhiteSpace = "\\A\\w(4,20)\\z";
+
     private Boolean validatePassword(){
         String password = String.valueOf(passwordEditText.getText());
 //        String passwordVal = "^" +
