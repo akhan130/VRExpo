@@ -49,6 +49,9 @@
             android:name=".PatientInfo" />
 
         <activity
+            android:name=".Session" />
+
+        <activity
             android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
