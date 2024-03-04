@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class History extends AppCompatActivity {
+public class PatientHistory extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -20,27 +20,27 @@ public class History extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_dashboard:
-                Intent dashIntent = new Intent(History.this, Dashboard.class);
+                Intent dashIntent = new Intent(PatientHistory.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
             case R.id.action_pre:
-                Intent preIntent = new Intent(History.this, PresessionQuestions.class);
+                Intent preIntent = new Intent(PatientHistory.this, PresessionQuestions.class);
                 startActivity(preIntent);
                 return true;
             case R.id.action_post:
-                Intent postIntent = new Intent(History.this, PostsessionQuestions.class);
+                Intent postIntent = new Intent(PatientHistory.this, PostsessionQuestions.class);
                 startActivity(postIntent);
                 return true;
             case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(History.this, TherapySchedulerActivity.class);
+                Intent scheduleIntent = new Intent(PatientHistory.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:
-                Intent findIntent = new Intent(History.this, FindTherapist.class);
+                Intent findIntent = new Intent(PatientHistory.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
             case R.id.action_accountInfo:
-                Intent actInfoIntent = new Intent(History.this, AccountInfo.class);
+                Intent actInfoIntent = new Intent(PatientHistory.this, AccountInfo.class);
                 startActivity(actInfoIntent);
                 return true;
             default:

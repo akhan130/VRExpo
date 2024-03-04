@@ -62,7 +62,7 @@ public class AccountInfo extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //open history questions
-                Intent histIntent = new Intent(AccountInfo.this, History.class);
+                Intent histIntent = new Intent(AccountInfo.this, PatientHistory.class);
                 startActivity(histIntent);
             }
         });
