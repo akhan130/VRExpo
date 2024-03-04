@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".TherapySchedulerActivity">
@@ -33,7 +32,6 @@
         android:drawableTop="@drawable/ic_time"
         android:drawablePadding="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/gradient"
         />
 
     <TextView
