@@ -50,7 +50,7 @@ public class PatientHistory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_history);
+        setContentView(R.layout.activity_patient_history);
 
         //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);

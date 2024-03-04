@@ -15,7 +15,7 @@
             android:name=".UserProfile"
             android:exported="false" />
         <activity
-            android:name=".History"
+            android:name=".PatientHistory"
             android:exported="false" />
         <activity
             android:name=".PostsessionQuestions"

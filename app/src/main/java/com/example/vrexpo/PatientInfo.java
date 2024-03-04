@@ -36,6 +36,7 @@ public class PatientInfo extends AppCompatActivity {
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(PatientInfo.this, AccountInfo.class);
                 startActivity(actInfoIntent);
+                return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(PatientInfo.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);
