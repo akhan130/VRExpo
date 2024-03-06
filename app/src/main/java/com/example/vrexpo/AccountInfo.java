@@ -76,6 +76,15 @@ public class AccountInfo extends AppCompatActivity {
                 startActivity(infoIntent);
             }
         });
+        Button recordBtn = findViewById(R.id.recordButton);
+        recordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open patient info
+                Intent recordIntent = new Intent(AccountInfo.this, PatientRecords.class);
+                startActivity(recordIntent);
+            }
+        });
         //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);

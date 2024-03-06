@@ -12,6 +12,9 @@
         android:theme="@style/Theme.VRExpo"
         tools:targetApi="31">
         <activity
+            android:name=".PatientRecords"
+            android:exported="false" />
+        <activity
             android:name=".UserProfile"
             android:exported="false" />
         <activity
@@ -34,9 +37,7 @@
         <activity android:name=".Login" />
         <activity android:name=".AccountInfo" />
         <activity android:name=".PatientInfo" />
-        <activity
-            android:name=".Session" />
-
+        <activity android:name=".Session" />
         <activity
             android:name=".SplashScreen"
             android:exported="true">
