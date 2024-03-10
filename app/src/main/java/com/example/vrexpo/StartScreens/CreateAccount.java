@@ -1,4 +1,4 @@
-package com.example.vrexpo;
+package com.example.vrexpo.StartScreens;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -6,13 +6,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.vrexpo.Patient.AccountHelperClass;
+import com.example.vrexpo.R;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateAccount extends AppCompatActivity {
+
+    private FirebaseAuth auth;
 
     //Variables
     private Button createAccountButton;
@@ -32,6 +38,8 @@ public class CreateAccount extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
+
+        auth = FirebaseAuth.getInstance();
 
         // Initialize views
         createAccountButton = findViewById(R.id.createAccountButton);
@@ -66,6 +74,29 @@ public class CreateAccount extends AppCompatActivity {
             return;
         }
 
+        String email = emailEditText.getText().toString().trim();
+        String password = passwordEditText.getText().toString().trim();
+
+        // Use Firebase Authentication to create a new user
+        auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, task -> {
+                    if (task.isSuccessful()) {
+                        // Registration successful
+                        Toast.makeText(CreateAccount.this, "Registration successful", Toast.LENGTH_SHORT).show();
+
+                        // Automatically log in the user after registration (optional)
+                        // FirebaseUser user = auth.getCurrentUser();
+                        // Perform any additional actions (e.g., navigate to the main screen)
+
+                        saveUserDataToDatabase();
+                    } else {
+                        // Reason if fail
+                        Toast.makeText(CreateAccount.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
+
+    private void saveUserDataToDatabase() {
         String name = fullNameEditText.getText().toString();
         String dob = dobEditText.getText().toString();
         String gender = genderEditText.getText().toString();
@@ -76,9 +107,9 @@ public class CreateAccount extends AppCompatActivity {
 
         AccountHelperClass helperClass = new AccountHelperClass(name, dob, gender, email, phone, address, password);
 
+        // Save the additional user data to the Realtime Database
         reference.child(phone).setValue(helperClass);
 
-        // Redirect to main activity or login page
         startActivity(new Intent(CreateAccount.this, MainActivity.class));
     }
 
@@ -196,6 +227,5 @@ public class CreateAccount extends AppCompatActivity {
             return true;
         }
     }
-
 }
 

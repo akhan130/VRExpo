@@ -1,4 +1,4 @@
-package com.example.vrexpo;
+package com.example.vrexpo.Patient;
 
 public class AccountHelperClass {
     String name, dob, gender, email, phone, address, password;

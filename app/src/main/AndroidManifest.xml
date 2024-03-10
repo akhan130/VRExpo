@@ -7,47 +7,81 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label=""
         android:supportsRtl="true"
         android:theme="@style/Theme.VRExpo"
         tools:targetApi="31">
+
+<!--Start Screen-->
         <activity
-            android:name=".PatientRecords"
-            android:exported="false" />
-        <activity
-            android:name=".UserProfile"
-            android:exported="false" />
-        <activity
-            android:name=".PatientHistory"
-            android:exported="false" />
-        <activity
-            android:name=".PostsessionQuestions"
-            android:exported="false" />
-        <activity
-            android:name=".PresessionQuestions"
-            android:exported="false" />
-        <activity
-            android:name=".Dashboard"
-            android:exported="false" />
-        <activity android:name=".MainActivity" />
-        <activity
-            android:name=".TherapySchedulerActivity"
-            android:exported="true" />
-        <activity android:name=".FindTherapist" />
-        <activity android:name=".Login" />
-        <activity android:name=".AccountInfo" />
-        <activity android:name=".PatientInfo" />
-        <activity android:name=".Session" />
-        <activity
-            android:name=".SplashScreen"
+            android:name=".StartScreens.SplashScreen"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action
+                    android:name="android.intent.action.MAIN" />
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreateAccount" />
+        <activity
+            android:name=".StartScreens.Login" />
+        <activity
+            android:name=".StartScreens.CreateAccount" />
+        <activity
+            android:name=".StartScreens.MainActivity" />
+
+<!--Patient-->
+        <activity
+            android:name=".Patient.UserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.PatientHistory"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.PostsessionQuestions"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.PresessionQuestions"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Patient.PatientRecords" />
+        <activity
+            android:name=".Patient.TherapySchedulerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".Patient.FindTherapist" />
+        <activity
+            android:name=".Patient.AccountInfo" />
+        <activity
+            android:name=".Patient.PatientInfo" />
+
+<!--Therapist-->
+        <activity
+            android:name=".Therapist.TherapistAccountSettings"
+            android:exported="false" />
+        <activity
+            android:name=".Therapist.Messages"
+            android:exported="false" />
+        <activity
+            android:name=".Therapist.TimeAvailability"
+            android:exported="false" />
+        <activity
+            android:name=".Therapist.WriteReport"
+            android:exported="false" />
+        <activity
+            android:name=".Therapist.ViewAppointments"
+            android:exported="false" />
+        <activity
+            android:name=".Therapist.TherapistDashboard"
+            android:exported="false" />
+
+<!--Other-->
+        <activity
+            android:name=".Session" />
+
     </application>
 
 </manifest>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_view_appointments"
+        android:icon="@drawable/appointment"
+        android:title="View Appointments"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_time_available"
+        android:icon="@drawable/clock"
+        android:title="Set Times Avaiable"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_view_patient"
+        android:icon="@drawable/patient"
+        android:title="View Patients"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_write_report"
+        android:icon="@drawable/report"
+        android:title="Write Report"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_messages"
+        android:icon="@drawable/chat"
+        android:title="Chat"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_account_settings"
+        android:icon="@drawable/setting"
+        android:title="Settings"
+        app:showAsAction="always"/>
+
+</menu>

@@ -1,4 +1,4 @@
-package com.example.vrexpo;
+package com.example.vrexpo.Patient;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,12 +6,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import com.example.vrexpo.R;
+import com.example.vrexpo.Session;
 
 public class PresessionQuestions extends AppCompatActivity {
 
