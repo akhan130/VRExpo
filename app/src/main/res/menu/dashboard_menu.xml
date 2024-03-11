@@ -2,15 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_dashboard"
-        android:icon="@drawable/baseline_dashboard_24"
-        android:title="Dashboard"
-        app:showAsAction="always"/>
-
-
-    <item
         android:id="@+id/action_pre"
-        android:icon="@drawable/baseline_question_answer_24"
+        android:icon="@drawable/chat"
         android:title="Presession questions"
         app:showAsAction="always"/>
 
@@ -19,22 +12,27 @@
         android:icon="@drawable/baseline_sms_24"
         android:title="Postsession questions"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_dashboard"
+        android:icon="@drawable/home"
+        android:title="Dashboard"
+        app:showAsAction="always"/>
 
     <item
         android:id="@+id/action_accountInfo"
-        android:icon="@drawable/baseline_history_edu_24"
+        android:icon="@drawable/report"
         android:title="Account Info"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/action_schedule"
-        android:icon="@drawable/baseline_access_time_24"
+        android:icon="@drawable/appointment"
         android:title="Schedule meeting"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/action_find_therapist"
-        android:icon="@drawable/baseline_add_call_24"
+        android:icon="@drawable/baseline_search_24"
         android:title="Find therapist"
         app:showAsAction="always"/>
 
