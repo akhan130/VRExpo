@@ -2,85 +2,193 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Anila Added For ZOOM -->
+    <!-- Camera and Microphone Permissions for Zoom Video SDK -->
+    <uses-feature android:glEsVersion="0x00020000" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- In Meeting "Audio With VOIP" will need the following Permissions -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- "Preview/In Meeting Video/VirtualBackground" will need the following Permissions -->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- In Meeting "Kubi Device/Audio with bluetooth" will need the following Permissions -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" /> <!-- "Keep the CPU on in meeting when screen off" will need the following Permissions -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- In Meeting "share screen" will need the following Permissions -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" /> <!-- "Foreground services and notifications"  will need the following Permissions -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Added by Anila for Zoom android:name=".MyApplication"  -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label=""
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.VRExpo"
         tools:targetApi="31">
+        <activity
+            android:name=".UserProfile"
+            android:exported="false" />
+        <activity
+            android:name=".PatientHistory"
+            android:exported="false" />
 
-<!--Start Screen-->
         <activity
-            android:name=".StartScreens.SplashScreen"
-            android:exported="true">
-            <intent-filter>
-                <action
-                    android:name="android.intent.action.MAIN" />
-                <category
-                    android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".StartScreens.Login" />
-        <activity
-            android:name=".StartScreens.CreateAccount" />
-        <activity
-            android:name=".StartScreens.MainActivity" />
+            android:name=".PostsessionQuestions"
+            android:exported="false" />
 
-<!--Patient-->
         <activity
-            android:name=".Patient.UserProfile"
+            android:name=".PresessionQuestions"
             android:exported="false" />
+
         <activity
-            android:name=".Patient.PatientHistory"
+            android:name=".Dashboard"
             android:exported="false" />
+        <activity android:name=".MainActivity" />
+
         <activity
-            android:name=".Patient.PostsessionQuestions"
-            android:exported="false" />
-        <activity
-            android:name=".Patient.PresessionQuestions"
-            android:exported="false" />
-        <activity
-            android:name=".Patient.Dashboard"
-            android:exported="false" />
-        <activity
-            android:name=".Patient.PatientRecords" />
-        <activity
-            android:name=".Patient.TherapySchedulerActivity"
+            android:name=".TherapySchedulerActivity"
             android:exported="true" />
-        <activity
-            android:name=".Patient.FindTherapist" />
-        <activity
-            android:name=".Patient.AccountInfo" />
-        <activity
-            android:name=".Patient.PatientInfo" />
 
-<!--Therapist-->
-        <activity
-            android:name=".Therapist.TherapistAccountSettings"
-            android:exported="false" />
-        <activity
-            android:name=".Therapist.Messages"
-            android:exported="false" />
-        <activity
-            android:name=".Therapist.TimeAvailability"
-            android:exported="false" />
-        <activity
-            android:name=".Therapist.WriteReport"
-            android:exported="false" />
-        <activity
-            android:name=".Therapist.ViewAppointments"
-            android:exported="false" />
-        <activity
-            android:name=".Therapist.TherapistDashboard"
-            android:exported="false" />
+        <activity android:name=".FindTherapist" />
 
-<!--Other-->
+        <activity android:name=".Login" />
+        <activity android:name=".AccountInfo" />
+        <activity android:name=".PatientInfo" />
         <activity
             android:name=".Session" />
+
+        <activity
+            android:name=".SplashScreen"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".CreateAccount" />
+
+        <!-- Anila Zoom Additions Start -->
+
+        <activity
+            android:name=".MeetingActivity"
+            android:exported="true">
+    </activity>
+
+        <activity
+            android:name=".JoinSessionActivity"
+            android:exported="false"
+            android:windowSoftInputMode="stateAlwaysVisible">
+        </activity>
+
+        <activity
+            android:name=".Zoom"
+            android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
+        <activity
+            android:name=".IntegrationActivity"
+            android:exported="false" />
+
+        <service
+            android:name=".notification.NotificationService"
+            android:exported="false"
+            android:foregroundServiceType="mediaProjection|microphone"/>
+
+        <!-- Anila Zoom Additions End -->
+
+        <!-- ADDED BY ANILA DELETE WHEN ISSUE IS FIXED -->
+        <activity
+            android:name=".TreatmentPlans"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.SocialAnxiety"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.Depression"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.Arachnophobia"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.Aviophobia"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.Acrophobia"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.Claustrophobia"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.PTSD_CarAccident"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.Glossophobia"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <!-- DELETE ABOVE HERE -->
 
     </application>
 

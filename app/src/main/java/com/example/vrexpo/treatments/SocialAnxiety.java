@@ -1,0 +1,136 @@
+package com.example.vrexpo.treatments;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.vrexpo.Dashboard;
+import com.example.vrexpo.FindTherapist;
+import com.example.vrexpo.PostsessionQuestions;
+import com.example.vrexpo.PresessionQuestions;
+import com.example.vrexpo.R;
+import com.example.vrexpo.TherapySchedulerActivity;
+import com.example.vrexpo.TreatmentPlans;
+import com.example.vrexpo.Zoom;
+
+public class SocialAnxiety extends AppCompatActivity {
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(SocialAnxiety.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(SocialAnxiety.this, Zoom.class);
+                startActivity(zoom);
+                return true;
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(SocialAnxiety.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_pre:
+                Intent preIntent = new Intent(SocialAnxiety.this, PresessionQuestions.class);
+                startActivity(preIntent);
+                return true;
+            case R.id.action_post:
+                Intent postIntent = new Intent(SocialAnxiety.this, PostsessionQuestions.class);
+                startActivity(postIntent);
+                return true;
+            case R.id.action_schedule:
+                Intent scheduleIntent = new Intent(SocialAnxiety.this, TherapySchedulerActivity.class);
+                startActivity(scheduleIntent);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(SocialAnxiety.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_socialanxiety);
+
+        // Session 1 - Social Anxiety
+        Button Session1_SA = findViewById(R.id.Session1_SA);
+        Session1_SA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Session1_SA = new Intent(SocialAnxiety.this, com.example.vrexpo.treatments.socialAnxietyPlan.Session1_SA.class);
+                startActivity(Session1_SA);
+            }
+        });
+
+        // Session 2 to 6 - Social Anxiety
+        Button Session26_SA = findViewById(R.id.Session26_SA);
+        Session26_SA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Session26_SA = new Intent(SocialAnxiety.this, com.example.vrexpo.treatments.socialAnxietyPlan.Session26_SA.class);
+                startActivity(Session26_SA);
+            }
+        });
+
+        // Session 7 to 11 - Social Anxiety
+        Button Session711_SA = findViewById(R.id.Session711_SA);
+        Session711_SA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Session711_SA = new Intent(SocialAnxiety.this, com.example.vrexpo.treatments.socialAnxietyPlan.Session711_SA.class);
+                startActivity(Session711_SA);
+            }
+        });
+
+        // Session 12 to 13 - Social Anxiety
+        Button Session1213_SA = findViewById(R.id.Session1213_SA);
+        Session1213_SA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Session1213_SA = new Intent(SocialAnxiety.this, com.example.vrexpo.treatments.socialAnxietyPlan.Session1213_SA.class);
+                startActivity(Session1213_SA);
+            }
+        });
+
+        // Session 14 to 15 - Social Anxiety
+        Button Session1415_SA = findViewById(R.id.Session1415_SA);
+        Session1415_SA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Session1415_SA = new Intent(SocialAnxiety.this, com.example.vrexpo.treatments.socialAnxietyPlan.Session1415_SA.class);
+                startActivity(Session1415_SA);
+            }
+        });
+
+        // Session 16 - Social Anxiety
+        Button Session16_SA = findViewById(R.id.Session16_SA);
+        Session16_SA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent Session16_SA = new Intent(SocialAnxiety.this, com.example.vrexpo.treatments.socialAnxietyPlan.Session16_SA.class);
+                startActivity(Session16_SA);
+            }
+        });
+
+        // Setting up the action bar
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+    }
+}

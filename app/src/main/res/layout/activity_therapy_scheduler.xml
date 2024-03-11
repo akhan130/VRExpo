@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".Patient.TherapySchedulerActivity">
+    tools:context=".TherapySchedulerActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -47,18 +47,14 @@
         android:textSize="16sp" />
 
     <!--    Add times as buttons? -->
-<!--    <Button-->
-<!--        android:id="@+id/timeButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/dateButton"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:text="Select Time" />-->
+    <!--    <Button-->
+    <!--        android:id="@+id/timeButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_below="@id/dateButton"-->
+    <!--        android:layout_centerHorizontal="true"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        android:text="Select Time" />-->
 
 
 </LinearLayout>
-
-
-
-
