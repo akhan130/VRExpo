@@ -9,6 +9,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.vrexpo.Patient.AccountInfo;
+import com.example.vrexpo.Patient.Dashboard;
+import com.example.vrexpo.Patient.FindTherapist;
+import com.example.vrexpo.Patient.PostsessionQuestions;
+import com.example.vrexpo.Patient.TherapySchedulerActivity;
+
 public class Session extends AppCompatActivity {
 
     @Override
