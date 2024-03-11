@@ -1,0 +1,101 @@
+package com.example.vrexpo.Patient;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import android.accounts.Account;
+import android.content.Intent;
+import android.icu.text.IDNA;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.vrexpo.Patient.FindTherapist;
+import com.example.vrexpo.Patient.PatientHistory;
+import com.example.vrexpo.Patient.PatientInfo;
+import com.example.vrexpo.Patient.PatientRecords;
+import com.example.vrexpo.Patient.PostsessionQuestions;
+import com.example.vrexpo.Patient.PresessionQuestions;
+import com.example.vrexpo.R;
+import com.example.vrexpo.Patient.TherapySchedulerActivity;
+
+public class AccountInfo extends AppCompatActivity {
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(AccountInfo.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_pre:
+                Intent preIntent = new Intent(AccountInfo.this, PresessionQuestions.class);
+                startActivity(preIntent);
+                return true;
+            case R.id.action_post:
+                Intent postIntent = new Intent(AccountInfo.this, PostsessionQuestions.class);
+                startActivity(postIntent);
+                return true;
+            case R.id.action_schedule:
+                Intent scheduleIntent = new Intent(AccountInfo.this, TherapySchedulerActivity.class);
+                startActivity(scheduleIntent);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(AccountInfo.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_account_info);
+
+        Button HistoryBtn = findViewById(R.id.historyButton);
+
+        HistoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open history questions
+                Intent histIntent = new Intent(AccountInfo.this, PatientHistory.class);
+                startActivity(histIntent);
+            }
+        });
+        Button infoBtn = findViewById(R.id.infoButton);
+
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open patient info
+                Intent infoIntent = new Intent(AccountInfo.this, PatientInfo.class);
+                startActivity(infoIntent);
+            }
+        });
+        Button recordBtn = findViewById(R.id.recordButton);
+        recordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open patient info
+                Intent recordIntent = new Intent(AccountInfo.this, PatientRecords.class);
+                startActivity(recordIntent);
+            }
+        });
+        //Setting up the action bar
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+    }
+}
