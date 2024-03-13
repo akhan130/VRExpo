@@ -16,8 +16,6 @@ import com.example.vrexpo.R;
 
 public class Dashboard extends AppCompatActivity {
 
-    private static final String TAG = "VRExpo";
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu
