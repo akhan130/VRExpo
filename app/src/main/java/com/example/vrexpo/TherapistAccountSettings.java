@@ -1,18 +1,13 @@
-package com.example.vrexpo.Therapist;
+package com.example.vrexpo;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.example.vrexpo.R;
 
 public class TherapistAccountSettings extends AppCompatActivity {
 
@@ -52,6 +47,10 @@ public class TherapistAccountSettings extends AppCompatActivity {
             case R.id.action_messages:
                 Intent messagesIntent = new Intent(TherapistAccountSettings.this, Messages.class);
                 startActivity(messagesIntent);
+                return true;
+            case R.id.action_account_settings:
+                Intent settingsIntent = new Intent(TherapistAccountSettings.this, TherapistAccountSettings.class);
+                startActivity(settingsIntent);
                 return true;
 
             default:

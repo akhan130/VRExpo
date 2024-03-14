@@ -1,4 +1,4 @@
-package com.example.vrexpo.Therapist;
+package com.example.vrexpo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,6 @@ import android.view.MenuItem;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.example.vrexpo.R;
 
 public class TherapistDashboard extends AppCompatActivity {
 
@@ -25,6 +23,10 @@ public class TherapistDashboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(TherapistDashboard.this, TherapistDashboard.class);
+                startActivity(dashIntent);
+                return true;
             case R.id.action_view_appointments:
                 Intent appointmentsIntent = new Intent(TherapistDashboard.this, ViewAppointments.class);
                 startActivity(appointmentsIntent);
