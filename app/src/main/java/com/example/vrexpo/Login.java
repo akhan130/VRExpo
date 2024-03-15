@@ -1,4 +1,4 @@
-package com.example.vrexpo.StartScreens;
+package com.example.vrexpo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.vrexpo.Patient.Dashboard;
-import com.example.vrexpo.R;
-import com.example.vrexpo.Therapist.TherapistDashboard;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
