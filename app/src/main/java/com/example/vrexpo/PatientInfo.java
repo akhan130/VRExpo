@@ -1,4 +1,4 @@
-package com.example.vrexpo.Patient;
+package com.example.vrexpo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,11 +8,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-
-import com.example.vrexpo.Patient.PostsessionQuestions;
-import com.example.vrexpo.Patient.PresessionQuestions;
-import com.example.vrexpo.R;
-import com.example.vrexpo.Patient.TherapySchedulerActivity;
 
 public class PatientInfo extends AppCompatActivity {
 

@@ -14,7 +14,7 @@
 
 <!--Start Screen-->
         <activity
-            android:name=".StartScreens.SplashScreen"
+            android:name=".SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action
@@ -24,58 +24,61 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StartScreens.Login" />
+            android:name=".Login" />
         <activity
-            android:name=".StartScreens.CreateAccount" />
+            android:name=".CreateAccount" />
         <activity
-            android:name=".StartScreens.MainActivity" />
+            android:name=".MainActivity" />
 
 <!--Patient-->
         <activity
-            android:name=".Patient.UserProfile"
+            android:name=".UserProfile"
             android:exported="false" />
         <activity
-            android:name=".Patient.PatientHistory"
+            android:name=".PatientHistory"
             android:exported="false" />
         <activity
-            android:name=".Patient.PostsessionQuestions"
+            android:name=".PostsessionQuestions"
             android:exported="false" />
         <activity
-            android:name=".Patient.PresessionQuestions"
+            android:name=".PresessionQuestions"
             android:exported="false" />
         <activity
-            android:name=".Patient.Dashboard"
+            android:name=".Dashboard"
             android:exported="false" />
         <activity
-            android:name=".Patient.PatientRecords" />
+            android:name=".PatientRecords" />
         <activity
-            android:name=".Patient.TherapySchedulerActivity"
+            android:name=".TherapySchedulerActivity"
             android:exported="true" />
         <activity
-            android:name=".Patient.FindTherapist" />
+            android:name=".FindTherapist" />
         <activity
-            android:name=".Patient.AccountInfo" />
+            android:name=".AccountInfo" />
         <activity
-            android:name=".Patient.PatientInfo" />
+            android:name=".PatientInfo" />
 
 <!--Therapist-->
         <activity
-            android:name=".Therapist.TherapistAccountSettings"
+            android:name=".TherapistAccountSettings"
             android:exported="false" />
         <activity
-            android:name=".Therapist.Messages"
+            android:name=".Messages"
             android:exported="false" />
         <activity
-            android:name=".Therapist.TimeAvailability"
+            android:name=".TimeAvailability"
             android:exported="false" />
         <activity
-            android:name=".Therapist.WriteReport"
+            android:name=".WriteReport"
             android:exported="false" />
         <activity
-            android:name=".Therapist.ViewAppointments"
+            android:name=".ViewAppointments"
             android:exported="false" />
         <activity
-            android:name=".Therapist.TherapistDashboard"
+            android:name=".TherapistDashboard"
+            android:exported="false" />
+        <activity
+            android:name=".ViewPatients"
             android:exported="false" />
 
 <!--Other-->

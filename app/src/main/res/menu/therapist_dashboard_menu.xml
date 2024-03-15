@@ -21,9 +21,21 @@
         app:showAsAction="always"/>
 
     <item
+        android:id="@+id/zoom"
+        android:icon="@drawable/zoom"
+        android:title="Zoom"
+        app:showAsAction="always"/>
+
+    <item
         android:id="@+id/action_home"
         android:icon="@drawable/home"
         android:title="Home"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/treatment_plans"
+        android:icon="@drawable/checklist"
+        android:title="Treatment Plans"
         app:showAsAction="always"/>
 
     <item

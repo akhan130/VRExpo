@@ -1,28 +1,15 @@
-package com.example.vrexpo.Patient;
+package com.example.vrexpo;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.accounts.Account;
 import android.content.Intent;
-import android.icu.text.IDNA;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
-
-import com.example.vrexpo.Patient.FindTherapist;
-import com.example.vrexpo.Patient.PatientHistory;
-import com.example.vrexpo.Patient.PatientInfo;
-import com.example.vrexpo.Patient.PatientRecords;
-import com.example.vrexpo.Patient.PostsessionQuestions;
-import com.example.vrexpo.Patient.PresessionQuestions;
-import com.example.vrexpo.R;
-import com.example.vrexpo.Patient.TherapySchedulerActivity;
 
 public class AccountInfo extends AppCompatActivity {
 
