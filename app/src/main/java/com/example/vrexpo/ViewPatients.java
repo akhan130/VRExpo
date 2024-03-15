@@ -96,9 +96,11 @@ public class ViewPatients extends AppCompatActivity {
         setSupportActionBar(myToolbar);
     }
 
-    void setupSearchRecyclerView(String searchPatient) {
-        Query query = FirebaseUtility.allUserDatabaseReference().orderByChild("name")
-                .startAt(searchPatient.toLowerCase()).endAt(searchPatient.toLowerCase() + "\uf8ff");
+    void setupSearchRecyclerView(String searchPatient){
+        Query query = FirebaseUtility.allUserDatabaseReference()
+                .orderByChild("name")
+                .startAt(searchPatient.toUpperCase())
+                .endAt(searchPatient.toLowerCase() + "\uf8ff");
 
         FirebaseRecyclerOptions<PatientModel> options = new FirebaseRecyclerOptions.Builder<PatientModel>()
                 .setQuery(query, PatientModel.class).build();
@@ -109,6 +111,7 @@ public class ViewPatients extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
 
     @Override
     protected void onStart() {
