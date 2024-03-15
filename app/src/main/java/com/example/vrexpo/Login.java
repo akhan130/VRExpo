@@ -19,6 +19,7 @@ public class Login extends AppCompatActivity {
 
     private TextInputEditText emailEditText;
     private TextInputEditText passwordEditText;
+    private Button loginButton;
     private FirebaseAuth auth;
 
     @Override
@@ -31,7 +32,7 @@ public class Login extends AppCompatActivity {
 
         emailEditText = findViewById(R.id.Email);
         passwordEditText = findViewById(R.id.Password);
-        Button loginButton = findViewById(R.id.loginButton);
+        loginButton = findViewById(R.id.loginButton);
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +57,13 @@ public class Login extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Login successful
                             Toast.makeText(Login.this, "Login successful", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(Login.this, TherapistDashboard.class));
+                            //Condition for Therapist LogIn
+                            if (email.endsWith("@vrexpo.com")) {
+                                startActivity(new Intent(Login.this, TherapistDashboard.class));
+                            } else {
+                                //Patient LogIn
+                                startActivity(new Intent(Login.this, Dashboard.class));
+                            }
                         } else {
                             // Login fail
                             Toast.makeText(Login.this, "Authentication failed", Toast.LENGTH_SHORT).show();
