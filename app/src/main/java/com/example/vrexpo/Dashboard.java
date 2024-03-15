@@ -26,6 +26,14 @@ public class Dashboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(Dashboard.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(Dashboard.this, Zoom.class);
+                startActivity(zoom);
+                return true;
             case R.id.action_pre:
                 Intent preIntent = new Intent(Dashboard.this, PresessionQuestions.class);
                 startActivity(preIntent);

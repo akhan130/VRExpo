@@ -2,19 +2,19 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="MeetingActivity">
-        <State />
-      </entry>
       <entry key="PatientInfo">
         <State />
       </entry>
       <entry key="SocialAnxiety">
         <State />
       </entry>
-      <entry key="TreatmentPlans">
+      <entry key="TherapistDashboard">
         <State />
       </entry>
-      <entry key="Zoom (1)">
+      <entry key="TherapySchedulerActivity">
+        <State />
+      </entry>
+      <entry key="TreatmentPlans">
         <State />
       </entry>
       <entry key="app">
