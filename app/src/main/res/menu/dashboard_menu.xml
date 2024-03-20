@@ -36,5 +36,22 @@
         android:title="Find therapist"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_zoom"
+        android:icon="@drawable/baseline_add_call_24"
+        android:title="Zoom Session"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_treatmentPlans"
+        android:icon="@drawable/baseline_add_call_24"
+        android:title="Treatment Plans"
+        app:showAsAction="ifRoom"/>
+
+
+
+
+
+
 
 </menu>

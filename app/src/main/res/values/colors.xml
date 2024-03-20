@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -9,7 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- Zoom Stuff Start -->
+    <!-- ZOOM STUFF -->
     <color name="black_overlay">#66000000</color>
     <color name="colorPrimary">#38394D</color>
     <color name="colorPrimaryDark">#38394D</color>
@@ -73,8 +72,7 @@
     <color name="color_feedback_response_count">#6E7680</color>
     <color name="color_poll_process">#0E72ED</color>
     <color name="color_has_pushed">#6E7680</color>
-    <color name="darkRedSemiTransparent">#B9000000</color>
 
-    <!-- Zoom Stuff End -->
+
 
 </resources>
