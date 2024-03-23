@@ -2,7 +2,10 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="PatientInfo">
+      <entry key="Session1_SA">
+        <State />
+      </entry>
+      <entry key="Session26_SA">
         <State />
       </entry>
       <entry key="SocialAnxiety">
@@ -12,9 +15,6 @@
         <State />
       </entry>
       <entry key="TherapySchedulerActivity">
-        <State />
-      </entry>
-      <entry key="TreatmentPlans">
         <State />
       </entry>
       <entry key="app">

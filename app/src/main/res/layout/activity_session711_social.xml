@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header_SA711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Social Anxiety"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/Header2_SA711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Session 7-11: Social Skills Training"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/Header_SA711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/b1_SA711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Conduct virtual role-playing exercises to practice specific social skills (e.g., starting conversations, and maintaining eye contact)"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_SA711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b2_SA711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. The therapist provides constructive feedback and positive reinforcement to enhance social skills development."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b1_SA711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

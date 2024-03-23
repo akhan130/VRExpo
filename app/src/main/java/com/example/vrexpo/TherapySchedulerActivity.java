@@ -59,6 +59,14 @@ public class TherapySchedulerActivity extends AppCompatActivity {
                 Intent findIntent = new Intent(TherapySchedulerActivity.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(TherapySchedulerActivity.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(TherapySchedulerActivity.this, Zoom.class);
+                startActivity(zoom);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -51,6 +51,14 @@ public class TherapistDashboard extends AppCompatActivity {
                 Intent settingsIntent = new Intent(TherapistDashboard.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
                 return true;
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(TherapistDashboard.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(TherapistDashboard.this, Zoom.class);
+                startActivity(zoom);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

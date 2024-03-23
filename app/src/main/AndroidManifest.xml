@@ -219,6 +219,222 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter></activity>
 
+        <activity
+            android:name=".treatments.socialAnxietyPlan.Session1_SA"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.socialAnxietyPlan.Session26_SA"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.socialAnxietyPlan.Session711_SA"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.socialAnxietyPlan.Session1213_SA"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.socialAnxietyPlan.Session1415_SA"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.socialAnxietyPlan.Session16_SA"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+        android:name=".treatments.depressionPlan.Session1_DE"
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.depressionPlan.Session23_DE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.depressionPlan.Session48_DE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.depressionPlan.Session912_DE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.depressionPlan.Session1315_DE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.depressionPlan.Session1618_DE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.depressionPlan.Session1920_DE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.depressionPlan.Session2122_DE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.arachnophobiaPlan.Session1_ARACH"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.arachnophobiaPlan.Session15_ARACH"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.arachnophobiaPlan.Session26_ARACH"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.arachnophobiaPlan.Session711_ARACH"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.arachnophobiaPlan.Session1214_ARACH"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.aviophobiaPlan.Session12_AVIO"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.aviophobiaPlan.Session11_AVIO"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.aviophobiaPlan.Session34_AVIO"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.aviophobiaPlan.Session510_AVIO"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.acrophobiaPlan.Session1_ACRO"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.acrophobiaPlan.Session12_ACRO"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.acrophobiaPlan.Session29_ACRO"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.acrophobiaPlan.Session1011_ACRO"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
         <!-- DELETE ABOVE HERE -->
 
     </application>

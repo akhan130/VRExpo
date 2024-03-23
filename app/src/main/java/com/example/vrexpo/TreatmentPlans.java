@@ -16,36 +16,49 @@ public class TreatmentPlans extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu
-        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        //getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        getMenuInflater().inflate(R.menu.therapist_dashboard_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(TreatmentPlans.this, TherapistDashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_view_appointments:
+                Intent appointmentsIntent = new Intent(TreatmentPlans.this, ViewAppointments.class);
+                startActivity(appointmentsIntent);
+                return true;
+            case R.id.action_time_available:
+                Intent availabilityIntent = new Intent(TreatmentPlans.this, TimeAvailability.class);
+                startActivity(availabilityIntent);
+                return true;
+            case R.id.action_view_patient:
+                Intent patientInfoIntent = new Intent(TreatmentPlans.this, ViewPatients.class);
+                startActivity(patientInfoIntent);
+                return true;
+            case R.id.action_write_report:
+                Intent reportIntent = new Intent(TreatmentPlans.this, WriteReport.class);
+                startActivity(reportIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messagesIntent = new Intent(TreatmentPlans.this, Messages.class);
+                startActivity(messagesIntent);
+                return true;
+            case R.id.action_account_settings:
+                Intent settingsIntent = new Intent(TreatmentPlans.this, TherapistAccountSettings.class);
+                startActivity(settingsIntent);
+                return true;
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(TreatmentPlans.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
             case R.id.action_zoom:
                 Intent zoom = new Intent(TreatmentPlans.this, Zoom.class);
                 startActivity(zoom);
-                return true;
-            case R.id.action_dashboard:
-                Intent dashIntent = new Intent(TreatmentPlans.this, Dashboard.class);
-                startActivity(dashIntent);
-                return true;
-            case R.id.action_pre:
-                Intent preIntent = new Intent(TreatmentPlans.this, PresessionQuestions.class);
-                startActivity(preIntent);
-                return true;
-            case R.id.action_post:
-                Intent postIntent = new Intent(TreatmentPlans.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-                return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(TreatmentPlans.this, TherapySchedulerActivity.class);
-                startActivity(scheduleIntent);
-                return true;
-            case R.id.action_find_therapist:
-                Intent findIntent = new Intent(TreatmentPlans.this, FindTherapist.class);
-                startActivity(findIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

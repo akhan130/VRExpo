@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header_DEP1920"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Depression"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/Header2_DEP1920"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Session 19-20: Transition to Real-Life"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/Header_DEP1920"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/b1_DEP1920"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Encourage the patient to practice and apply the learned skills in real-life situations."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_DEP1920"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b2_DEP1920"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. Patient to document and note how they felt to determine if VRExpo helped them with their social anxiety."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b1_DEP1920"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

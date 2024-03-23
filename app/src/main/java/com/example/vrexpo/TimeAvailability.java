@@ -51,6 +51,14 @@ public class TimeAvailability extends AppCompatActivity {
                 Intent settingsIntent = new Intent(TimeAvailability.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
                 return true;
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(TimeAvailability.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(TimeAvailability.this, Zoom.class);
+                startActivity(zoom);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header_SA26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Social Anxiety"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/Header2_SA26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Session 2-6: Gradual Exposure"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/Header_SA26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/b1_SA26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Discuss with patient and develop different levels of social situations. What situations might be the least challenging and what might be the most? (this would differ based on the patient’s experiences)"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_SA26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b2_SA26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. Create simple social environments with levels. Start exposure therapy with a basic and less challenging scenario (e.g., one-on-one conversations with the cashier at a virtual store or café)"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b1_SA26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b3_SA26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. Begin exposure to low anxiety situations and gradually progress to more challenging scenarios as the individual becomes more comfortable. "
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b2_SA26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b4_SA26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4. (Example: walking through public mall)\nhttps://www.youtube.com/watch?v=NGA54YdyiUw"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b3_SA26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

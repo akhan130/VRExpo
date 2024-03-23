@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header_ARACH711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Arachnophobia"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/Header2_ARACH711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Session 7-11: Implementing VR"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/Header_ARACH711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/b1_ARACH711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Show the patient a video of a spider walking nearby."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_ARACH711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b2_ARACH711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://youtu.be/l_94jyUTSe0?si=e-FchA1DEvMmHMA-"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b1_ARACH711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b3_ARACH711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. Work up to videos of the spiders crawling on the person"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b2_ARACH711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b4_ARACH711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://youtu.be/5H-4mfmiKP8?si=VHu3DZ8BcbuJfe7n"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b3_ARACH711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

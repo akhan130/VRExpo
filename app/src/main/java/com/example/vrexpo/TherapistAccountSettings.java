@@ -52,6 +52,14 @@ public class TherapistAccountSettings extends AppCompatActivity {
                 Intent settingsIntent = new Intent(TherapistAccountSettings.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
                 return true;
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(TherapistAccountSettings.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(TherapistAccountSettings.this, Zoom.class);
+                startActivity(zoom);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

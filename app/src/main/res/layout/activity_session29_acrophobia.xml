@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header_ACRO29"
+        android:layout_width="193dp"
+        android:layout_height="67dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Acrophobia"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Header2_ACRO29"
+        android:layout_width="390dp"
+        android:layout_height="58dp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Session 2-9: Gradual Exposure"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header_ACRO29" />
+
+    <TextView
+        android:id="@+id/b3_ACRO29"
+        android:layout_width="410dp"
+        android:layout_height="67dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="1. Session 2: Standing on a 4ft table\n https://youtu.be/nXbXajGITjw?si=MvgUWZH3yo_FvWjW"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_ACRO29" />
+
+    <TextView
+        android:id="@+id/b4_ACRO29"
+        android:layout_width="405dp"
+        android:layout_height="63dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="2. Session 3: Standing on a 28ft ledge\n https://youtu.be/hGHVDxdlXKg?si=TVikSiJXMcw9Ut17"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b3_ACRO29" />
+
+    <TextView
+        android:id="@+id/b5_ACRO29"
+        android:layout_width="404dp"
+        android:layout_height="61dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="3. Session 4: Standing on a 92 ft balcony\n https://youtu.be/28GfLTg6i9Y?si=PGqgyq48T6ybTQLF"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b4_ACRO29" />
+
+    <TextView
+        android:id="@+id/b6_ACRO29"
+        android:layout_width="402dp"
+        android:layout_height="68dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="4. Session 5: Ziplining\n https://youtu.be/x9COxSyxjBk?si=lMP1APA7Pvq6Jfkc"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b5_ACRO29" />
+
+    <TextView
+        android:id="@+id/b7_ACRO29"
+        android:layout_width="402dp"
+        android:layout_height="64dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="5. Session 5: Ziplining\n https://youtu.be/x9COxSyxjBk?si=lMP1APA7Pvq6Jfkc"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b6_ACRO29" />
+
+    <TextView
+        android:id="@+id/b8_ACRO29"
+        android:layout_width="400dp"
+        android:layout_height="61dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="6. Session 6: Plane taking off\n https://www.youtube.com/watch?v=nOh0_Mc9sI0"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b7_ACRO29" />
+
+    <TextView
+        android:id="@+id/b9_ACRO29"
+        android:layout_width="402dp"
+        android:layout_height="67dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="7. Session 7: Walking across to another skyscraper\n https://youtu.be/y90O4LMUFSo?si=mu7xe1lXmIDGsJ7x"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b8_ACRO29" />
+
+    <TextView
+        android:id="@+id/b10_ACRO29"
+        android:layout_width="397dp"
+        android:layout_height="66dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="8. Session 8: Riding a Steep Rollercoaster\n https://youtu.be/YXlOnRERpCo?si=PK_Ltc2iUjJbjUyA"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b9_ACRO29" />
+
+    <TextView
+        android:id="@+id/b11_ACRO29"
+        android:layout_width="399dp"
+        android:layout_height="68dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="9. Session 9: Skydiving\n https://youtu.be/RwSLIiBN9IQ?si=rQrww61ip1tpwl_J"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b10_ACRO29" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

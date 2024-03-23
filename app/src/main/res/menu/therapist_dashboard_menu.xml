@@ -42,6 +42,18 @@
         android:id="@+id/action_account_settings"
         android:icon="@drawable/setting"
         android:title="Settings"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_treatmentPlans"
+        android:icon="@drawable/conference"
+        android:title="Treatment Plans"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_zoom"
+        android:icon="@drawable/baseline_add_call_24"
+        android:title="Zoom Session"
+        app:showAsAction="ifRoom"/>
 
 </menu>
