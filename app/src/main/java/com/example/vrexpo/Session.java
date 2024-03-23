@@ -39,6 +39,10 @@ public class Session extends AppCompatActivity {
                 Intent findIntent = new Intent(Session.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(Session.this, Zoom.class);
+                startActivity(zoom);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

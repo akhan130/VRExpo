@@ -45,6 +45,10 @@ public class PresessionQuestions extends AppCompatActivity {
                 Intent findIntent = new Intent(PresessionQuestions.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(PresessionQuestions.this, Zoom.class);
+                startActivity(zoom);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

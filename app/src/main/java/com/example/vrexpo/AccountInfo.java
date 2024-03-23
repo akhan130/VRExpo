@@ -47,6 +47,10 @@ public class AccountInfo extends AppCompatActivity {
                 Intent findIntent = new Intent(AccountInfo.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(AccountInfo.this, Zoom.class);
+                startActivity(zoom);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
