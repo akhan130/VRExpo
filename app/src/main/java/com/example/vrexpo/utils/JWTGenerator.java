@@ -1,5 +1,5 @@
 package com.example.vrexpo.utils;
-
+import com.example.vrexpo.JoinSessionActivity;
 /**
  https://42ab-24-188-35-239.ngrok-free.app
  */
@@ -9,6 +9,8 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import android.app.Activity;
+
+import com.example.vrexpo.JoinSessionActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -24,19 +26,24 @@ public class JWTGenerator extends AsyncTask<Void, Void, String> {
     private String SAMPLE_SESSION_PWD = "12345";
     private String SAMPLE_USER_IDENTITY = "zoom dev";
     private int SAMPLE_ROLE = 1;
-    private String myURL = "https://42ab-24-188-35-239.ngrok-free.app";
+    private String myURL = "https://6d67-24-188-35-239.ngrok-free.app";
     private ProgressDialog progressDialog;
-    private Activity jsa;
+    private JoinSessionActivity jsa;
     private String JSON_PAYLOAD = "{\"sessionName\":\"" + SAMPLE_SESSION_NAME +
             "\",\"role\":" + SAMPLE_ROLE +
             ",\"userIdentity\":\"" + SAMPLE_USER_IDENTITY +
             "\",\"geoRegions\":\"US,AU,CA,IN,CN,BR,MX,HK,SG,JP,DE,NL\"," +
             "\"cloudRecordingOption\":1,\"cloudRecordingElection\":0}";
 
-    public JWTGenerator(Activity activity) {
-        jsa = activity;
+    public JWTGenerator(JoinSessionActivity joinSessionActivity) {
+        jsa = joinSessionActivity;
     }
-
+    @Override
+    protected void onPreExecute() {
+        super.onPreExecute();
+        progressDialog = ProgressDialog.show(jsa,
+                "Fetching Token...", "");
+    }
     @Override
     protected String doInBackground(Void... voids) {
         try {
@@ -76,12 +83,7 @@ public class JWTGenerator extends AsyncTask<Void, Void, String> {
         }
     }
 
-    @Override
-    protected void onPreExecute() {
-        super.onPreExecute();
-        progressDialog = ProgressDialog.show(jsa,
-                "Fetching Token...", "");
-    }
+
 
     @Override
     protected void onPostExecute(String result) {
@@ -96,6 +98,7 @@ public class JWTGenerator extends AsyncTask<Void, Void, String> {
 
         // Retrieve the "signature" parameter
         String signature = jsonObject.optString("signature");
-        Log.d("samplesession", signature);
+//        Log.d("samplesession", signature);
+        jsa.onPostExecution(signature);
     }
 }

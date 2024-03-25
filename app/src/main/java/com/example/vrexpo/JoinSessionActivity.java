@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -97,7 +98,7 @@ public class JoinSessionActivity extends AppCompatActivity implements View.OnCli
     }
 
     protected boolean requestPermission(int code) {
-
+        Log.d("George Debug", "Requestiong Permissions");
         String[] permissions = new String[]{Manifest.permission.CAMERA,
                 Manifest.permission.RECORD_AUDIO, Manifest.permission.READ_EXTERNAL_STORAGE};
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -145,6 +146,7 @@ public class JoinSessionActivity extends AppCompatActivity implements View.OnCli
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     protected void joinOrCreateSession() {
+        Log.d("George Debug", "joinOrCreateSession called");
         if (hasInJoinorCreate)
             return;
 
@@ -195,7 +197,7 @@ public class JoinSessionActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void onPostExecution(String token) {
-
+        Log.d("George Debug", "JSA onPostExecution running");
         if (TextUtils.isEmpty(token)) {
             Toast.makeText(this, "Token is empty", Toast.LENGTH_LONG).show();
             return;
