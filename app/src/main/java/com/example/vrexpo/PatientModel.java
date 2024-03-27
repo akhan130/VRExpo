@@ -11,27 +11,27 @@ public class PatientModel {
     private String password;
 
     public PatientModel() {
+
     }
 
     public PatientModel(String phone, String name) {
         this.phone = phone;
         this.name = name;
-
     }
 
-    public String getPhoneNumber() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhoneNumber(String phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public String getPatientName() {
+    public String getName() {
         return name;
     }
 
-    public void setPatientName(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

@@ -24,8 +24,8 @@ public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Patien
 
     @Override
     protected void onBindViewHolder(@NonNull PatientModelViewHolder holder, int position, @NonNull PatientModel model) {
-        holder.patientNameText.setText(model.getPatientName());
-        holder.phoneNumberText.setText(model.getPhoneNumber());
+        holder.patientNameText.setText(model.getName());
+        holder.phoneNumberText.setText(model.getPhone());
     }
 
     @NonNull
