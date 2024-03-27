@@ -429,30 +429,38 @@
                             android:src="@drawable/doctor" />
 
                         <LinearLayout
+                            android:id="@+id/therapist_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Dr. Firstname Lastname"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Specialized Therapist"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="normal" />
-
                         </LinearLayout>
+
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:orientation="vertical">-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:text="Dr. Firstname Lastname"-->
+<!--                                android:textColor="#000"-->
+<!--                                android:textSize="20dp"-->
+<!--                                android:textStyle="bold" />-->
+
+<!--                            <TextView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:gravity="center"-->
+<!--                                android:text="Specialized Therapist"-->
+<!--                                android:textColor="#000"-->
+<!--                                android:textSize="20dp"-->
+<!--                                android:textStyle="normal" />-->
+
+<!--                        </LinearLayout>-->
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 

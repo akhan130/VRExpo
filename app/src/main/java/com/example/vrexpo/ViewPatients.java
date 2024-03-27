@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 public class ViewPatients extends AppCompatActivity {
@@ -105,8 +107,8 @@ public class ViewPatients extends AppCompatActivity {
     }
 
     void setupSearchRecyclerView(String searchPatient){
-        Query query = FirebaseUtility.allUserDatabaseReference()
-                .orderByChild("name")
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("PatientAccount");
+        Query query = databaseReference.orderByChild("name")
                 .startAt(searchPatient.toUpperCase())
                 .endAt(searchPatient.toLowerCase() + "\uf8ff");
 
@@ -119,6 +121,7 @@ public class ViewPatients extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
 
 
     @Override

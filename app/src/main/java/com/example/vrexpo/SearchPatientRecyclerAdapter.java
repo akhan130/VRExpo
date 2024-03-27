@@ -35,7 +35,7 @@ public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Patien
         return new PatientModelViewHolder(view);
     }
 
-    static class PatientModelViewHolder extends RecyclerView.ViewHolder {
+    class PatientModelViewHolder extends RecyclerView.ViewHolder {
         TextView patientNameText;
         TextView phoneNumberText;
         ImageView profilePic;
