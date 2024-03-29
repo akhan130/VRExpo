@@ -5,23 +5,32 @@ package com.example.vrexpo;
  * Using this class to assist in retrieving Therapist Info from FireBase.
  */
 public class Therapist {
-    private String name;
+    private String fullName;
+    private String email;
+    private String phoneNumber;
     private String specialization;
 
-    public Therapist() {
-        // Default constructor required for calls to DataSnapshot.getValue(Therapist.class)
-    }
-
-    public Therapist(String name, String specialization) {
-        this.name = name;
+    public Therapist(String fullName, String email, String phoneNumber, String specialization) {
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.specialization = specialization;
     }
 
-    public String getName() {
-        return name;
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
     public String getSpecialization() {
         return specialization;
     }
 }
+

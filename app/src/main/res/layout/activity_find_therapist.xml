@@ -28,26 +28,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp">
-
-                    <ImageView
-                        android:id="@+id/menubtn"
-                        android:layout_width="45dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/menu" />
-
-
-                </RelativeLayout>
-            </androidx.appcompat.widget.Toolbar>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,22 +38,40 @@
                 android:textSize="30dp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/searchtherapist"
+            <RelativeLayout
+                android:id="@+id/search_patient_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="5dp"
-                android:layout_marginVertical="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/input_style"
-                android:drawableRight="@drawable/searchicon"
-                android:drawablePadding="5dp"
-                android:elevation="30dp"
-                android:hint="Search Therapist"
-                android:paddingLeft="15dp"
-                android:textColor="#000"
-                android:textColorHint="#333"
-                android:textSize="20dp" />
+                android:layout_below="@id/contentName"
+                android:layout_margin="10dp">
+
+                <EditText
+                    android:id="@+id/search_patient"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_toLeftOf="@id/search_patient_button"
+                    android:background="@drawable/edit_text_rounded_corner"
+                    android:backgroundTint="#FAFAFA"
+                    android:elevation="4dp"
+                    android:hint="Search Therapist"
+                    android:padding="10dp" />
+
+                <ImageButton
+                    android:id="@+id/search_patient_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/searchicon"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="4dp"
+                    android:layout_margin="10dp"/>
+
+            </RelativeLayout>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -83,6 +81,7 @@
                 android:textColor="#000"
                 android:textSize="28dp"
                 android:textStyle="bold" />
+
 
             <!--SELECT PHOBIA-->
             <HorizontalScrollView
@@ -131,6 +130,7 @@
 
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="0dp"
@@ -396,7 +396,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="10dp"
-                android:text="Recommended Therapist:"
+                android:text="VRExpo's Therapists:"
                 android:textColor="#000"
                 android:textSize="28dp"
                 android:textStyle="bold" />
@@ -407,259 +407,11 @@
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00D0B7B7"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="20dp">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/doctor" />
-
-                        <LinearLayout
-                            android:id="@+id/therapist_layout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="vertical">
-                        </LinearLayout>
-
-<!--                        <LinearLayout-->
-<!--                            android:layout_width="match_parent"-->
-<!--                            android:layout_height="wrap_content"-->
-<!--                            android:layout_marginLeft="10dp"-->
-<!--                            android:orientation="vertical">-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:gravity="center"-->
-<!--                                android:text="Dr. Firstname Lastname"-->
-<!--                                android:textColor="#000"-->
-<!--                                android:textSize="20dp"-->
-<!--                                android:textStyle="bold" />-->
-
-<!--                            <TextView-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:gravity="center"-->
-<!--                                android:text="Specialized Therapist"-->
-<!--                                android:textColor="#000"-->
-<!--                                android:textSize="20dp"-->
-<!--                                android:textStyle="normal" />-->
-
-<!--                        </LinearLayout>-->
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00D0B7B7"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="20dp">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/doctor" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Dr. Firstname Lastname"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Licensed Therapist"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="normal" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00D0B7B7"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="20dp">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/doctor" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Dr. Firstname Lastname"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Licensed Therapist"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="normal" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00D0B7B7"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="20dp">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/doctor" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Dr. Firstname Lastname"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Licensed Therapist"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="normal" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardCornerRadius="20dp"
-                    app:cardElevation="5dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="#00D0B7B7"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:paddingHorizontal="20dp"
-                        android:paddingVertical="20dp">
-
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:src="@drawable/doctor" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Dr. Firstname Lastname"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:gravity="center"
-                                android:text="Licensed Therapist"
-                                android:textColor="#000"
-                                android:textSize="20dp"
-                                android:textStyle="normal" />
-
-                        </LinearLayout>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
+                    android:layout_height="match_parent"
+                    android:layout_below="@id/my_toolbar" />
             </LinearLayout>
 
         </LinearLayout>
