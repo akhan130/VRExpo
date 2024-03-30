@@ -2,23 +2,21 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="Session1_SA">
-        <State />
-      </entry>
-      <entry key="Session26_SA">
-        <State />
-      </entry>
-      <entry key="SocialAnxiety">
-        <State />
-      </entry>
-      <entry key="TherapistDashboard">
-        <State />
-      </entry>
-      <entry key="TherapySchedulerActivity">
-        <State />
-      </entry>
       <entry key="app">
-        <State />
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\JARib\.android\avd\Medium_Phone_API_30.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-30T17:53:39.345486700Z" />
+        </State>
       </entry>
     </value>
   </component>
