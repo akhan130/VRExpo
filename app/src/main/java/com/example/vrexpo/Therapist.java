@@ -4,6 +4,7 @@ import com.google.firebase.database.PropertyName;
 /**
  * Therapist Helper Class
  * Using this class to assist in retrieving Therapist Info from FireBase.
+ * TherapistModel
  */
 
 public class Therapist {
