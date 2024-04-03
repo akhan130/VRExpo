@@ -1,5 +1,8 @@
 package com.example.vrexpo;
 
+import static com.google.firebase.database.DatabaseKt.getSnapshots;
+
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,14 +11,19 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+
 import java.util.List;
 
-public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.TherapistViewHolder> {
+public class TherapistAdapter extends FirebaseRecyclerAdapter<Therapist, TherapistAdapter.TherapistViewHolder> {
 
-    private List<Therapist> therapistList;
+    Context context;
+    private FirebaseRecyclerOptions<Therapist> options;
 
-    public TherapistAdapter(List<Therapist> therapistList) {
-        this.therapistList = therapistList;
+    public TherapistAdapter(@NonNull FirebaseRecyclerOptions<Therapist> options, Context context) {
+        super(options);
+        this.context = context;
     }
 
     @NonNull
@@ -26,16 +34,8 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.Ther
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TherapistViewHolder holder, int position) {
-        if (therapistList != null && position < therapistList.size()) {
-            Therapist therapist = therapistList.get(position);
-            holder.bind(therapist);
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        return therapistList != null ? therapistList.size() : 0;
+    protected void onBindViewHolder(@NonNull TherapistViewHolder holder, int position, @NonNull Therapist model) {
+        holder.bind(model);
     }
 
     public static class TherapistViewHolder extends RecyclerView.ViewHolder {
@@ -59,4 +59,12 @@ public class TherapistAdapter extends RecyclerView.Adapter<TherapistAdapter.Ther
             specializationTextView.setText(therapist.getSpecialization());
         }
     }
+
+    public void updateOptions(@NonNull FirebaseRecyclerOptions<Therapist> options) {
+        this.options = options;
+        notifyDataSetChanged();
+    }
+
 }
+
+

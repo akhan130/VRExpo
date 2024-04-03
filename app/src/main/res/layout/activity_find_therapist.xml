@@ -35,14 +35,14 @@
                 android:layout_margin="10dp">
 
                 <EditText
-                    android:id="@+id/search_patient"
+                    android:id="@+id/search_therapist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="1dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="10dp"
                     android:layout_marginBottom="10dp"
-                    android:layout_toLeftOf="@id/search_patient_button"
+                    android:layout_toLeftOf="@id/search_therapist_button"
                     android:background="@drawable/edit_text_rounded_corner"
                     android:backgroundTint="#FAFAFA"
                     android:elevation="4dp"
@@ -50,15 +50,18 @@
                     android:padding="10dp" />
 
                 <ImageButton
-                    android:id="@+id/search_patient_button"
+                    android:id="@+id/search_therapist_button"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/searchicon"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:padding="4dp"
-                    android:layout_margin="10dp"/>
+                    android:src="@drawable/searchicon" />
 
             </RelativeLayout>
 

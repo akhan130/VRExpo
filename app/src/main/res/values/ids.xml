@@ -8,4 +8,6 @@
     <item name="text1" type="id" />
     <item name="timer" type="id" />
     <item name="action_create_account" type="id" />
+    <item name="search_therapist" type="id" />
+    <item name="search_therapist_button" type="id" />
 </resources>
