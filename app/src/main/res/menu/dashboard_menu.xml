@@ -43,4 +43,10 @@
         android:title="Zoom Session"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/action_treatmentPlans"
+        android:icon="@drawable/baseline_add_call_24"
+        android:title="Treatment Plan"
+        app:showAsAction="ifRoom"/>
+
 </menu>

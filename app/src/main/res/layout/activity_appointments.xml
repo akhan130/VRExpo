@@ -4,51 +4,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TherapistAccountSettings">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:text="Account Settings"
-        android:textColor="@color/black"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        />
+    tools:context=".TherapistAppointments">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/therapist_info_button"
-            android:layout_width="300dp"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Therapist Info"
-            android:layout_gravity="center"
-
-            />
-
-        <Button
-            android:id="@+id/therapist_history_button"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="Therapist History"
+            android:padding="10dp"
+            android:text="View/Set Appointments"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:layout_gravity="center"
             />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upcoming Appointments"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:padding="10dp"
+            />
+
+        <view class="androidx.appcompat.app.AlertController$RecycleListView"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+
+        </view>
+
         <Button
-            android:id="@+id/logout_button"
-            android:layout_width="200dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/rounded_button"
-            android:text="Logout" />
+            android:layout_marginTop="10dp"
+            android:text="Set Up Appointment"
+            />
 
     </LinearLayout>
 

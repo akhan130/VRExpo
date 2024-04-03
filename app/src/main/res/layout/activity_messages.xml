@@ -1,43 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Messages">
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="Messages"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/messages_title"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/rounded_outline"
+        android:layout_marginTop="60dp"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@drawable/rounded_outline"
+        android:layout_marginTop="60dp"
+        />
+
+    <TextView
+        android:id="@+id/patientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="68dp"
+        android:layout_centerHorizontal="true"
+        android:text="Patient Name"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="50dp"/>
+
+    <EditText
+        android:id="@+id/message_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_above="@id/my_toolbar"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="50dp"
+        android:background="@drawable/edit_text_rounded_corner"
+        android:elevation="4dp"
+        android:hint="Write message here"
+        android:padding="10dp" />
 
-            <ImageView
-                android:layout_width="65dp"
-                android:layout_height="65dp"
-                android:src="@drawable/back_button"
-                android:padding="10dp" />
+    <ImageView
+        android:id="@+id/sendMessageButton"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/sendmessage"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@id/message_input"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Messages"
-                android:layout_centerInParent="true"
-                android:padding="10dp"
-                android:textSize="30sp"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
-
-        </RelativeLayout>
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/my_toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/purple_500"
-            android:elevation="4dp"
-            android:gravity="center" />
-    </LinearLayout>
-</ScrollView>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/purple_500"
+        android:elevation="4dp"
+        android:gravity="center" />
+</RelativeLayout>

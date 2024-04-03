@@ -28,13 +28,9 @@ public class TreatmentPlans extends AppCompatActivity {
                 Intent dashIntent = new Intent(TreatmentPlans.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_view_appointments:
-                Intent appointmentsIntent = new Intent(TreatmentPlans.this, ViewAppointments.class);
+            case R.id.action_appointments:
+                Intent appointmentsIntent = new Intent(TreatmentPlans.this, TherapistAppointments.class);
                 startActivity(appointmentsIntent);
-                return true;
-            case R.id.action_time_available:
-                Intent availabilityIntent = new Intent(TreatmentPlans.this, TimeAvailability.class);
-                startActivity(availabilityIntent);
                 return true;
             case R.id.action_view_patient:
                 Intent patientInfoIntent = new Intent(TreatmentPlans.this, ViewPatients.class);

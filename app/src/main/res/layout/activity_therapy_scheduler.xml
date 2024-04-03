@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,58 +7,49 @@
     android:orientation="vertical"
     tools:context=".TherapySchedulerActivity">
 
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/my_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="297dp" />
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/my_toolbar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="635dp"
+        android:drawableTop="@drawable/ic_time"
+        android:drawablePadding="16dp"
+        android:gravity="center"
+        android:hint="Select Time"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/my_toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="245dp"
+        android:drawableTop="@drawable/ic_time"
+        android:drawablePadding="12dp"
+        android:gravity="center"
+        android:hint="If you don't see a time that works for you, please contact your therapist directly to schedule a different time."
+        android:textColor="#fff"
+        android:textSize="16sp" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/purple_500"
         android:elevation="4dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_alignParentBottom="true" />
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/timer"
-        android:hint="Select Time"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:drawableTop="@drawable/ic_time"
-        android:drawablePadding="16dp"
-        android:layout_marginTop="16dp"
-        />
-
-    <TextView
-        android:id="@+id/text2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#fff"
-        android:layout_marginTop="16dp"
-        android:drawableTop="@drawable/ic_time"
-        android:drawablePadding="12dp"
-        android:gravity="center"
-        android:hint="If you don't see a time that works for you, please contact your therapist directly to schedule a different time."
-        android:textSize="16sp" />
-
-    <!--    Add times as buttons? -->
-<!--    <Button-->
-<!--        android:id="@+id/timeButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_below="@id/dateButton"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        android:text="Select Time" />-->
-
-
-</LinearLayout>
-
-
-
-
+</RelativeLayout>

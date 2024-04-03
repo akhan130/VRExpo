@@ -20,8 +20,6 @@ import com.google.firebase.database.Query;
 
 public class ViewPatients extends AppCompatActivity {
 
-    private static final String TAG = "VRExpo";
-
     EditText searchInput;
     ImageButton searchButton;
     RecyclerView recyclerView;
@@ -42,13 +40,9 @@ public class ViewPatients extends AppCompatActivity {
                 Intent dashIntent = new Intent(ViewPatients.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_view_appointments:
-                Intent appointmentsIntent = new Intent(ViewPatients.this, ViewAppointments.class);
+            case R.id.action_appointments:
+                Intent appointmentsIntent = new Intent(ViewPatients.this, TherapistAppointments.class);
                 startActivity(appointmentsIntent);
-                return true;
-            case R.id.action_time_available:
-                Intent availabilityIntent = new Intent(ViewPatients.this, TimeAvailability.class);
-                startActivity(availabilityIntent);
                 return true;
             case R.id.action_view_patient:
                 Intent patientInfoIntent = new Intent(ViewPatients.this, ViewPatients.class);

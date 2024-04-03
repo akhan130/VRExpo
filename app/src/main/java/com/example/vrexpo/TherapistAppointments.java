@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class TimeAvailability extends AppCompatActivity {
+public class TherapistAppointments extends AppCompatActivity {
 
     private static final String TAG = "VRExpo";
 
@@ -24,42 +24,37 @@ public class TimeAvailability extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_dashboard:
-                Intent dashIntent = new Intent(TimeAvailability.this, TherapistDashboard.class);
+                Intent dashIntent = new Intent(TherapistAppointments.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_view_appointments:
-                Intent appointmentsIntent = new Intent(TimeAvailability.this, ViewAppointments.class);
+            case R.id.action_appointments:
+                Intent appointmentsIntent = new Intent(TherapistAppointments.this, TherapistAppointments.class);
                 startActivity(appointmentsIntent);
                 return true;
-            case R.id.action_time_available:
-                Intent availabilityIntent = new Intent(TimeAvailability.this, TimeAvailability.class);
-                startActivity(availabilityIntent);
-                return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(TimeAvailability.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(TherapistAppointments.this, ViewPatients.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_write_report:
-                Intent reportIntent = new Intent(TimeAvailability.this, WriteReport.class);
+                Intent reportIntent = new Intent(TherapistAppointments.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(TimeAvailability.this, Messages.class);
+                Intent messagesIntent = new Intent(TherapistAppointments.this, Messages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:
-                Intent settingsIntent = new Intent(TimeAvailability.this, TherapistAccountSettings.class);
+                Intent settingsIntent = new Intent(TherapistAppointments.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_treatmentPlans:
-                Intent treatmentPlans = new Intent(TimeAvailability.this, TreatmentPlans.class);
+                Intent treatmentPlans = new Intent(TherapistAppointments.this, TreatmentPlans.class);
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TimeAvailability.this, Zoom.class);
+                Intent zoom = new Intent(TherapistAppointments.this, Zoom.class);
                 startActivity(zoom);
                 return true;
-
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -68,7 +63,7 @@ public class TimeAvailability extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_time_availability);
+        setContentView(R.layout.activity_appointments);
 
         //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);

@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,8 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 
 public class TherapistAccountSettings extends AppCompatActivity {
 
-    private static final String TAG = "VRExpo";
-
+    private Button therapistInfoButton;
+    private Button therapistHistoryButton;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -28,13 +30,9 @@ public class TherapistAccountSettings extends AppCompatActivity {
                 Intent dashIntent = new Intent(TherapistAccountSettings.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_view_appointments:
-                Intent appointmentsIntent = new Intent(TherapistAccountSettings.this, ViewAppointments.class);
+            case R.id.action_appointments:
+                Intent appointmentsIntent = new Intent(TherapistAccountSettings.this, TherapistAppointments.class);
                 startActivity(appointmentsIntent);
-                return true;
-            case R.id.action_time_available:
-                Intent availabilityIntent = new Intent(TherapistAccountSettings.this, TimeAvailability.class);
-                startActivity(availabilityIntent);
                 return true;
             case R.id.action_view_patient:
                 Intent patientInfoIntent = new Intent(TherapistAccountSettings.this, ViewPatients.class);
@@ -70,6 +68,25 @@ public class TherapistAccountSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_therapist_account_settings);
+
+        therapistInfoButton = findViewById(R.id.therapist_info_button);
+        therapistHistoryButton = findViewById(R.id.therapist_history_button);
+
+        therapistInfoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent therapistInfoIntent = new Intent(TherapistAccountSettings.this, TherapistInfo.class);
+                startActivity(therapistInfoIntent);
+            }
+        });
+
+        therapistHistoryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent therapistHistoryIntent = new Intent(TherapistAccountSettings.this, TherapistHistory.class);
+                startActivity(therapistHistoryIntent);
+            }
+        });
 
         //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
