@@ -19,5 +19,12 @@
         android:layout_marginBottom="@dimen/dp_40"
         android:onClick="gotoJoin"
         android:text="@string/join" />
+    <Button
+        style="@style/submitZoom"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_40"
+        android:onClick="submitZoom"
+        android:text="Conclude Session" />
 
 </LinearLayout>

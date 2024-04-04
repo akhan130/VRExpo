@@ -50,6 +50,22 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <!-- Added by Anila -->
+    <style name="submitZoom" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/dp_28</item>
+        <item name="android:layout_marginRight">@dimen/dp_28</item>
+        <item name="android:layout_marginBottom">@dimen/dp_16</item> <!-- Add margin bottom to push it to the bottom -->
+        <item name="android:background">@drawable/blue_create_radius_bg</item>
+        <item name="android:textSize">@dimen/textsize_20</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:stateListAnimator" tools:ignore="NewApi">@null</item>
+        <item name="android:textColor">@drawable/blue_text_color</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
     <style name="ZMEditText">
         <item name="android:gravity">left|center_vertical</item>
         <item name="android:layout_width">0dp</item>

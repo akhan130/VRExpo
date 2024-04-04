@@ -67,7 +67,7 @@ public class CreateAccount extends AppCompatActivity {
                 validatePhoneNo() && validateAddress() && validateEmail() && validatePassword();
     }
 
-    private void registerUser() {
+    public void registerUser() {       /** changed to public **/
         if (!validateFields()) {
             return;
         }
@@ -224,5 +224,40 @@ public class CreateAccount extends AppCompatActivity {
             dobEditText.setError(null);
             return true;
         }
+    }
+
+    /** ADDED BY ANILA **/
+
+    // Method to edit user details
+    public void editUserDetails(String phone, String newName, String newDob, String newGender,
+                                String newEmail, String newAddress, String newPassword) {
+
+        reference.child(phone).child("name").setValue(newName);
+        reference.child(phone).child("dob").setValue(newDob);
+        reference.child(phone).child("gender").setValue(newGender);
+        reference.child(phone).child("email").setValue(newEmail);
+        reference.child(phone).child("address").setValue(newAddress);
+        reference.child(phone).child("password").setValue(newPassword);
+
+        Toast.makeText(this, "User details updated successfully", Toast.LENGTH_SHORT).show();
+    }
+
+    // Method to delete user account
+    public void deleteUserAccount(String phone) {
+        reference.child(phone).removeValue();
+        Toast.makeText(this, "User account deleted successfully", Toast.LENGTH_SHORT).show();
+    }
+
+    // Method to manage user permissions (dummy implementation)
+    public void manageUserPermissions(String phone, boolean isAdmin, boolean isPatient, boolean isTherapist) {
+        if (isAdmin) {
+            reference.child(phone).child("role").setValue("admin");
+        } else if (isPatient) {
+            reference.child(phone).child("role").setValue("Patient");
+        } else if (isTherapist) {
+            reference.child(phone).child("role").setValue("Therapist");
+        }
+
+        Toast.makeText(this, "User permissions updated successfully", Toast.LENGTH_SHORT).show();
     }
 }

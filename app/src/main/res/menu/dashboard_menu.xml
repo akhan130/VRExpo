@@ -8,15 +8,9 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/action_pre"
-        android:icon="@drawable/chat"
-        android:title="Presession questions"
-        app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/action_post"
-        android:icon="@drawable/baseline_sms_24"
-        android:title="Postsession questions"
+        android:id="@+id/action_sessionStart"
+        android:icon="@drawable/headphones"
+        android:title="Start Session"
         app:showAsAction="always"/>
 
     <item
@@ -36,6 +30,18 @@
         android:icon="@drawable/baseline_search_24"
         android:title="Find therapist"
         app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_pre"
+        android:icon="@drawable/chat"
+        android:title="Presession questions"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_post"
+        android:icon="@drawable/baseline_sms_24"
+        android:title="Postsession questions"
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/action_zoom"

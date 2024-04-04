@@ -24,6 +24,10 @@ public class Dashboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
+            case R.id.action_sessionStart:
+                Intent sessionStart = new Intent(Dashboard.this, SessionStart.class);
+                startActivity(sessionStart);
+                return true;
             case R.id.action_zoom:
                 Intent zoom = new Intent(Dashboard.this, Zoom.class);
                 startActivity(zoom);

@@ -36,6 +36,13 @@ public class Zoom extends AppCompatActivity {
      startActivity(intent);
      }
 
+     /** Added by Anila **/
+    public void submitZoom(View view) {
+        Intent submitZoom = new Intent(this, PostsessionQuestions.class);
+        submitZoom.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(submitZoom);
+    }
+
 
     protected void initSDK() {
         ZoomVideoSDKInitParams params = new ZoomVideoSDKInitParams();

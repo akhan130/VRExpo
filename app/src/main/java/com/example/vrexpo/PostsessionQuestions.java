@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class PostsessionQuestions extends AppCompatActivity {
 
+    /***
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu
@@ -46,14 +49,27 @@ public class PostsessionQuestions extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-    }
+    } **/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_postsession_questions);
 
-        //Setting up the action bar
+        //Find the buttons
+        Button submitBtn = findViewById(R.id.submitButton);
+
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open postsession questions
+                Intent submitPost = new Intent(PostsessionQuestions.this, Dashboard.class);
+                startActivity(submitPost);
+            }
+        });
+
+
+        /*** //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        setSupportActionBar(myToolbar); **/
     }
 }
