@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="drawer" type="id" />
+    <item name="toolbar" type="id" />
+    <item name="menubtn" type="id" />
+    <item name="searchtherapist" type="id" />
+    <item name="navigationview" type="id" />
+    <item name="text1" type="id" />
+    <item name="timer" type="id" />
+    <item name="action_create_account" type="id" />
+</resources>
