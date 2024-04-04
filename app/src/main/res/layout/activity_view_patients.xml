@@ -5,73 +5,73 @@
     android:layout_height="match_parent"
     tools:context=".ViewPatients">
 
-        <RelativeLayout
-            android:id="@+id/contentName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <RelativeLayout
+        android:id="@+id/contentName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:padding="10dp"
-                android:text="View Patients"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:textStyle="bold"/>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/search_patient_layout"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/contentName"
-            android:layout_margin="10dp">
-
-            <EditText
-                android:id="@+id/search_patient"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_toLeftOf="@id/search_patient_button"
-                android:background="@drawable/edit_text_rounded_corner"
-                android:backgroundTint="#FAFAFA"
-                android:elevation="4dp"
-                android:hint="Patient Name"
-                android:padding="10dp" />
-
-            <ImageButton
-                android:id="@+id/search_patient_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/searchicon"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:padding="4dp"
-                android:layout_margin="10dp"/>
-
-        </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/search_patient_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/search_patient_layout"
+            android:layout_centerHorizontal="true"
             android:padding="10dp"
-            />
+            android:text="View Patients"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"/>
 
+    </RelativeLayout>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/my_toolbar"
+    <RelativeLayout
+        android:id="@+id/search_patient_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contentName"
+        android:layout_margin="10dp">
+
+        <EditText
+            android:id="@+id/search_patient"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_alignParentBottom="true"
-            android:background="@color/purple_500"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/search_patient_button"
+            android:background="@drawable/edit_text_rounded_corner"
+            android:backgroundTint="#FAFAFA"
             android:elevation="4dp"
-            android:gravity="center"/>
+            android:hint="Patient Name"
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/search_patient_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/searchicon"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:layout_margin="10dp"/>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_patient_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_patient_layout"
+        android:padding="10dp"
+        />
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
+        android:background="@color/purple_500"
+        android:elevation="4dp"
+        android:gravity="center"/>
 </RelativeLayout>

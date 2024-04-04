@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_dashboard"
-        android:icon="@drawable/baseline_dashboard_24"
+        android:icon="@drawable/home"
         android:title="Dashboard"
         app:showAsAction="always"/>
 
@@ -47,6 +47,12 @@
         android:id="@+id/action_zoom"
         android:icon="@drawable/baseline_add_call_24"
         android:title="Zoom Session"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/action_treatmentPlans"
+        android:icon="@drawable/baseline_add_call_24"
+        android:title="Treatment Plan"
         app:showAsAction="ifRoom"/>
 
 </menu>

@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 public class ViewPatients extends AppCompatActivity {
-
-    private static final String TAG = "VRExpo";
 
     EditText searchInput;
     ImageButton searchButton;
@@ -40,13 +40,9 @@ public class ViewPatients extends AppCompatActivity {
                 Intent dashIntent = new Intent(ViewPatients.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_view_appointments:
-                Intent appointmentsIntent = new Intent(ViewPatients.this, ViewAppointments.class);
+            case R.id.action_appointments:
+                Intent appointmentsIntent = new Intent(ViewPatients.this, TherapistAppointments.class);
                 startActivity(appointmentsIntent);
-                return true;
-            case R.id.action_time_available:
-                Intent availabilityIntent = new Intent(ViewPatients.this, TimeAvailability.class);
-                startActivity(availabilityIntent);
                 return true;
             case R.id.action_view_patient:
                 Intent patientInfoIntent = new Intent(ViewPatients.this, ViewPatients.class);
@@ -104,11 +100,12 @@ public class ViewPatients extends AppCompatActivity {
         setSupportActionBar(myToolbar);
     }
 
+    //Searches Patients by their first name
     void setupSearchRecyclerView(String searchPatient){
-        Query query = FirebaseUtility.allUserDatabaseReference()
-                .orderByChild("name")
-                .startAt(searchPatient.toUpperCase())
-                .endAt(searchPatient.toLowerCase() + "\uf8ff");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("PatientAccount");
+        Query query = databaseReference.orderByChild("name")
+                .startAt(searchPatient)
+                .endAt(searchPatient + "\uf8ff");
 
         FirebaseRecyclerOptions<PatientModel> options = new FirebaseRecyclerOptions.Builder<PatientModel>()
                 .setQuery(query, PatientModel.class).build();
@@ -119,7 +116,6 @@ public class ViewPatients extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
-
 
     @Override
     protected void onStart() {

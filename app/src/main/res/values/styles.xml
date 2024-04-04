@@ -89,4 +89,11 @@
         <item name="android:textSize">@dimen/textsize_13</item>
     </style>
 
+
+    <style name="DialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
+    </style>
+
+
 </resources>
