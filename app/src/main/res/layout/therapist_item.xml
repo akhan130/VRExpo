@@ -32,17 +32,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Specialization"
-            android:id="@+id/specialization"/>
+            android:id="@+id/therapist_specialization"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="#1234567890"
-            android:id="@+id/phone"/>
+            android:id="@+id/therapist_phone"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="email"
-            android:id="@+id/email"/>
+            android:id="@+id/therapist_email"/>
 
 </LinearLayout>
 </LinearLayout>

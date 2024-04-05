@@ -3,6 +3,7 @@ package com.example.vrexpo;
 import static com.google.firebase.database.DatabaseKt.getSnapshots;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.firebase.ui.database.ObservableSnapshotArray;
 
 import java.util.List;
 
 public class TherapistAdapter extends FirebaseRecyclerAdapter<Therapist, TherapistAdapter.TherapistViewHolder> {
 
     Context context;
-    private FirebaseRecyclerOptions<Therapist> options;
 
     public TherapistAdapter(@NonNull FirebaseRecyclerOptions<Therapist> options, Context context) {
         super(options);
@@ -35,8 +36,11 @@ public class TherapistAdapter extends FirebaseRecyclerAdapter<Therapist, Therapi
 
     @Override
     protected void onBindViewHolder(@NonNull TherapistViewHolder holder, int position, @NonNull Therapist model) {
+        // Log the position and therapist name
+        Log.d("FindTherapist", "Binding position: " + position + ", Therapist: " + model.getFullName());
         holder.bind(model);
     }
+
 
     public static class TherapistViewHolder extends RecyclerView.ViewHolder {
         private TextView fullNameTextView;
@@ -47,9 +51,9 @@ public class TherapistAdapter extends FirebaseRecyclerAdapter<Therapist, Therapi
         public TherapistViewHolder(@NonNull View itemView) {
             super(itemView);
             fullNameTextView = itemView.findViewById(R.id.therapist_name);
-            emailTextView = itemView.findViewById(R.id.email);
-            phoneTextView = itemView.findViewById(R.id.phone);
-            specializationTextView = itemView.findViewById(R.id.specialization);
+            emailTextView = itemView.findViewById(R.id.therapist_email);
+            phoneTextView = itemView.findViewById(R.id.therapist_phone);
+            specializationTextView = itemView.findViewById(R.id.therapist_specialization);
         }
 
         public void bind(Therapist therapist) {
@@ -61,8 +65,13 @@ public class TherapistAdapter extends FirebaseRecyclerAdapter<Therapist, Therapi
     }
 
     public void updateOptions(@NonNull FirebaseRecyclerOptions<Therapist> options) {
-        this.options = options;
+        super.updateOptions(options);
         notifyDataSetChanged();
+    }
+
+    private void updateOptions(FirebaseRecyclerOptions<Therapist> options, ObservableSnapshotArray<Therapist> snapshots) {
+        // Update the options of the adapter
+        super.updateOptions(options);
     }
 
 }
