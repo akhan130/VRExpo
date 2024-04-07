@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header_CLAU26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Claustrophobia"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/Header2_CLAU26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Session 2-5: Gradual Exposure"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/Header_CLAU26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/b1_CLAU26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1. Implement various strategies to desensitize confined spaces. Discuss various techniques to managing anxiety during the session."
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_CLAU26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b2_CLAU26"
+        android:layout_width="400dp"
+        android:layout_height="56dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="Session 2: Classroom with door closed"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b1_CLAU26" />
+
+    <TextView
+        android:id="@+id/b3_CLAU26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://youtu.be/igaha_puYmg?si=kiXJzej7bv3UA8Ph"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b2_CLAU26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b4_CLAU26"
+        android:layout_width="398dp"
+        android:layout_height="50dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="Session 3: Room with closed door and no furniture"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b3_CLAU26" />
+
+    <TextView
+        android:id="@+id/b5_CLAU26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://youtu.be/nkKz8stbuWA?si=9-WeoBxXTnOyKhPr"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b4_CLAU26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b6_CLAU26"
+        android:layout_width="401dp"
+        android:layout_height="47dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="Session 4: Elevator"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b5_CLAU26" />
+
+    <TextView
+        android:id="@+id/b7_CLAU26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://youtu.be/h83_d3cvaXg?si=SJMyRMxjQEkGix-A"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b6_CLAU26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b8_CLAU26"
+        android:layout_width="400dp"
+        android:layout_height="47dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="Session 5: Tube Water Slide"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b7_CLAU26" />
+
+    <TextView
+        android:id="@+id/b9_CLAU26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://youtu.be/6aE1ti16AE8?si=TToWyiXwRLGY3q_-"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b8_CLAU26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

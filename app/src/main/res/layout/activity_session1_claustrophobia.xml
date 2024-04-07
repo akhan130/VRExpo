@@ -1,6 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header_CLAU1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Claustrophobia"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/Header2_CLAU1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Session 1: Introduction + Orientation"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/Header_CLAU1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/b1_CLAU1"
+        android:layout_width="400dp"
+        android:layout_height="47dp"
+        android:padding="12dp"
+        android:text="1. Introduction between patient and therapist"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_CLAU1" />
+
+    <TextView
+        android:id="@+id/b2_CLAU1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. Familiarize patient with VR equipment and provide basic training and demonstration of how it works "
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b1_CLAU1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b3_CLAU1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. Patient and therapist discuss phobia, triggers, how it hinders everyday life, past treatments, etc."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b2_CLAU1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b4_CLAU1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4. Discuss comfortability with closed spaces and level of comfortability in certain situations, ranging from 1-10."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b3_CLAU1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b5_CLAU1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5. Come up with goals for the therapy sessions and how to keep track of progress"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b4_CLAU1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

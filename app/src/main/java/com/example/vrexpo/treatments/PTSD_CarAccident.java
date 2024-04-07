@@ -24,7 +24,7 @@ public class PTSD_CarAccident extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu
-        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        getMenuInflater().inflate(R.menu.therapist_dashboard_menu, menu);
         return true;
     }
 
@@ -111,7 +111,7 @@ public class PTSD_CarAccident extends AppCompatActivity {
 
         // Session 12 - PTSD Car Accident
         Button Session12_PTSD = findViewById(R.id.Session12_PTSD);
-        Session1011_PTSD.setOnClickListener(new View.OnClickListener() {
+        Session12_PTSD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent Session12_PTSD = new Intent(PTSD_CarAccident.this, com.example.vrexpo.treatments.PTSD_CarAccidentPlan.Session12_PTSD.class);

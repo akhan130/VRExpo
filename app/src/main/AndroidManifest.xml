@@ -449,6 +449,111 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter></activity>
 
+        <activity
+            android:name=".treatments.claustrophobiaPlan.Session1_CLAU"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.claustrophobiaPlan.Session26_CLAU"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.claustrophobiaPlan.Session711_CLAU"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.claustrophobiaPlan.Session12_CLAU"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.PTSD_CarAccidentPlan.Session1_PTSD"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.PTSD_CarAccidentPlan.Session12_PTSD"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.PTSD_CarAccidentPlan.Session26_PTSD"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.PTSD_CarAccidentPlan.Session79_PTSD"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.PTSD_CarAccidentPlan.Session1011_PTSD"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.glossophobiaPlan.Session1_GLOS"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.glossophobiaPlan.Session8_GLOS"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.glossophobiaPlan.Session24_GLOS"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+        <activity
+            android:name=".treatments.glossophobiaPlan.Session57_GLOS"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter></activity>
+
+
         <!-- DELETE ABOVE HERE -->
 
     </application>

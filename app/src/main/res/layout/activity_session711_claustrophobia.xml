@@ -1,6 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Header_CLAU711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Claustrophobia"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/Header2_CLAU711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sessions 7-11: Real World Scenarios"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/Header_CLAU711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
+
+    <TextView
+        android:id="@+id/b1_CLAU711"
+        android:layout_width="408dp"
+        android:layout_height="49dp"
+        android:padding="12dp"
+        android:text="1. Practice skills to manage anxiety in real-life scenarios, such as sitting in a room with no windows or standing in an elevator."
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_CLAU711" />
+
+    <TextView
+        android:id="@+id/b2_CLAU711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2. Document reactions in order to determine whether or not the exposure therapy has help the patient overcome their phobia."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b1_CLAU711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b3_CLAU711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3. Assess the progress and achievements after the real-world exposure."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b2_CLAU711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b4_CLAU711"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4. Modify goals and develop new sessions based on the patients needs and challenges."
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/b3_CLAU711"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

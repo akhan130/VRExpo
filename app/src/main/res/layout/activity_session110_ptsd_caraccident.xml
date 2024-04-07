@@ -2,14 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/Header_CLAU12"
+        android:id="@+id/Header_PTSD1011"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Claustrophobia"
+        android:text="PTSD - Car Accident"
         android:textSize="35sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -20,51 +21,67 @@
         android:padding="16dp"/>
 
     <TextView
-        android:id="@+id/Header2_CLAU12"
+        android:id="@+id/Header2_PTSD1011"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Session 12: Review and Follow-up"
+        android:text="Session 10 - 11: Recreate Real - Life Scenarios"
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/Header_CLAU12"
+        app:layout_constraintTop_toBottomOf="@+id/Header_PTSD1011"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="16dp"/>
 
     <TextView
-        android:id="@+id/b1_CLAU12"
+        android:id="@+id/b1_PTSD1011"
+        android:layout_width="394dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:text="Session 10: SAAQ - Car Crash VR"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Header2_PTSD1011" />
+
+    <TextView
+        android:id="@+id/b2_PTSD1011"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1. Establish strategies for maintaining progress and preventing relapse."
+        android:text="https://youtu.be/MdOMwqxAL3k?si=WP-hDjksfCUAs0an"
         android:textSize="18sp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/Header2_CLAU12"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b1_PTSD1011"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="12dp"/>
 
     <TextView
-        android:id="@+id/b2_CLAU12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2. Review achievements and discuss ongoing strategies for maintaining well-being."
-        android:textSize="18sp"
+        android:id="@+id/b3_PTSD1011"
+        android:layout_width="396dp"
+        android:layout_height="54dp"
+        android:padding="12dp"
+        android:text="Session 11: Experience a car crash in VR"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/b1_CLAU12"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:padding="12dp"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b2_PTSD1011" />
 
     <TextView
-        android:id="@+id/b3_CLAU12"
+        android:id="@+id/b4_PTSD1011"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="3. Collaboratively develop a plan to address potential challenges in the future."
+        android:text="https://www.youtube.com/watch?v=EdaofVWvrrA"
         android:textSize="18sp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/b2_CLAU12"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b3_PTSD1011"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="12dp"/>

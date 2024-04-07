@@ -7,10 +7,10 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/Header_PTSD1"
+        android:id="@+id/Header_GLO24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PTSD - Car Accident"
+        android:text="Glossophobia"
         android:textSize="35sp"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -21,63 +21,97 @@
         android:padding="16dp"/>
 
     <TextView
-        android:id="@+id/Header2_PTSD1"
+        android:id="@+id/Header2_GLO24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Session 1: Introduction + Orientation"
+        android:text="Session 2 - 4: Gradual Exposure "
         android:textSize="28sp"
         android:textStyle="bold"
         android:textColor="@color/black"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/Header_PTSD1"
+        app:layout_constraintTop_toBottomOf="@+id/Header_GLO24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="16dp"/>
 
     <TextView
-        android:id="@+id/b1_PTSD1"
-        android:layout_width="400dp"
-        android:layout_height="47dp"
+        android:id="@+id/b1_GLO24"
+        android:layout_width="386dp"
+        android:layout_height="48dp"
         android:padding="12dp"
-        android:text="1. Introduction between patient and therapist"
+        android:text="Session 2: Performance Review 1:1"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Header2_PTSD1" />
+        app:layout_constraintTop_toBottomOf="@+id/Header2_GLO24" />
 
     <TextView
-        android:id="@+id/b2_PTSD1"
+        android:id="@+id/b2_GLO24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="2. Familiarize patient with VR equipment and provide basic training and demonstration of how it works "
+        android:text="https://youtu.be/mVatZIGJ32g?si=SiKrY5yaJVlihWq9"
         android:textSize="18sp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/b1_PTSD1"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:padding="12dp"/>
-
-    <TextView
-        android:id="@+id/b3_PTSD1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="3. Patient and therapist discuss phobia, triggers, how it hinders everyday life, past treatments, etc."
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/b2_PTSD1"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b1_GLO24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="12dp"/>
 
     <TextView
-        android:id="@+id/b4_PTSD1"
+        android:id="@+id/b3_GLO24"
+        android:layout_width="398dp"
+        android:layout_height="46dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="Session 3: Sales Pitch 1:1"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b2_GLO24" />
+
+    <TextView
+        android:id="@+id/b4_GLO24"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="5. Come up with goals for the therapy sessions and how to keep track of progress"
+        android:text="https://www.youtube.com/watch?v=fOtsw8rHpdw"
         android:textSize="18sp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@+id/b3_PTSD1"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b3_GLO24"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="12dp"/>
+
+    <TextView
+        android:id="@+id/b5_GLO24"
+        android:layout_width="406dp"
+        android:layout_height="55dp"
+        android:autoLink="web"
+        android:linksClickable="true"
+        android:padding="12dp"
+        android:text="Session 4: Practice Speaking in small group"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/b4_GLO24" />
+
+    <TextView
+        android:id="@+id/b6_GLO24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="https://www.youtube.com/watch?v=qVxi2OE-bm4"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:autoLink="web"
+        android:linksClickable="true"
+        app:layout_constraintTop_toBottomOf="@+id/b5_GLO24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:padding="12dp"/>

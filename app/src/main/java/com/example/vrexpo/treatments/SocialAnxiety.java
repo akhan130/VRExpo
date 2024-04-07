@@ -24,7 +24,7 @@ public class SocialAnxiety extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu
-        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        getMenuInflater().inflate(R.menu.therapist_dashboard_menu, menu);
         return true;
     }
 
