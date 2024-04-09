@@ -401,16 +401,15 @@
                     android:layout_weight="1"
                     android:layout_marginBottom="10dp"/>
 
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/my_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/purple_500"
+                    android:elevation="4dp" />
+
             </LinearLayout>
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/my_toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/purple_500"
-                android:elevation="4dp"
-                />
-
-        </LinearLayout>
+    </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
