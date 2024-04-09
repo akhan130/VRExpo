@@ -60,6 +60,8 @@ public class Login extends AppCompatActivity {
                             //Condition for Therapist LogIn
                             if (email.endsWith("@vrexpo.com")) {
                                 startActivity(new Intent(Login.this, TherapistDashboard.class));
+                            } else if (email.endsWith("@adminvrexpo.com")) {
+                                startActivity(new Intent(Login.this, AdminDashboard.class));
                             } else {
                                 //Patient LogIn
                                 startActivity(new Intent(Login.this, Dashboard.class));
