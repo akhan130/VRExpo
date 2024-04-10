@@ -39,6 +39,9 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".PatientUpdateAccount"
+            android:exported="false" />
+        <activity
             android:name=".AdminCreateTherapistAcct"
             android:exported="false" />
         <activity

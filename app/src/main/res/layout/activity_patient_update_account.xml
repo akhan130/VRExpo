@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".PatientUpdateAccount">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update Account"
+        android:textColor="@color/purple_700"
+        android:textSize="25sp"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        >
+    </TextView>
+
+<!--    Need to add icons to far left of text fields -->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:id="@+id/patient_name"
+        android:layout_margin="4dp"
+        android:drawablePadding="7dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black">
+<!--        android:drawableLeft=""-->
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date of Birth"
+        android:id="@+id/patient_dob"
+        android:layout_margin="4dp"
+        android:drawablePadding="7dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black">
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone Number"
+        android:id="@+id/patient_phone"
+        android:layout_margin="4dp"
+        android:drawablePadding="7dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black">
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Address"
+        android:id="@+id/patient_address"
+        android:layout_margin="4dp"
+        android:drawablePadding="7dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black">
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:id="@+id/patient_email"
+        android:layout_margin="4dp"
+        android:drawablePadding="7dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black">
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:id="@+id/patient_password"
+        android:layout_margin="4dp"
+        android:drawablePadding="7dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black">
+    </EditText>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Gender"
+        android:id="@+id/patient_gender"
+        android:layout_margin="4dp"
+        android:drawablePadding="7dp"
+        android:paddingLeft="10dp"
+        android:textColor="@android:color/black">
+    </EditText>
+
+    <Button
+        android:layout_width="match_parent"
+        android:text="Update Account"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/update_button">
+    </Button>
+
+</LinearLayout>
