@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 
 public class TherapistAppointments extends AppCompatActivity {
 
-    private static final String TAG = "VRExpo";
+    private Button setAvaliabilityButton;
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -64,6 +67,17 @@ public class TherapistAppointments extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_appointments);
+
+        setAvaliabilityButton = findViewById(R.id.set_availability_button);
+
+        setAvaliabilityButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent therapistInfoIntent = new Intent(TherapistAppointments.this, TherapistSetAvailability.class);
+                startActivity(therapistInfoIntent);
+            }
+        });
+
 
         //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);

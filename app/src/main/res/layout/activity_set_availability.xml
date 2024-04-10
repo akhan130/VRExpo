@@ -1,9 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TherapistSetAppointment">
+    tools:context=".TherapistSetAvailability">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,7 +40,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select Time:"
+                android:text="Select the Times You Are Available:"
                 android:textSize="16sp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
@@ -47,61 +50,102 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/start_time_text_view"
+                <CheckBox
+                    android:id="@+id/timeOne"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Select Start Time:"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:text="9AM-10AM"
+                    android:layout_marginStart="50dp"
+                    />
 
-                <TextView
-                    android:id="@+id/end_time_text_view"
+                <CheckBox
+                    android:id="@+id/timeTwo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="70dp"
-                    android:layout_toRightOf="@+id/start_time_text_view"
-                    android:text="Select End Time:"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:text="10AM-11AM"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_toRightOf="@id/timeOne"
+                    />
 
-                <Spinner
-                    android:id="@+id/start_time_spinner"
+                <CheckBox
+                    android:id="@+id/timeThree"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/start_time_text_view"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp" />
+                    android:text="11AM-12PM"
+                    android:layout_marginStart="50dp"
+                    android:layout_below="@+id/timeOne"
+                    />
 
-
-                <Spinner
-                    android:id="@+id/end_time_spinner"
+                <CheckBox
+                    android:id="@+id/timeFour"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/end_time_text_view"
-                    android:layout_marginStart="70dp"
-                    android:layout_marginEnd="10dp"
-                    android:layout_toRightOf="@+id/start_time_spinner" />
+                    android:text="12PM-1PM"
+                    android:layout_marginHorizontal="60dp"
+                    android:layout_below="@id/timeTwo"
+                    android:layout_toRightOf="@id/timeThree"
+                    />
+
+                <CheckBox
+                    android:id="@+id/timeFive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1PM-2PM"
+                    android:layout_marginStart="50dp"
+                    android:layout_below="@+id/timeThree"
+                    />
+
+                <CheckBox
+                    android:id="@+id/timeSix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2PM-3PM"
+                    android:layout_marginStart="80dp"
+                    android:layout_below="@id/timeFour"
+                    android:layout_toRightOf="@id/timeFive"
+                    />
+
+                <CheckBox
+                    android:id="@+id/timeSeven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3PM-4PM"
+                    android:layout_marginStart="50dp"
+                    android:layout_below="@+id/timeSix"
+                    />
+
+                <CheckBox
+                    android:id="@+id/timeEight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4PM-5PM"
+                    android:layout_marginStart="80dp"
+                    android:layout_below="@id/timeFive"
+                    android:layout_toRightOf="@id/timeSeven"
+                    />
 
             </RelativeLayout>
 
             <Button
+                android:id="@+id/send_availability_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="50dp"
-                android:text="Post Appointment" />
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="80dp"
+                android:text="Post Availability" />
 
         </LinearLayout>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/purple_500"
-        android:elevation="4dp"
-        android:gravity="center" />
-</RelativeLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/my_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_alignParentBottom="true"
+            android:background="@color/purple_500"
+            android:elevation="4dp"
+            android:gravity="center" />
+
+    </RelativeLayout>
+
+</ScrollView>

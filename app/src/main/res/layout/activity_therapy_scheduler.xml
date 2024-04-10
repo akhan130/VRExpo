@@ -3,46 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".TherapySchedulerActivity">
+
+    <TextView
+        android:id="@+id/select_time_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:hint="Schedule Appointment"
+        android:textSize="18sp" />
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/my_toolbar"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="297dp" />
+        android:layout_below="@id/select_time_title"
+        />
 
     <TextView
-        android:id="@+id/timer"
+        android:id="@+id/memo_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/my_toolbar"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="635dp"
-        android:drawableTop="@drawable/ic_time"
-        android:drawablePadding="16dp"
+        android:layout_below="@id/calendarView"
         android:gravity="center"
-        android:hint="Select Time"
-        android:textSize="18sp" />
+        android:text="If you don't see a time that works for you, please contact your therapist directly to schedule a different time."
+        android:textSize="16sp"
+        />
 
-    <TextView
-        android:id="@+id/text2"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/appointment_times_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/my_toolbar"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="245dp"
-        android:drawableTop="@drawable/ic_time"
-        android:drawablePadding="12dp"
-        android:gravity="center"
-        android:hint="If you don't see a time that works for you, please contact your therapist directly to schedule a different time."
-        android:textColor="#fff"
-        android:textSize="16sp" />
+        android:padding="10dp"
+        android:layout_below="@id/memo_text"
+        />
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -50,6 +47,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/purple_500"
         android:elevation="4dp"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true"
+        />
 
 </RelativeLayout>

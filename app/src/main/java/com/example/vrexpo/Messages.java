@@ -4,14 +4,29 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 
 public class Messages extends AppCompatActivity {
 
-    private static final String TAG = "VRExpo";
+    private SearchPatientRecyclerAdapter adapter;
+
+    EditText searchInput;
+    ImageButton searchButton;
+
+    RecyclerView recyclerView;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,8 +81,62 @@ public class Messages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
 
+        //Search
+        searchInput = findViewById(R.id.search_patient);
+        searchButton = findViewById(R.id.search_patient_button);
+        recyclerView = findViewById(R.id.search_patient_recycler_view);
+
+        searchInput.requestFocus();
+
+        searchButton.setOnClickListener(v -> {
+            String searchPatient = searchInput.getText().toString();
+            if(searchPatient.isEmpty() || searchPatient.length()<3){
+                searchInput.setError("Invalid Name");
+                return;
+            }
+            setupSearchRecyclerView(searchPatient);
+        });
+
         //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+    }
+
+    //Searches Patients by their first name
+    void setupSearchRecyclerView(String searchPatient){
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("PatientAccount");
+        Query query = databaseReference.orderByChild("name")
+                .startAt(searchPatient)
+                .endAt(searchPatient + "\uf8ff");
+
+        FirebaseRecyclerOptions<PatientModel> options = new FirebaseRecyclerOptions.Builder<PatientModel>()
+                .setQuery(query, PatientModel.class).build();
+
+        // Pass the context to the adapter constructor
+        adapter = new SearchPatientRecyclerAdapter(options, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(adapter!=null)
+            adapter.startListening();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if(adapter!=null)
+            adapter.stopListening();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(adapter!=null)
+            adapter.startListening();
     }
 }

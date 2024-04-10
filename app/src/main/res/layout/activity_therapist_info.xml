@@ -98,6 +98,16 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/rounded_button"
+            android:text="Edit Profile"
+            android:padding="10dp"
+            android:id="@+id/edit_button"
+            android:layout_marginTop="10dp"/>
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_button"
             android:text="Update Profile"
             android:padding="10dp"
             android:id="@+id/update_button"

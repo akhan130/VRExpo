@@ -14,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<PatientModel, SearchPatientRecyclerAdapter.PatientModelViewHolder> {
+public class MessagesPatientRecyclerAdapter extends FirebaseRecyclerAdapter<PatientModel, MessagesPatientRecyclerAdapter.PatientModelViewHolder> {
 
     Context context;
 
-    public SearchPatientRecyclerAdapter(@NonNull FirebaseRecyclerOptions<PatientModel> options, Context context) {
+    public MessagesPatientRecyclerAdapter(@NonNull FirebaseRecyclerOptions<PatientModel> options, Context context) {
         super(options);
         this.context = context;
     }
@@ -27,6 +27,13 @@ public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Patien
     protected void onBindViewHolder(@NonNull PatientModelViewHolder holder, int position, @NonNull PatientModel model) {
         holder.patientNameText.setText(model.getName());
         holder.phoneNumberText.setText(model.getPhone());
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, Chat.class);
+            AndroidUtil.passUserModelAsIntent(intent,model);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        });
     }
 
     @NonNull

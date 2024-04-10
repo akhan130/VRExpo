@@ -18,65 +18,60 @@
         android:id="@+id/messages_title"
         />
 
-    <ImageView
+    <RelativeLayout
+        android:id="@+id/search_patient_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/rounded_outline"
-        android:layout_marginTop="60dp"
-        />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/messages_title"
+        android:layout_margin="10dp">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:src="@drawable/rounded_outline"
-        android:layout_marginTop="60dp"
-        />
+        <EditText
+            android:id="@+id/search_patient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toLeftOf="@id/search_patient_button"
+            android:background="@drawable/edit_text_rounded_corner"
+            android:backgroundTint="#FAFAFA"
+            android:elevation="4dp"
+            android:hint="Patient Name"
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/search_patient_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/searchicon"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            android:layout_margin="10dp"/>
+
+    </RelativeLayout>
 
     <TextView
-        android:id="@+id/patientName"
+        android:id="@+id/messages_info"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="68dp"
-        android:layout_centerHorizontal="true"
-        android:text="Patient Name"
+        android:layout_height="30dp"
+        android:text="Select the Patient you Would Like to Message: "
+        android:textSize="15dp"
         android:textColor="@color/black"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        android:layout_below="@id/search_patient_layout"
+        android:layout_marginStart="10dp"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/chat_recycler_view"
+        android:id="@+id/search_patient_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="50dp"/>
-
-    <EditText
-        android:id="@+id/message_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/my_toolbar"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="50dp"
-        android:background="@drawable/edit_text_rounded_corner"
-        android:elevation="4dp"
-        android:hint="Write message here"
-        android:padding="10dp" />
-
-    <ImageView
-        android:id="@+id/sendMessageButton"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:src="@drawable/sendmessage"
-        android:layout_alignParentEnd="true"
-        android:layout_alignBottom="@id/message_input"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="50dp"
+        android:layout_below="@id/messages_info"
         />
 
     <androidx.appcompat.widget.Toolbar

@@ -19,6 +19,15 @@ public class Therapist {
         // Default constructor required for Firebase
     }
 
+    public Therapist(String fullName, String email, String gender, String phoneNumber, String specialization, String password) {
+        this.fullName = fullName;
+        this.email = email;
+        this.gender = gender;
+        this.phoneNumber = phoneNumber;
+        this.specialization = specialization;
+        this.password = password;
+    }
+
     // Use PropertyName annotation to specify the field names in Firebase
     @PropertyName("therapist_fullName")
     public String getFullName() {

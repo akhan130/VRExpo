@@ -1,13 +1,12 @@
 package com.example.vrexpo;
 
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,11 +18,18 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TherapistInfo extends AppCompatActivity {
 
-    private EditText emailEditText, fullNameEditText, genderEditText,
-            phoneEditText, specializationEditText, passwordEditText;
+    private EditText emailEditText;
+    private EditText fullNameEditText;
+    private EditText genderEditText;
+    private EditText phoneEditText;
+    private EditText specializationEditText;
+    private EditText passwordEditText;
 
-    private Button updateButton;
-    private DatabaseReference databaseReference;
+    private Button editProfileButton;
+    private Button updateProfileButton;
+    private Button cancelButton;
+
+    private DatabaseReference therapistRef;
     private FirebaseAuth mAuth;
 
     @Override
@@ -31,12 +37,10 @@ public class TherapistInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_therapist_info);
 
+        // Initialize Firebase Auth instance
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        String userId = currentUser.getUid();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Therapist").child(userId);
-
+        // Initialize EditText fields
         emailEditText = findViewById(R.id.Email);
         fullNameEditText = findViewById(R.id.FullName);
         genderEditText = findViewById(R.id.Gender);
@@ -44,37 +48,39 @@ public class TherapistInfo extends AppCompatActivity {
         specializationEditText = findViewById(R.id.Specialization);
         passwordEditText = findViewById(R.id.Password);
 
-        updateButton = findViewById(R.id.update_button);
+        // Get the current logged-in user
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            // Get the user's unique ID
+            String therapistPhone = currentUser.getUid();
 
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Update user profile logic here
-            }
-        });
+            // Get a reference to the Firebase Realtime Database node for therapists
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            therapistRef = database.getReference("TherapistInfo").child(therapistPhone);
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Therapist therapist = dataSnapshot.getValue(Therapist.class);
-                if (therapist != null) {
-                    emailEditText.setText(therapist.getEmail());
-                    fullNameEditText.setText(therapist.getFullName());
-                    phoneEditText.setText(therapist.getPhoneNumber());
-                    genderEditText.setText(therapist.getGender());
-                    specializationEditText.setText(therapist.getSpecialization());
-                    passwordEditText.setText(therapist.getPassword());
+            // Read data from the database
+            therapistRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    // Retrieve therapist data from the database
+                    Therapist therapist = dataSnapshot.getValue(Therapist.class);
+                    if (therapist != null) {
+                        // Set EditText fields with therapist information
+                        emailEditText.setText(therapist.getEmail());
+                        fullNameEditText.setText(therapist.getFullName());
+                        genderEditText.setText(therapist.getGender());
+                        phoneEditText.setText(therapist.getPhoneNumber());
+                        specializationEditText.setText(therapist.getSpecialization());
+                        passwordEditText.setText(therapist.getPassword());
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                // Handle database error
-            }
-        });
-
-        // Setting up the action bar
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle database error
+                    Log.e("Firebase", "Error reading therapist data", databaseError.toException());
+                }
+            });
+        }
     }
 }
