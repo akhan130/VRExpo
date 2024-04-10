@@ -107,13 +107,19 @@
 
     <Button
         android:id="@+id/createAccountButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Create Account" />
 
     <Button
+        android:id="@+id/ViewAllButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View All Accounts" />
+
+    <Button
         android:id="@+id/CloseButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Close" />
 

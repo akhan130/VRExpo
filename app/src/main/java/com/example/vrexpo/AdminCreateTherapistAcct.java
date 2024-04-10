@@ -26,6 +26,8 @@ public class AdminCreateTherapistAcct extends AppCompatActivity {
     private EditText specializationEditText;
     private EditText genderEditText;
     private Button createAccountButton;
+
+    private Button viewAllButton;
     private Button closeButton;
 
 
@@ -49,6 +51,7 @@ public class AdminCreateTherapistAcct extends AppCompatActivity {
         genderEditText = findViewById(R.id.therapist_gender);
         createAccountButton = findViewById(R.id.createAccountButton);
         closeButton = findViewById(R.id.CloseButton);
+        viewAllButton = findViewById(R.id.ViewAllButton);
 
         // Firebase initialization
         rootNode = FirebaseDatabase.getInstance();
@@ -58,6 +61,14 @@ public class AdminCreateTherapistAcct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 registerTherapistUser();
+            }
+        });
+
+        viewAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminCreateTherapistAcct.this, FindTherapist.class);
+                startActivity(intent);
             }
         });
 
