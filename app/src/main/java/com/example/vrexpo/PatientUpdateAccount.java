@@ -3,6 +3,8 @@ package com.example.vrexpo;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,9 +25,11 @@ public class PatientUpdateAccount extends AppCompatActivity {
 
     EditText etName, etDOB, etPhone, etAddress, etEmail, etPassword, etGender;
     Button updateButton;
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference reference;
 
+    Button cancelButton;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +43,20 @@ public class PatientUpdateAccount extends AppCompatActivity {
         etPassword = findViewById(R.id.patient_password);
         etGender = findViewById(R.id.patient_gender);
         updateButton = findViewById(R.id.update_button);
+        cancelButton = findViewById(R.id.cancel_button);
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 updateProfile();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PatientUpdateAccount.this, Dashboard.class);
+                startActivity(intent);
             }
         });
 

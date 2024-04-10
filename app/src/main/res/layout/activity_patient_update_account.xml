@@ -107,4 +107,13 @@
         android:id="@+id/update_button">
     </Button>
 
+    <Button
+        android:layout_width="match_parent"
+        android:text="Cancel"
+        android:layout_margin="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/cancel_button">
+    </Button>
+
 </LinearLayout>

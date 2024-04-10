@@ -1,13 +1,17 @@
 package com.example.vrexpo;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -18,27 +22,16 @@ import com.google.firebase.database.ValueEventListener;
 
 public class TherapistInfo extends AppCompatActivity {
 
-    private EditText emailEditText;
-    private EditText fullNameEditText;
-    private EditText genderEditText;
-    private EditText phoneEditText;
-    private EditText specializationEditText;
-    private EditText passwordEditText;
-
-    private Button editProfileButton;
+    private EditText emailEditText, fullNameEditText, genderEditText, phoneEditText, specializationEditText, passwordEditText;
     private Button updateProfileButton;
     private Button cancelButton;
 
-    private DatabaseReference therapistRef;
-    private FirebaseAuth mAuth;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_therapist_info);
-
-        // Initialize Firebase Auth instance
-        mAuth = FirebaseAuth.getInstance();
 
         // Initialize EditText fields
         emailEditText = findViewById(R.id.Email);
@@ -47,40 +40,136 @@ public class TherapistInfo extends AppCompatActivity {
         phoneEditText = findViewById(R.id.Phone);
         specializationEditText = findViewById(R.id.Specialization);
         passwordEditText = findViewById(R.id.Password);
+        updateProfileButton = findViewById(R.id.update_button);
+        cancelButton = findViewById(R.id.cancel_button);
 
-        // Get the current logged-in user
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        updateProfileButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateProfile();
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TherapistInfo.this, TherapistDashboard.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
-            // Get the user's unique ID
-            String therapistPhone = currentUser.getUid();
+            DatabaseReference reference = database.getReference("TherapistInfo");
 
-            // Get a reference to the Firebase Realtime Database node for therapists
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            therapistRef = database.getReference("TherapistInfo").child(therapistPhone);
-
-            // Read data from the database
-            therapistRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            reference.orderByChild("therapist_email").equalTo(currentUser.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    // Retrieve therapist data from the database
-                    Therapist therapist = dataSnapshot.getValue(Therapist.class);
-                    if (therapist != null) {
-                        // Set EditText fields with therapist information
-                        emailEditText.setText(therapist.getEmail());
-                        fullNameEditText.setText(therapist.getFullName());
-                        genderEditText.setText(therapist.getGender());
-                        phoneEditText.setText(therapist.getPhoneNumber());
-                        specializationEditText.setText(therapist.getSpecialization());
-                        passwordEditText.setText(therapist.getPassword());
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            String currentPhoneNumber = childSnapshot.getKey();
+                            DatabaseReference patientReference = database.getReference("TherapistInfo").child(currentPhoneNumber);
+                            patientReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if (snapshot.exists()) {
+                                        String name = snapshot.child("therapist_fullName").getValue(String.class);
+                                        String email = snapshot.child("therapist_email").getValue(String.class);
+                                        String password = snapshot.child("therapist_password").getValue(String.class);
+                                        String phone = snapshot.child("therapist_phoneNumber").getValue(String.class);
+                                        String gender = snapshot.child("therapist_gender").getValue(String.class);
+                                        String specialization = snapshot.child("therapist_specialization").getValue(String.class);
+
+                                        emailEditText.setText(email);
+                                        fullNameEditText.setText(name);
+                                        genderEditText.setText(gender);
+                                        phoneEditText.setText(phone);
+                                        specializationEditText.setText(specialization);
+                                        passwordEditText.setText(password);
+
+                                    } else {
+                                        Toast.makeText(TherapistInfo.this, "No profile found", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(TherapistInfo.this, "Failed to read data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    } else {
+                        Toast.makeText(TherapistInfo.this, "No profile found", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    // Handle database error
-                    Log.e("Firebase", "Error reading therapist data", databaseError.toException());
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(TherapistInfo.this, "Failed to read data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
+        } else {
+            // User is not logged in
+            // Handle this case, e.g., redirect to login screen
         }
     }
+
+    private void updateProfile() {
+        String email = emailEditText.getText().toString();
+        String name = fullNameEditText.getText().toString();
+        String gender = genderEditText.getText().toString();
+        String phone = phoneEditText.getText().toString();
+        String specialization = specializationEditText.getText().toString();
+        String password = passwordEditText.getText().toString();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            DatabaseReference reference = database.getReference("TherapistInfo");
+            reference.orderByChild("therapist_email").equalTo(user.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            String currentPhoneNumber = childSnapshot.getKey();
+                            DatabaseReference patientReference = database.getReference("TherapistInfo").child(currentPhoneNumber);
+
+                            patientReference.child("therapist_fullName").setValue(name);
+                            patientReference.child("therapist_specialization").setValue(specialization);
+                            patientReference.child("therapist_phoneNumber").setValue(phone);
+                            patientReference.child("therapist_email").setValue(email);
+                            patientReference.child("therapist_password").setValue(password);
+                            patientReference.child("therapist_gender").setValue(gender)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(TherapistInfo.this, "Updated", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(TherapistInfo.this, "Failed", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }
+                    } else {
+                        Toast.makeText(TherapistInfo.this, "No profile found", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(TherapistInfo.this, "Failed to read data: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            // User is not logged in
+            // Handle this case, e.g., redirect to login screen
+        }
+    }
+
 }

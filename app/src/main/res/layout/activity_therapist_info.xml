@@ -26,18 +26,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:hint="Email"
-            android:inputType="text"
-            android:layout_margin="10dp"
-            android:background="@drawable/edit_text_rounded_corner"
-            android:elevation="5dp"
-            android:id="@+id/Email"
-            />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
             android:hint="Full Name"
             android:inputType="text"
             android:layout_margin="10dp"
@@ -50,12 +38,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:hint="Gender"
+            android:hint="Email"
             android:inputType="text"
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
-            android:id="@+id/Gender"
+            android:id="@+id/Email"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:hint="Password"
+            android:inputType="text"
+            android:layout_margin="10dp"
+            android:background="@drawable/edit_text_rounded_corner"
+            android:elevation="5dp"
+            android:id="@+id/Password"
             />
 
         <EditText
@@ -74,34 +74,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
+            android:hint="Gender"
+            android:inputType="text"
+            android:layout_margin="10dp"
+            android:background="@drawable/edit_text_rounded_corner"
+            android:elevation="5dp"
+            android:id="@+id/Gender"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:hint="Specialization"
             android:inputType="text"
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
             android:id="@+id/Specialization"/>
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:hint="Password"
-            android:inputType="text"
-            android:layout_margin="10dp"
-            android:background="@drawable/edit_text_rounded_corner"
-            android:elevation="5dp"
-            android:id="@+id/Password"
-            />
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/rounded_button"
-            android:text="Edit Profile"
-            android:padding="10dp"
-            android:id="@+id/edit_button"
-            android:layout_marginTop="10dp"/>
 
         <Button
             android:layout_width="200dp"
