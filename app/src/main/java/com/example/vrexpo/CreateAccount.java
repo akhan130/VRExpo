@@ -67,7 +67,8 @@ public class CreateAccount extends AppCompatActivity {
                 validatePhoneNo() && validateAddress() && validateEmail() && validatePassword();
     }
 
-    public void registerUser() {       /** changed to public **/
+    /** changed to public **/
+    public void registerUser() {
         if (!validateFields()) {
             return;
         }

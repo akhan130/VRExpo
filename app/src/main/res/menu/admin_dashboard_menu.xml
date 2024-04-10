@@ -8,4 +8,10 @@
         android:title="Home"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_create_account"
+        android:icon="@drawable/user"
+        android:title="Create Therapist Account"
+        app:showAsAction="always"/>
+
 </menu>

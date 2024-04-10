@@ -23,9 +23,13 @@ public class AdminDashboard extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
-            case R.id.action_dashboard:
+            case R.id.action_home:
                 Intent dashIntent = new Intent(AdminDashboard.this, AdminDashboard.class);
                 startActivity(dashIntent);
+                return true;
+            case R.id.action_create_account:
+                Intent createAcctIntent = new Intent(AdminDashboard.this, AdminCreateTherapistAcct.class);
+                startActivity(createAcctIntent);
                 return true;
 
             default:

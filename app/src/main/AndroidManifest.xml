@@ -39,9 +39,11 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
-            android:name=".AdminDashboard"
+            android:name=".AdminCreateTherapistAcct"
             android:exported="false" />
-        <!-- Start Screen -->
+        <activity
+            android:name=".AdminDashboard"
+            android:exported="false" /> <!-- Start Screen -->
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -107,7 +109,7 @@
         <activity
             android:name=".JoinSessionActivity"
             android:exported="false"
-            android:windowSoftInputMode="stateAlwaysVisible"></activity>
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
             android:name=".Zoom"
             android:exported="true">
