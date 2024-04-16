@@ -23,14 +23,6 @@ public class PatientHistory extends AppCompatActivity {
                 Intent dashIntent = new Intent(PatientHistory.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_pre:
-                Intent preIntent = new Intent(PatientHistory.this, PresessionQuestions.class);
-                startActivity(preIntent);
-                return true;
-            case R.id.action_post:
-                Intent postIntent = new Intent(PatientHistory.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-                return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(PatientHistory.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);

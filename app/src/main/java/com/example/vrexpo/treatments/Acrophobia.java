@@ -43,14 +43,6 @@ public class Acrophobia extends AppCompatActivity {
                 Intent dashIntent = new Intent(Acrophobia.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_pre:
-                Intent preIntent = new Intent(Acrophobia.this, PresessionQuestions.class);
-                startActivity(preIntent);
-                return true;
-            case R.id.action_post:
-                Intent postIntent = new Intent(Acrophobia.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-                return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(Acrophobia.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);

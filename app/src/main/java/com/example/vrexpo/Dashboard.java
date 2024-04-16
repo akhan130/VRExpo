@@ -32,14 +32,6 @@ public class Dashboard extends AppCompatActivity {
                 Intent zoom = new Intent(Dashboard.this, Zoom.class);
                 startActivity(zoom);
                 return true;
-            case R.id.action_pre:
-                Intent preIntent = new Intent(Dashboard.this, PresessionQuestions.class);
-                startActivity(preIntent);
-                return true;
-            case R.id.action_post:
-                Intent postIntent = new Intent(Dashboard.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-                return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(Dashboard.this, AccountInfo.class);
                 startActivity(actInfoIntent);

@@ -41,14 +41,6 @@ public class FindTherapist extends AppCompatActivity {
                 Intent dashIntent = new Intent(FindTherapist.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_pre:
-                Intent preIntent = new Intent(FindTherapist.this, PresessionQuestions.class);
-                startActivity(preIntent);
-                return true;
-            case R.id.action_post:
-                Intent postIntent = new Intent(FindTherapist.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-                return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(FindTherapist.this, AccountInfo.class);
                 startActivity(actInfoIntent);

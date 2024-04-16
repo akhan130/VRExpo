@@ -31,28 +31,4 @@
         android:title="Find therapist"
         app:showAsAction="always"/>
 
-    <item
-        android:id="@+id/action_pre"
-        android:icon="@drawable/chat"
-        android:title="Presession questions"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/action_post"
-        android:icon="@drawable/baseline_sms_24"
-        android:title="Postsession questions"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/action_zoom"
-        android:icon="@drawable/baseline_add_call_24"
-        android:title="Zoom Session"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/action_treatmentPlans"
-        android:icon="@drawable/baseline_add_call_24"
-        android:title="Treatment Plan"
-        app:showAsAction="ifRoom"/>
-
 </menu>

@@ -42,14 +42,6 @@ public class Arachnophobia extends AppCompatActivity {
                 Intent dashIntent = new Intent(Arachnophobia.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_pre:
-                Intent preIntent = new Intent(Arachnophobia.this, PresessionQuestions.class);
-                startActivity(preIntent);
-                return true;
-            case R.id.action_post:
-                Intent postIntent = new Intent(Arachnophobia.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-                return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(Arachnophobia.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);

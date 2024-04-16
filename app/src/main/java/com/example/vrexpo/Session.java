@@ -23,10 +23,6 @@ public class Session extends AppCompatActivity {
                 Intent dashIntent = new Intent(Session.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_post:
-                Intent postIntent = new Intent(Session.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-                return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(Session.this, AccountInfo.class);
                 startActivity(actInfoIntent);
@@ -43,6 +39,7 @@ public class Session extends AppCompatActivity {
                 Intent zoom = new Intent(Session.this, Zoom.class);
                 startActivity(zoom);
                 return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }

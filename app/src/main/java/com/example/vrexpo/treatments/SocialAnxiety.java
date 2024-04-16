@@ -43,14 +43,6 @@ public class SocialAnxiety extends AppCompatActivity {
                 Intent dashIntent = new Intent(SocialAnxiety.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_pre:
-                Intent preIntent = new Intent(SocialAnxiety.this, PresessionQuestions.class);
-                startActivity(preIntent);
-                return true;
-            case R.id.action_post:
-                Intent postIntent = new Intent(SocialAnxiety.this, PostsessionQuestions.class);
-                startActivity(postIntent);
-                return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(SocialAnxiety.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);
