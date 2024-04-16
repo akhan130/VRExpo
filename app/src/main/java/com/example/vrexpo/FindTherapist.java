@@ -3,10 +3,13 @@ package com.example.vrexpo;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -88,6 +91,13 @@ public class FindTherapist extends AppCompatActivity {
             setupSearchRecyclerView(searchTherapist);
         });
 
+        ImageButton refreshButton = findViewById(R.id.refresh_button);
+
+        refreshButton.setOnClickListener(v -> {
+            resetRecyclerView();
+        });
+
+
         // Initialize RecyclerView
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -123,6 +133,62 @@ public class FindTherapist extends AppCompatActivity {
         adapter.updateOptions(options);
     }
 
+    public void onPhobiaImageClicked(View view) {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("TherapistInfo");
+        String specialization = "";
+
+        switch (view.getId()) {
+            case R.id.image_acrophobia:
+                specialization = "Acrophobia";
+                break;
+            case R.id.image_arachnophobia:
+                specialization = "Arachnophobia";
+                break;
+            case R.id.image_aviophobia:
+                specialization = "Aviophobia";
+                break;
+            case R.id.image_car:
+                specialization = "Car Accident PTSD";
+                break;
+            case R.id.image_claustrophobia:
+                specialization = "Claustrophobia";
+                break;
+            case R.id.image_depression:
+                specialization = "Depression";
+                break;
+            case R.id.image_glossophobia:
+                specialization = "Glossophobia";
+                break;
+            case R.id.image_socialAnxiety:
+                specialization = "Social Anxiety";
+                break;
+        }
+
+        if (!specialization.isEmpty()) {
+            Query query = databaseReference.orderByChild("therapist_specialization").equalTo(specialization);
+            FirebaseRecyclerOptions<Therapist> options = new FirebaseRecyclerOptions.Builder<Therapist>()
+                    .setQuery(query, Therapist.class).build();
+            adapter.updateOptions(options);
+        }
+    }
+
+    private void resetRecyclerView() {
+        // Debugging: Log to make sure this method is called
+        Log.d("FindTherapist", "Resetting RecyclerView");
+
+        DatabaseReference therapistsRef = FirebaseDatabase.getInstance().getReference("TherapistInfo");
+        FirebaseRecyclerOptions<Therapist> options =
+                new FirebaseRecyclerOptions.Builder<Therapist>()
+                        .setQuery(therapistsRef, Therapist.class)
+                        .build();
+
+        if (adapter != null) {
+            adapter.stopListening(); // Stop listening to the previous query
+            adapter.updateOptions(options); // Update the options
+            adapter.startListening(); // Start listening to the new query
+        }
+    }
+
 
     @Override
     protected void onStart() {
@@ -142,5 +208,6 @@ public class FindTherapist extends AppCompatActivity {
         if(adapter!=null)
             adapter.startListening();
     }
+
 
 }

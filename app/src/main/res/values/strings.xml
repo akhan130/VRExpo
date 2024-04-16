@@ -63,5 +63,6 @@
     <string name="close">Close</string>
 
     <string name="open">Open</string>
+    <string name="refresh_description" />
 
 </resources>

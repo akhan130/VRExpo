@@ -52,7 +52,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="9dp"
                     android:layout_marginBottom="10dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:padding="4dp"
@@ -100,9 +100,13 @@
                             android:paddingVertical="15dp">
 
                             <ImageView
+                                android:id="@+id/image_acrophobia"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@drawable/building" />
+                                android:src="@drawable/building"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:onClick="onPhobiaImageClicked" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -113,10 +117,9 @@
                                 android:textColor="#000"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
-
-
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
+
 
 
                     <androidx.cardview.widget.CardView
@@ -137,9 +140,13 @@
                             android:paddingVertical="15dp">
 
                             <ImageView
+                                android:id="@+id/image_arachnophobia"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@drawable/spider" />
+                                android:src="@drawable/spider"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:onClick="onPhobiaImageClicked" />
 
                             <TextView
                                 android:layout_width="150dp"
@@ -173,9 +180,13 @@
                             android:paddingVertical="15dp">
 
                             <ImageView
+                                android:id="@+id/image_aviophobia"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@drawable/airplane" />
+                                android:src="@drawable/airplane"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:onClick="onPhobiaImageClicked" />
 
                             <TextView
                                 android:layout_width="300dp"
@@ -209,9 +220,13 @@
                             android:paddingVertical="15dp">
 
                             <ImageView
+                                android:id="@+id/image_car"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@drawable/car" />
+                                android:src="@drawable/car"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:onClick="onPhobiaImageClicked" />
 
                             <TextView
                                 android:layout_width="350dp"
@@ -245,9 +260,13 @@
                             android:paddingVertical="15dp">
 
                             <ImageView
+                                android:id="@+id/image_claustrophobia"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@drawable/heart" />
+                                android:src="@drawable/heart"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:onClick="onPhobiaImageClicked" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -281,9 +300,13 @@
                             android:paddingVertical="15dp">
 
                             <ImageView
+                                android:id="@+id/image_depression"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@drawable/upset" />
+                                android:src="@drawable/upset"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:onClick="onPhobiaImageClicked" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -317,9 +340,13 @@
                             android:paddingVertical="15dp">
 
                             <ImageView
+                                android:id="@+id/image_glossophobia"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@drawable/conference" />
+                                android:src="@drawable/conference"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:onClick="onPhobiaImageClicked" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -353,9 +380,13 @@
                             android:paddingVertical="15dp">
 
                             <ImageView
+                                android:id="@+id/image_socialAnxiety"
                                 android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:src="@drawable/social_anxiety" />
+                                android:src="@drawable/social_anxiety"
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:onClick="onPhobiaImageClicked" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -371,12 +402,19 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-
                 </LinearLayout>
             </HorizontalScrollView>
 
+<!--    End of Select Phobia-->
 
             <!--DOCTOR SECTION-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -387,6 +425,17 @@
                 android:textColor="#000"
                 android:textSize="28dp"
                 android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/refresh_button"
+                android:layout_width="80dp"
+                android:layout_height="76dp"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/refresh"
+                tools:ignore="DuplicateIds" />
+
+        </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
