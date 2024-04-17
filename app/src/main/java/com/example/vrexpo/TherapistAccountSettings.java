@@ -13,9 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 
 public class TherapistAccountSettings extends AppCompatActivity {
 
-    private Button therapistInfoButton;
-    private Button therapistHistoryButton;
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu
@@ -26,7 +23,7 @@ public class TherapistAccountSettings extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
-            case R.id.action_dashboard:
+            case R.id.action_home:
                 Intent dashIntent = new Intent(TherapistAccountSettings.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
@@ -69,8 +66,9 @@ public class TherapistAccountSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_therapist_account_settings);
 
-        therapistInfoButton = findViewById(R.id.therapist_info_button);
-        therapistHistoryButton = findViewById(R.id.therapist_history_button);
+        Button therapistInfoButton = findViewById(R.id.therapist_info_button);
+        Button therapistHistoryButton = findViewById(R.id.therapist_history_button);
+        Button therapistLogoutButton = findViewById(R.id.logout_button);
 
         therapistInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +83,14 @@ public class TherapistAccountSettings extends AppCompatActivity {
             public void onClick(View v) {
                 Intent therapistHistoryIntent = new Intent(TherapistAccountSettings.this, TherapistHistory.class);
                 startActivity(therapistHistoryIntent);
+            }
+        });
+
+        therapistLogoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent therapistLogoutIntent = new Intent(TherapistAccountSettings.this, Login.class);
+                startActivity(therapistLogoutIntent);
             }
         });
 

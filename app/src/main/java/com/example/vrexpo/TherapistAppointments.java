@@ -26,7 +26,7 @@ public class TherapistAppointments extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
-            case R.id.action_dashboard:
+            case R.id.action_home:
                 Intent dashIntent = new Intent(TherapistAppointments.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;

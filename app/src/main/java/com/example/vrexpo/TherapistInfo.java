@@ -2,6 +2,8 @@ package com.example.vrexpo;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -27,6 +30,52 @@ public class TherapistInfo extends AppCompatActivity {
     private Button cancelButton;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu
+        getMenuInflater().inflate(R.menu.therapist_dashboard_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_home:
+                Intent dashIntent = new Intent(TherapistInfo.this, TherapistDashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointmentsIntent = new Intent(TherapistInfo.this, TherapistAppointments.class);
+                startActivity(appointmentsIntent);
+                return true;
+            case R.id.action_view_patient:
+                Intent patientInfoIntent = new Intent(TherapistInfo.this, ViewPatients.class);
+                startActivity(patientInfoIntent);
+                return true;
+            case R.id.action_write_report:
+                Intent reportIntent = new Intent(TherapistInfo.this, WriteReport.class);
+                startActivity(reportIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messagesIntent = new Intent(TherapistInfo.this, Messages.class);
+                startActivity(messagesIntent);
+                return true;
+            case R.id.action_account_settings:
+                Intent settingsIntent = new Intent(TherapistInfo.this, TherapistAccountSettings.class);
+                startActivity(settingsIntent);
+                return true;
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(TherapistInfo.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(TherapistInfo.this, Zoom.class);
+                startActivity(zoom);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +106,10 @@ public class TherapistInfo extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // Setting up the action bar
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
     }
 
     @Override
