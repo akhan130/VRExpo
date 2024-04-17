@@ -28,6 +28,10 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+/**
+ * Note: This class controls the Presession Questions
+ */
+
 public class SessionStart extends AppCompatActivity {
 
     @Override
@@ -105,12 +109,12 @@ public class SessionStart extends AppCompatActivity {
                                 String answerThree = ((EditText) findViewById(R.id.editTextTextMultiLine4)).getText().toString();
 
                                 Map<String, String> sessionData = new HashMap<>();
-                                sessionData.put("Question1", answerOne);
-                                sessionData.put("Question2", answerTwo);
-                                sessionData.put("Question3", answerThree);
+                                sessionData.put("Q1 - What do you expect?", answerOne);
+                                sessionData.put("Q2 - Notice any differences?", answerTwo);
+                                sessionData.put("Q3 - How has VRExpo helped?", answerThree);
 
                                 assert currentPhoneNumber != null;
-                                reference.child(currentPhoneNumber).child("Sessions").child(dateTimeKey).setValue(sessionData)
+                                reference.child(currentPhoneNumber).child("Pre-Session Questions").child(dateTimeKey).setValue(sessionData)
                                         .addOnSuccessListener(aVoid -> {
                                             Log.d(TAG, "Answers submitted successfully");
                                             Toast.makeText(SessionStart.this, "Answers submitted successfully!", Toast.LENGTH_SHORT).show();
