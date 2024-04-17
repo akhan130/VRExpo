@@ -30,5 +30,10 @@
         android:icon="@drawable/baseline_search_24"
         android:title="Find therapist"
         app:showAsAction="always"/>
+    <item
+        android:id="@+id/action_patient_settings"
+        android:icon="@drawable/setting"
+        android:title="Find therapist"
+        app:showAsAction="always"/>
 
 </menu>

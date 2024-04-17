@@ -43,6 +43,10 @@ public class AccountInfo extends AppCompatActivity {
                 Intent zoom = new Intent(AccountInfo.this, Zoom.class);
                 startActivity(zoom);
                 return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(AccountInfo.this, PatientSettings.class);
+                startActivity(settingsIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

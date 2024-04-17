@@ -44,6 +44,10 @@ public class Dashboard extends AppCompatActivity {
                 Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(Dashboard.this, PatientSettings.class);
+                startActivity(settingsIntent);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

@@ -28,7 +28,6 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
-    <!-- Added by Anila for Zoom android:name=".MyApplication"  -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -40,11 +39,11 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
-            android:name=".Chat"
+            android:name=".PatientSettings"
             android:exported="false" />
-        <!-- Start Screen -->
-        tools:ignore="ExtraText"
-        tools:targetApi="31">
+        <activity
+            android:name=".Chat"
+            android:exported="false" /> <!-- Start Screen -->
         <activity
             android:name=".PatientUpdateAccount"
             android:exported="false" />
@@ -100,8 +99,7 @@
         <activity
             android:name=".TherapistAppointments"
             android:exported="false" />
-        <activity android:name=".TherapistSetAvailability"
-            />
+        <activity android:name=".TherapistSetAvailability" />
         <activity
             android:name=".ViewPatients"
             android:exported="false" />
@@ -121,7 +119,7 @@
         <activity
             android:name=".JoinSessionActivity"
             android:exported="false"
-            android:windowSoftInputMode="stateAlwaysVisible"></activity>
+            android:windowSoftInputMode="stateAlwaysVisible" />
         <activity
             android:name=".Zoom"
             android:exported="true">

@@ -47,6 +47,10 @@ public class PatientInfo extends AppCompatActivity implements View.OnClickListen
                 Intent findIntent = new Intent(PatientInfo.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(PatientInfo.this, PatientSettings.class);
+                startActivity(settingsIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
