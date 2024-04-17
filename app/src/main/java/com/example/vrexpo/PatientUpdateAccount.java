@@ -55,7 +55,7 @@ public class PatientUpdateAccount extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PatientUpdateAccount.this, Dashboard.class);
+                Intent intent = new Intent(PatientUpdateAccount.this, PatientSettings.class);
                 startActivity(intent);
             }
         });

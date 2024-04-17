@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 public class PatientSettings extends AppCompatActivity {
 
@@ -53,6 +55,35 @@ public class PatientSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_settings);
+
+        Button infoBtn = findViewById(R.id.infoButton);
+
+        infoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open patient info
+                Intent infoIntent = new Intent(PatientSettings.this, PatientInfo.class);
+                startActivity(infoIntent);
+            }
+        });
+
+        Button updateBtn = findViewById(R.id.updateButton);
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent updateIntent = new Intent(PatientSettings.this, PatientUpdateAccount.class);
+                startActivity(updateIntent);
+            }
+        });
+
+        Button logoutBtn = findViewById(R.id.logoutButton);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logoutIntent = new Intent(PatientSettings.this, Login.class);
+                startActivity(logoutIntent);
+            }
+        });
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);

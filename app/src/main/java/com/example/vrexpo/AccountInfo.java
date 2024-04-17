@@ -31,6 +31,10 @@ public class AccountInfo extends AppCompatActivity {
                 Intent dashIntent = new Intent(AccountInfo.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(AccountInfo.this, Zoom.class);
+                startActivity(zoom);
+                return true;
             case R.id.action_schedule:
                 Intent scheduleIntent = new Intent(AccountInfo.this, TherapySchedulerActivity.class);
                 startActivity(scheduleIntent);
@@ -38,10 +42,6 @@ public class AccountInfo extends AppCompatActivity {
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(AccountInfo.this, FindTherapist.class);
                 startActivity(findIntent);
-                return true;
-            case R.id.action_zoom:
-                Intent zoom = new Intent(AccountInfo.this, Zoom.class);
-                startActivity(zoom);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(AccountInfo.this, PatientSettings.class);
@@ -66,16 +66,7 @@ public class AccountInfo extends AppCompatActivity {
                 startActivity(histIntent);
             }
         });
-        Button infoBtn = findViewById(R.id.infoButton);
 
-        infoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open patient info
-                Intent infoIntent = new Intent(AccountInfo.this, PatientInfo.class);
-                startActivity(infoIntent);
-            }
-        });
         Button recordBtn = findViewById(R.id.recordButton);
         recordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,15 +74,6 @@ public class AccountInfo extends AppCompatActivity {
                 //open patient info
                 Intent recordIntent = new Intent(AccountInfo.this, PatientRecords.class);
                 startActivity(recordIntent);
-            }
-        });
-
-        Button updateBtn = findViewById(R.id.updateButton);
-        updateBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent updateIntent = new Intent(AccountInfo.this, PatientUpdateAccount.class);
-                startActivity(updateIntent);
             }
         });
 
