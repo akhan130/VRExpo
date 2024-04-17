@@ -1,12 +1,11 @@
 package com.example.vrexpo;
 
-import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,7 +28,7 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * Note: This class controls the Presession Questions
+ * Note: This class controls the Pre-Session Questions
  */
 
 public class SessionStart extends AppCompatActivity {
@@ -75,68 +74,74 @@ public class SessionStart extends AppCompatActivity {
         setSupportActionBar(myToolbar);
 
         Button submitBtn = findViewById(R.id.submitBtn);
+        if (submitBtn != null) {
+            submitBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EditText answerOneEditText = findViewById(R.id.editTextTextMultiLine2);
+                    EditText answerTwoEditText = findViewById(R.id.editTextTextMultiLine3);
+                    EditText answerThreeEditText = findViewById(R.id.editTextTextMultiLine4);
 
-        if (submitBtn == null) {
-            Log.e(TAG, "Submit button is null");
-        } else {
-            submitBtn.setOnClickListener(view -> {
-                Log.d(TAG, "Submit button clicked");
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String answerOne = answerOneEditText.getText().toString().trim();
+                    String answerTwo = answerTwoEditText.getText().toString().trim();
+                    String answerThree = answerThreeEditText.getText().toString().trim();
 
-                if (user == null) {
-                    Toast.makeText(SessionStart.this, "No user is logged in.", Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "No user logged in");
-                } else {
-                    String email = user.getEmail();
-                    DatabaseReference reference = FirebaseDatabase.getInstance().getReference("PatientAccount");
-
-                    reference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            if (!snapshot.exists()) {
-                                Toast.makeText(SessionStart.this, "User not found.", Toast.LENGTH_SHORT).show();
-                                Log.d(TAG, "User not found in database");
-                                return;
-                            }
-
-                            for (DataSnapshot childSnapshot : snapshot.getChildren()) {
-                                String currentPhoneNumber = childSnapshot.getKey();
-                                Log.d(TAG, "Current phone number: " + currentPhoneNumber);
-
-                                String dateTimeKey = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault()).format(new java.util.Date());
-                                String answerOne = ((EditText) findViewById(R.id.editTextTextMultiLine2)).getText().toString();
-                                String answerTwo = ((EditText) findViewById(R.id.editTextTextMultiLine3)).getText().toString();
-                                String answerThree = ((EditText) findViewById(R.id.editTextTextMultiLine4)).getText().toString();
-
-                                Map<String, String> sessionData = new HashMap<>();
-                                sessionData.put("Q1 - What do you expect?", answerOne);
-                                sessionData.put("Q2 - Notice any differences?", answerTwo);
-                                sessionData.put("Q3 - How has VRExpo helped?", answerThree);
-
-                                assert currentPhoneNumber != null;
-                                reference.child(currentPhoneNumber).child("Pre-Session Questions").child(dateTimeKey).setValue(sessionData)
-                                        .addOnSuccessListener(aVoid -> {
-                                            Log.d(TAG, "Answers submitted successfully");
-                                            Toast.makeText(SessionStart.this, "Answers submitted successfully!", Toast.LENGTH_SHORT).show();
-                                            Intent sessionIntent = new Intent(SessionStart.this, Zoom.class);
-                                            startActivity(sessionIntent);
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            Log.e(TAG, "Failed to submit answers", e);
-                                            Toast.makeText(SessionStart.this, "Failed to submit answers.", Toast.LENGTH_SHORT).show();
-                                        });
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-                            Log.e(TAG, "Database error", error.toException());
-                            Toast.makeText(SessionStart.this, "Database error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    if (answerOne.isEmpty() || answerTwo.isEmpty() || answerThree.isEmpty()) {
+                        Toast.makeText(SessionStart.this, "Please fill in all fields before submitting.", Toast.LENGTH_LONG).show();
+                    } else {
+                        processSubmission(answerOne, answerTwo, answerThree);
+                    }
                 }
             });
+        } else {
+            Log.e("PresessionQuestions", "Submit button is null");
         }
     }
+
+    private void processSubmission(String answerOne, String answerTwo, String answerThree) {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String email = user.getEmail();
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference("PatientAccount");
+
+            reference.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            String currentPhoneNumber = childSnapshot.getKey();
+                            String dateTimeKey = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault()).format(new java.util.Date());
+
+                            Map<String, String> sessionData = new HashMap<>();
+                            sessionData.put("Q1 - What do you expect?", answerOne);
+                            sessionData.put("Q2 - Notice any differences?", answerTwo);
+                            sessionData.put("Q3 - How has VRExpo helped?", answerThree);
+
+
+                            reference.child(currentPhoneNumber).child("Pre-Session Questions").child(dateTimeKey).setValue(sessionData)
+                                    .addOnSuccessListener(aVoid -> {
+                                        Toast.makeText(SessionStart.this, "Answers submitted successfully!", Toast.LENGTH_SHORT).show();
+                                        Intent sessionIntent = new Intent(SessionStart.this, Zoom.class);
+                                        startActivity(sessionIntent);
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Toast.makeText(SessionStart.this, "Failed to submit answers.", Toast.LENGTH_SHORT).show();
+                                    });
+                        }
+                    } else {
+                        Toast.makeText(SessionStart.this, "User not found.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(SessionStart.this, "Database error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else {
+            Toast.makeText(SessionStart.this, "No user is logged in.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
 }
