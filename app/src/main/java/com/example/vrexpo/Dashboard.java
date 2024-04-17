@@ -59,13 +59,6 @@ public class Dashboard extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        //Setting up links
-
-        TextView test = findViewById(R.id.testLink);
-        test.setMovementMethod(LinkMovementMethod.getInstance());
-        test.setLinkTextColor(Color.BLUE);
-
-
         //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
