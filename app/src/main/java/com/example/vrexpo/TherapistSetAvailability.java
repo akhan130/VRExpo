@@ -35,7 +35,6 @@ public class TherapistSetAvailability extends AppCompatActivity {
 
     private CalendarView calendarView;
     private Button sendAvailabilityButton;
-    private DatabaseReference availabilityRef;
     private String therapistFullName;
     private long selectedDate;
 
@@ -92,8 +91,6 @@ public class TherapistSetAvailability extends AppCompatActivity {
         // Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
-        availabilityRef = FirebaseDatabase.getInstance().getReference().child("availability");
 
         calendarView = findViewById(R.id.calendar_view);
         sendAvailabilityButton = findViewById(R.id.send_availability_button);
