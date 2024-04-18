@@ -18,12 +18,16 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.vrexpo.TherapistMessages.TherapistMessages;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -118,16 +122,36 @@ public class TherapistSetAvailability extends AppCompatActivity {
                 sendAvailabilityToFirebase(selectedDate, selectedTimeSlots);
             }
         });
+
+        fetchTherapistFullName();
     }
 
     private void fetchTherapistFullName() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            therapistFullName = user.getDisplayName();
-            Log.d("TherapistName", "Therapist Name: " + therapistFullName);
+        if (user != null && user.getEmail() != null) {
+            String email = user.getEmail();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("TherapistInfo");
+
+            ref.orderByChild("therapist_email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            therapistFullName = childSnapshot.child("therapist_fullName").getValue(String.class);
+                            Log.d("TherapistName", "Therapist Full Name: " + therapistFullName);
+                        }
+                    } else {
+                        Log.d("TherapistName", "Therapist not found.");
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.d("TherapistName", "Error fetching therapist name: " + error.getMessage());
+                }
+            });
         }
     }
-
 
     private List<String> getSelectedTimeSlots() {
         List<String> selectedTimeSlots = new ArrayList<>();
@@ -147,17 +171,16 @@ public class TherapistSetAvailability extends AppCompatActivity {
 
     private void sendAvailabilityToFirebase(long selectedDate, List<String> selectedTimeSlots) {
 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+        String dateString = dateFormat.format(new Date(selectedDate)); // Make sure to convert the milliseconds to a Date object
+
+        DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference("Appointments").child(dateString); // Replace "YourNode" with your actual node path
+
         if (therapistFullName == null || therapistFullName.isEmpty()) {
             fetchTherapistFullName(); // Attempt to fetch the name again
             Toast.makeText(this, "Unable to retrieve therapist name. Try again.", Toast.LENGTH_LONG).show();
-            return; // Exit the method as we cannot proceed without the therapist's name
+            return;
         }
-
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-        String dateString = dateFormat.format(selectedDate);
-
-
-        DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference().child("Appointments").child(dateString);
 
         for (String timeSlot : selectedTimeSlots) {
             String appointmentKey = appointmentsRef.push().getKey();
