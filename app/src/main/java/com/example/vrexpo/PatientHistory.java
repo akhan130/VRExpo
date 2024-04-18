@@ -43,7 +43,8 @@ public class PatientHistory extends AppCompatActivity {
                 startActivity(new Intent(this, Dashboard.class));
                 return true;
             case R.id.action_schedule:
-                startActivity(new Intent(this, TherapySchedulerActivity.class));
+                Intent scheduleIntent = new Intent(PatientHistory.this, PatientSelectAppointment.class);
+                startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:
                 startActivity(new Intent(this, FindTherapist.class));

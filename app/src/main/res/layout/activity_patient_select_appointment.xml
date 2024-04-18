@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".TherapySchedulerActivity">
+    tools:context=".PatientSelectAppointment">
 
     <TextView
         android:id="@+id/select_time_title"
@@ -17,29 +17,29 @@
         android:textSize="18sp" />
 
     <CalendarView
-        android:id="@+id/calendarView"
+        android:id="@+id/appointmentCalendarView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/select_time_title"
-        />
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/select_time_title"/>
 
-    <TextView
-        android:id="@+id/memo_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/calendarView"
-        android:gravity="center"
-        android:text="If you don't see a time that works for you, please contact your therapist directly to schedule a different time."
-        android:textSize="16sp"
-        />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/appointment_times_recycler_view"
+        android:id="@+id/timeslotRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/appointmentCalendarView"
         android:padding="10dp"
-        android:layout_below="@id/memo_text"
-        />
+        android:layout_marginTop="10dp"/>
+
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timeslotRecyclerView"
+        android:layout_marginTop="20dp"
+        android:text="Book Appointment"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
@@ -49,5 +49,7 @@
         android:elevation="4dp"
         android:layout_alignParentBottom="true"
         />
+
+
 
 </RelativeLayout>

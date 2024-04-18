@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.vrexpo.TherapistMessages.TherapistMessages;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -44,7 +45,7 @@ public class TherapistDashboard extends AppCompatActivity {
                 startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistDashboard.this, Messages.class);
+                Intent messagesIntent = new Intent(TherapistDashboard.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:

@@ -6,17 +6,16 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.vrexpo.TherapistMessages.TherapistMessages;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -25,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -63,7 +61,7 @@ public class TherapistSetAvailability extends AppCompatActivity {
                 startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistSetAvailability.this, Messages.class);
+                Intent messagesIntent = new Intent(TherapistSetAvailability.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:
@@ -148,6 +146,13 @@ public class TherapistSetAvailability extends AppCompatActivity {
 
 
     private void sendAvailabilityToFirebase(long selectedDate, List<String> selectedTimeSlots) {
+
+        if (therapistFullName == null || therapistFullName.isEmpty()) {
+            fetchTherapistFullName(); // Attempt to fetch the name again
+            Toast.makeText(this, "Unable to retrieve therapist name. Try again.", Toast.LENGTH_LONG).show();
+            return; // Exit the method as we cannot proceed without the therapist's name
+        }
+
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
         String dateString = dateFormat.format(selectedDate);
 

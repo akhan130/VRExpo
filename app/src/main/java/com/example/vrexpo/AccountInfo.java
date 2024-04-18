@@ -4,16 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.accounts.Account;
 import android.content.Intent;
-import android.icu.text.IDNA;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 public class AccountInfo extends AppCompatActivity {
 
@@ -36,7 +32,7 @@ public class AccountInfo extends AppCompatActivity {
                 startActivity(zoom);
                 return true;
             case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(AccountInfo.this, TherapySchedulerActivity.class);
+                Intent scheduleIntent = new Intent(AccountInfo.this, PatientSelectAppointment.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:

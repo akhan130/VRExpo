@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.vrexpo.TherapistMessages.TherapistMessages;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -57,7 +58,7 @@ public class TherapistInfo extends AppCompatActivity {
                 startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistInfo.this, Messages.class);
+                Intent messagesIntent = new Intent(TherapistInfo.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:

@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.vrexpo.TherapistMessages.TherapistMessages;
+
 public class TreatmentPlans extends AppCompatActivity {
 
     @Override
@@ -41,7 +43,7 @@ public class TreatmentPlans extends AppCompatActivity {
                 startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(TreatmentPlans.this, Messages.class);
+                Intent messagesIntent = new Intent(TreatmentPlans.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:

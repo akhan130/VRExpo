@@ -1,16 +1,19 @@
-package com.example.vrexpo;
+package com.example.vrexpo.TherapistMessages;
 
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.vrexpo.AndroidUtil;
+import com.example.vrexpo.Chat;
+import com.example.vrexpo.PatientModel;
+import com.example.vrexpo.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 
@@ -46,13 +49,11 @@ public class MessagesPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Pati
     class PatientModelViewHolder extends RecyclerView.ViewHolder {
         TextView patientNameText;
         TextView phoneNumberText;
-        ImageView profilePic;
 
         public PatientModelViewHolder(@NonNull View itemView) {
             super(itemView);
             patientNameText = itemView.findViewById(R.id.patient_name);
             phoneNumberText = itemView.findViewById(R.id.phone_number);
-            profilePic = itemView.findViewById(R.id.profile_pic_image_view);
         }
     }
 }

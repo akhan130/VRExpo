@@ -11,17 +11,33 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.vrexpo.TherapistMessages.TherapistMessages;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Arrays;
+import java.util.Date;
 
 public class Chat extends AppCompatActivity {
 
     PatientModel patient;
-
+    String chatroomId;
+    ChatroomModel chatroomModel;
     EditText messageInput;
     ImageButton sendMessageButton;
     ImageButton backButton;
     TextView messagePatient;
     RecyclerView recyclerView;
+    ChatRecyclerAdapter adapter;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -32,7 +48,7 @@ public class Chat extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_dashboard:
                 Intent dashIntent = new Intent(Chat.this, TherapistDashboard.class);
                 startActivity(dashIntent);
@@ -46,7 +62,7 @@ public class Chat extends AppCompatActivity {
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(Chat.this, Messages.class);
+                Intent messagesIntent = new Intent(Chat.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_write_report:
@@ -76,31 +92,106 @@ public class Chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         patient = AndroidUtil.getPatientModelFromIntent(getIntent());
-
+        chatroomId = FirebaseUtil.getChatroomId(FirebaseUtil.currentUserId(), patient.getName());
         messageInput = findViewById(R.id.message_input);
         sendMessageButton = findViewById(R.id.send_message_button);
         backButton = findViewById(R.id.back_button);
         messagePatient = findViewById(R.id.patient_title);
         recyclerView = findViewById(R.id.chat_recycler_view);
 
-        backButton.setOnClickListener(v -> onBackPressed());
+        backButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Chat.this, TherapistMessages.class);
+            startActivity(intent);
+        });
 
         messagePatient.setText(patient.getName());
+
+        sendMessageButton.setOnClickListener(v -> {
+            String message = messageInput.getText().toString().trim();
+            if (!message.isEmpty()) {
+                sendMessageToPatient(message);
+            }
+        });
+
+        getOrCreateChatroomModel();
+        setupChatRecyclerView();
     }
 
-    @Override
-    public void onBackPressed() {
-        if (isTaskRoot()) {
-            // Handle back press when this activity is the root activity
-            // For example, navigate to the home screen or exit the app
-        } else {
-            super.onBackPressed();
-        }
+    void setupChatRecyclerView() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child(chatroomId);
+        Query query = databaseReference.orderByChild("timestamp");
+
+        FirebaseRecyclerOptions<ChatModel> options = new FirebaseRecyclerOptions.Builder<ChatModel>()
+                .setQuery(query, ChatModel.class).build();
+
+        adapter = new ChatRecyclerAdapter(options, this);
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        manager.setReverseLayout(true);
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
+
+        adapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onItemRangeInserted(int positionStart, int itemCount) {
+                super.onItemRangeInserted(positionStart, itemCount);
+                recyclerView.scrollToPosition(adapter.getItemCount() - 1);
+            }
+        });
     }
 
+
+    void sendMessageToPatient(String message) {
+        chatroomModel.setLastMessageSenderId(FirebaseUtil.currentUserId());
+        chatroomModel.setLastMessage(message); // Update last message
+
+        // Set current timestamp as last message timestamp
+        chatroomModel.setLastMessageTimestamp(new Date());
+
+        FirebaseUtil.getChatroomReference(chatroomId).setValue(chatroomModel);
+
+        ChatModel chatMessageModel = new ChatModel(message, FirebaseUtil.currentUserId(), new Date());
+        FirebaseUtil.getChatroomMessageReference(chatroomId).push().setValue(chatMessageModel)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        messageInput.setText("");
+                    }
+                });
+    }
+
+
+    void getOrCreateChatroomModel() {
+        FirebaseUtil.getChatroomReference(chatroomId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    chatroomModel = dataSnapshot.getValue(ChatroomModel.class);
+                    if (chatroomModel == null) {
+
+                    }
+                } else {
+                    DatabaseReference chatroomRef = FirebaseUtil.getChatroomReference(chatroomId);
+                    chatroomModel = new ChatroomModel(
+                            chatroomId,
+                            Arrays.asList(FirebaseUtil.currentUserId(), patient.getName()),
+                            null,
+                            ""
+                    );
+                    chatroomRef.setValue(chatroomModel);
+
+                    chatroomRef.child("lastMessageTimestamp").setValue(ServerValue.TIMESTAMP);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle the error
+            }
+        });
+    }
 }
+

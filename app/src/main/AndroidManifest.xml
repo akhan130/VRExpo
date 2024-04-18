@@ -43,7 +43,9 @@
             android:exported="false" />
         <activity
             android:name=".Chat"
-            android:exported="false" /> <!-- Start Screen -->
+            android:exported="false" />
+
+        <!-- Start Screen -->
         <activity
             android:name=".PatientUpdateAccount"
             android:exported="false" />
@@ -52,7 +54,9 @@
             android:exported="false" />
         <activity
             android:name=".AdminDashboard"
-            android:exported="false" /> <!-- Start Screen -->
+            android:exported="false" />
+
+        <!-- Start Screen -->
         <activity
             android:name=".SplashScreen"
             android:exported="true">
@@ -64,7 +68,9 @@
         </activity>
         <activity android:name=".Login" />
         <activity android:name=".CreateAccount" />
-        <activity android:name=".MainActivity" /> <!-- Patient -->
+        <activity android:name=".MainActivity" />
+
+        <!-- Patient -->
         <activity
             android:name=".UserProfile"
             android:exported="false" />
@@ -82,16 +88,20 @@
             android:exported="false" />
         <activity android:name=".PatientRecords" />
         <activity
-            android:name=".TherapySchedulerActivity"
-            android:exported="true" />
+            android:name=".PatientSelectAppointment"
+            android:exported="false" />
+        <activity android:name=".PatientMessages.PatientMessages"
+            android:exported="false"/>
         <activity android:name=".FindTherapist" />
         <activity android:name=".AccountInfo" />
-        <activity android:name=".PatientInfo" /> <!-- Therapist -->
+        <activity android:name=".PatientInfo" />
+
+        <!-- Therapist -->
         <activity
             android:name=".TherapistAccountSettings"
             android:exported="false" />
         <activity
-            android:name=".Messages"
+            android:name=".TherapistMessages.TherapistMessages"
             android:exported="false" />
         <activity
             android:name=".WriteReport"
@@ -111,8 +121,11 @@
             android:exported="false" />
         <activity
             android:name=".TherapistHistory"
-            android:exported="false" /> <!-- Other -->
-        <activity android:name=".Session" /> <!-- Anila Zoom Additions Start -->
+            android:exported="false" />
+        <!-- Other -->
+        <activity android:name=".Session" />
+
+        <!-- Anila Zoom Additions Start -->
         <activity
             android:name=".MeetingActivity"
             android:exported="true" />

@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.vrexpo.TherapistMessages.TherapistMessages;
+
 public class TherapistAppointments extends AppCompatActivity {
 
     private Button setAvaliabilityButton;
@@ -43,7 +45,7 @@ public class TherapistAppointments extends AppCompatActivity {
                 startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistAppointments.this, Messages.class);
+                Intent messagesIntent = new Intent(TherapistAppointments.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:

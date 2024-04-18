@@ -8,6 +8,11 @@ public class AndroidUtil {
         intent.putExtra("phone",model.getPhone());
     }
 
+    public static void passTherapistModelAsIntent(Intent intent, Therapist model) {
+        intent.putExtra("name",model.getFullName());
+        intent.putExtra("phone",model.getPhoneNumber());
+    }
+
     public static PatientModel getPatientModelFromIntent(Intent intent){
         PatientModel patientModel = new PatientModel();
         patientModel.setName(intent.getStringExtra("name"));

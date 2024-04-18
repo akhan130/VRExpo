@@ -47,7 +47,7 @@ public class PresessionQuestions extends AppCompatActivity {
                 startActivity(actInfoIntent);
                 return true;
             case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(PresessionQuestions.this, TherapySchedulerActivity.class);
+                Intent scheduleIntent = new Intent(PresessionQuestions.this, PatientSelectAppointment.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:

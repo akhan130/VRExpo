@@ -13,10 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.vrexpo.Dashboard;
 import com.example.vrexpo.FindTherapist;
-import com.example.vrexpo.PostsessionQuestions;
-import com.example.vrexpo.PresessionQuestions;
 import com.example.vrexpo.R;
-import com.example.vrexpo.TherapySchedulerActivity;
+import com.example.vrexpo.PatientSelectAppointment;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.Zoom;
 
@@ -44,7 +42,7 @@ public class SocialAnxiety extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(SocialAnxiety.this, TherapySchedulerActivity.class);
+                Intent scheduleIntent = new Intent(SocialAnxiety.this, PatientSelectAppointment.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:

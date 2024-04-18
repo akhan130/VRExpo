@@ -45,7 +45,7 @@ public class PostsessionQuestions extends AppCompatActivity {
                 startActivity(new Intent(this, AccountInfo.class));
                 return true;
             case R.id.action_schedule:
-                startActivity(new Intent(this, TherapySchedulerActivity.class));
+                startActivity(new Intent(this, PatientSelectAppointment.class));
                 return true;
             case R.id.action_find_therapist:
                 startActivity(new Intent(this, FindTherapist.class));

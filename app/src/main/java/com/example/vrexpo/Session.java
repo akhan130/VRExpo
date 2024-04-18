@@ -28,7 +28,7 @@ public class Session extends AppCompatActivity {
                 startActivity(actInfoIntent);
                 return true;
             case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(Session.this, TherapySchedulerActivity.class);
+                Intent scheduleIntent = new Intent(Session.this, PatientSelectAppointment.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:

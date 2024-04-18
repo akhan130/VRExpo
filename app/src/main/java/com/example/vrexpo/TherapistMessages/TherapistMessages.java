@@ -1,4 +1,4 @@
-package com.example.vrexpo;
+package com.example.vrexpo.TherapistMessages;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,19 +13,27 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.vrexpo.PatientModel;
+import com.example.vrexpo.R;
+import com.example.vrexpo.TherapistAccountSettings;
+import com.example.vrexpo.TherapistAppointments;
+import com.example.vrexpo.TherapistDashboard;
+import com.example.vrexpo.TreatmentPlans;
+import com.example.vrexpo.ViewPatients;
+import com.example.vrexpo.WriteReport;
+import com.example.vrexpo.Zoom;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
 
-public class Messages extends AppCompatActivity {
+public class TherapistMessages extends AppCompatActivity {
 
-    private SearchPatientRecyclerAdapter adapter;
+    private MessagesPatientRecyclerAdapter adapter;
 
     EditText searchInput;
     ImageButton searchButton;
-
     RecyclerView recyclerView;
 
     @Override
@@ -39,35 +47,35 @@ public class Messages extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_dashboard:
-                Intent dashIntent = new Intent(Messages.this, TherapistDashboard.class);
+                Intent dashIntent = new Intent(TherapistMessages.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
             case R.id.action_appointments:
-                Intent appointmentsIntent = new Intent(Messages.this, TherapistAppointments.class);
+                Intent appointmentsIntent = new Intent(TherapistMessages.this, TherapistAppointments.class);
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(Messages.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(TherapistMessages.this, ViewPatients.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(Messages.this, Messages.class);
+                Intent messagesIntent = new Intent(TherapistMessages.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_write_report:
-                Intent reportIntent = new Intent(Messages.this, WriteReport.class);
+                Intent reportIntent = new Intent(TherapistMessages.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
             case R.id.action_account_settings:
-                Intent settingsIntent = new Intent(Messages.this, TherapistAccountSettings.class);
+                Intent settingsIntent = new Intent(TherapistMessages.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_treatmentPlans:
-                Intent treatmentPlans = new Intent(Messages.this, TreatmentPlans.class);
+                Intent treatmentPlans = new Intent(TherapistMessages.this, TreatmentPlans.class);
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(Messages.this, Zoom.class);
+                Intent zoom = new Intent(TherapistMessages.this, Zoom.class);
                 startActivity(zoom);
                 return true;
 
@@ -79,7 +87,7 @@ public class Messages extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messages);
+        setContentView(R.layout.activity_therapist_messages);
 
         //Search
         searchInput = findViewById(R.id.search_patient);
@@ -103,7 +111,7 @@ public class Messages extends AppCompatActivity {
     }
 
     //Searches Patients by their first name
-    void setupSearchRecyclerView(String searchPatient){
+    void setupSearchRecyclerView(String searchPatient) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("PatientAccount");
         Query query = databaseReference.orderByChild("name")
                 .startAt(searchPatient)
@@ -112,12 +120,12 @@ public class Messages extends AppCompatActivity {
         FirebaseRecyclerOptions<PatientModel> options = new FirebaseRecyclerOptions.Builder<PatientModel>()
                 .setQuery(query, PatientModel.class).build();
 
-        // Pass the context to the adapter constructor
-        adapter = new SearchPatientRecyclerAdapter(options, this);
+        adapter = new MessagesPatientRecyclerAdapter(options, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         adapter.startListening();
     }
+
 
     @Override
     protected void onStart() {

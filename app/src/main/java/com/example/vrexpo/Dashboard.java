@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.vrexpo.PatientMessages.PatientMessages;
+
 public class Dashboard extends AppCompatActivity {
 
     @Override
@@ -37,12 +39,16 @@ public class Dashboard extends AppCompatActivity {
                 startActivity(actInfoIntent);
                 return true;
             case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(Dashboard.this, TherapySchedulerActivity.class);
+                Intent scheduleIntent = new Intent(Dashboard.this, PatientSelectAppointment.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
                 startActivity(findIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messagesIntent = new Intent(Dashboard.this, PatientMessages.class);
+                startActivity(messagesIntent);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(Dashboard.this, PatientSettings.class);
