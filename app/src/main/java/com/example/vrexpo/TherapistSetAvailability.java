@@ -174,7 +174,7 @@ public class TherapistSetAvailability extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
         String dateString = dateFormat.format(new Date(selectedDate)); // Make sure to convert the milliseconds to a Date object
 
-        DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference("Appointments").child(dateString); // Replace "YourNode" with your actual node path
+        DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference("Appointments").child(dateString);
 
         if (therapistFullName == null || therapistFullName.isEmpty()) {
             fetchTherapistFullName(); // Attempt to fetch the name again
