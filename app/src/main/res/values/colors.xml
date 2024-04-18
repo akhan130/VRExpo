@@ -72,7 +72,7 @@
     <color name="color_feedback_response_count">#6E7680</color>
     <color name="color_poll_process">#0E72ED</color>
     <color name="color_has_pushed">#6E7680</color>
-
+    <color name="gray_out">#7E7A7A</color>
 
 
 </resources>
