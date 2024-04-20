@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/action_sessionStart"
-        android:icon="@drawable/headphones"
+        android:icon="@drawable/zoom"
         android:title="Start Session"
         app:showAsAction="always"/>
 
