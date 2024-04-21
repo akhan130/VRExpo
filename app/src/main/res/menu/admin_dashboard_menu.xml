@@ -14,4 +14,10 @@
         android:title="Create Therapist Account"
         app:showAsAction="always"/>
 
+    <item
+        android:id="@+id/action_view_therapist"
+        android:icon="@drawable/checklist"
+        android:title="Create Therapist Account"
+        app:showAsAction="always"/>
+
 </menu>

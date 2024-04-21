@@ -116,6 +116,7 @@ public class FindTherapist extends AppCompatActivity {
         setSupportActionBar(myToolbar);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private void setupSearchRecyclerView(String searchQuery) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("TherapistInfo");
         Query query = databaseReference.orderByChild("therapist_fullName")
@@ -127,6 +128,11 @@ public class FindTherapist extends AppCompatActivity {
 
         // Update the adapter with the new options
         adapter.updateOptions(options);
+
+        // Make sure to check if RecyclerView is computing a layout or scrolling
+        if (recyclerView != null && !recyclerView.isComputingLayout() && !recyclerView.isLayoutSuppressed()) {
+            adapter.notifyDataSetChanged();
+        }
     }
 
     public void onPhobiaImageClicked(View view) {

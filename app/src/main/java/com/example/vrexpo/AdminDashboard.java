@@ -31,6 +31,10 @@ public class AdminDashboard extends AppCompatActivity {
                 Intent createAcctIntent = new Intent(AdminDashboard.this, AdminCreateTherapistAcct.class);
                 startActivity(createAcctIntent);
                 return true;
+            case R.id.action_view_therapist:
+                Intent viewTherapistAcct = new Intent(AdminDashboard.this, AdminViewTherapist.class);
+                startActivity(viewTherapistAcct);
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);
