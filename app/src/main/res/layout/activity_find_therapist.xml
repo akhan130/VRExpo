@@ -428,10 +428,10 @@
 
             <ImageButton
                 android:id="@+id/refresh_button"
-                android:layout_width="80dp"
-                android:layout_height="76dp"
-                android:padding="12dp"
-                android:scaleType="fitCenter"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:scaleType="fitEnd"
+                android:backgroundTint="@color/white"
                 android:src="@drawable/refresh"
                 tools:ignore="DuplicateIds" />
 

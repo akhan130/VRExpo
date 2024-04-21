@@ -1,4 +1,4 @@
-package com.example.vrexpo.PatientMessages;
+package com.example.vrexpo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,14 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.vrexpo.AccountInfo;
-import com.example.vrexpo.FindTherapist;
-import com.example.vrexpo.PatientSelectAppointment;
-import com.example.vrexpo.PatientSettings;
-import com.example.vrexpo.R;
-import com.example.vrexpo.SessionStart;
-import com.example.vrexpo.Therapist;
-import com.example.vrexpo.Zoom;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -46,20 +38,20 @@ public class PatientMessages extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(PatientMessages.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
             case R.id.action_sessionStart:
                 Intent sessionStart = new Intent(PatientMessages.this, SessionStart.class);
                 startActivity(sessionStart);
-                return true;
-            case R.id.action_zoom:
-                Intent zoom = new Intent(PatientMessages.this, Zoom.class);
-                startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(PatientMessages.this, AccountInfo.class);
                 startActivity(actInfoIntent);
                 return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(PatientMessages.this, PatientSelectAppointment.class);
+            case R.id.action_appointments:
+                Intent scheduleIntent = new Intent(PatientMessages.this, PatientAppointments.class);
                 startActivity(scheduleIntent);
                 return true;
             case R.id.action_find_therapist:

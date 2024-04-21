@@ -1,7 +1,9 @@
 package com.example.vrexpo;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -9,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,22 +40,57 @@ public class PatientSelectAppointment extends AppCompatActivity {
     private SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
     private String selectedDate;
     private String selectedTimeslot;
-    private FirebaseAuth firebaseAuth;
+    private String patientName;
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(PatientSelectAppointment.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_sessionStart:
+                Intent sessionStart = new Intent(PatientSelectAppointment.this, SessionStart.class);
+                startActivity(sessionStart);
+                return true;
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(PatientSelectAppointment.this, AccountInfo.class);
+                startActivity(actInfoIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointments = new Intent(PatientSelectAppointment.this, PatientAppointments.class);
+                startActivity(appointments);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(PatientSelectAppointment.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messages = new Intent(PatientSelectAppointment.this, PatientMessages.class);
+                startActivity(messages);
+                return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(PatientSelectAppointment.this, PatientSettings.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_select_appointment);
 
-        // Initialize Firebase Auth and Database
-        firebaseAuth = FirebaseAuth.getInstance();
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
         appointmentCalendarView = findViewById(R.id.appointmentCalendarView);
         timeslotRecyclerView = findViewById(R.id.timeslotRecyclerView);
         bookButton = findViewById(R.id.bookButton);
 
         setupRecyclerView();
+        setupBookButtonListener();
 
         appointmentCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -64,53 +102,68 @@ public class PatientSelectAppointment extends AppCompatActivity {
             }
         });
 
-        bookButton.setOnClickListener(v -> {
-            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-            if (currentUser != null && selectedTimeslot != null && !selectedTimeslot.isEmpty()) {
-                String patientEmail = currentUser.getEmail(); // Assuming the patient's email is the identifier
-
-                DatabaseReference patientRef = (DatabaseReference) FirebaseDatabase.getInstance()
-                        .getReference("PatientAccount")
-                        .orderByChild("email")
-                        .equalTo(patientEmail);
-
-                patientRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            for (DataSnapshot child : dataSnapshot.getChildren()) {
-                                PatientModel patient = child.getValue(PatientModel.class);
-                                if (patient != null) {
-                                    String patientName = patient.getName();
-                                    bookAppointment(patientName);
-                                } else {
-                                    // Handle null case
-                                    Toast.makeText(PatientSelectAppointment.this, "Patient data not available.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        } else {
-                            Toast.makeText(PatientSelectAppointment.this, "Patient data not found.", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                        Toast.makeText(PatientSelectAppointment.this, "Failed to load patient data.", Toast.LENGTH_SHORT).show();
-                    }
-                });
-            } else {
-                Toast.makeText(PatientSelectAppointment.this, "Please select a timeslot first.", Toast.LENGTH_SHORT).show();
+        bookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedTimeslot != null && !selectedTimeslot.isEmpty()) {
+                    fetchPatientFullName();
+                    bookAppointment(patientName);
+                } else {
+                    Toast.makeText(PatientSelectAppointment.this, "Please select a timeslot first.", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
 
+    private void fetchPatientFullName(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null && user.getEmail() != null) {
+            String email = user.getEmail();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("PatientAccount");
+
+            ref.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            patientName = childSnapshot.child("name").getValue(String.class);
+                            Log.d("PatientName", "Patient Full Name: " + patientName);
+                            bookAppointment(patientName);  // Call bookAppointment here with the fetched name
+                        }
+                    } else {
+                        Log.d("PatientName", "Patient not found.");
+                        Toast.makeText(PatientSelectAppointment.this, "Patient name not found. Cannot book appointment.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.d("PatientName", "Error fetching patient name: " + error.getMessage());
+                    Toast.makeText(PatientSelectAppointment.this, "Error fetching patient name.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+    }
+
+    private void setupBookButtonListener() {
+        bookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedTimeslot != null && !selectedTimeslot.isEmpty()) {
+                    fetchPatientFullName(); // This now initiates fetching the patient name and booking the appointment
+                } else {
+                    Toast.makeText(PatientSelectAppointment.this, "Please select a timeslot first.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
 
     private void setupRecyclerView() {
         timeslotRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         timeslotAdapter = new TimeslotAdapter(new ArrayList<>(), new TimeslotAdapter.OnTimeslotSelectedListener() {
             @Override
             public void onTimeslotSelected(String timeslot) {
-                selectedTimeslot = timeslot; // This should now correctly hold the key for Firebase.
+                selectedTimeslot = timeslot;
             }
         });
 
@@ -124,9 +177,10 @@ public class PatientSelectAppointment extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot slotSnapshot : dataSnapshot.getChildren()) {
-                    // Here was the mistake, it should match the field name in your database
-                    if ("Available".equals(slotSnapshot.child("appointment_status").getValue(String.class))) {
-                        timeslots.add(slotSnapshot.child("appointmentTime").getValue(String.class));
+                    String status = slotSnapshot.child("appointment_status").getValue(String.class);
+                    if ("Available".equals(status)) {
+                        String time = slotSnapshot.child("appointmentTime").getValue(String.class);
+                        timeslots.add(time);
                     }
                 }
                 timeslotAdapter.updateTimeslots(timeslots);
@@ -142,30 +196,41 @@ public class PatientSelectAppointment extends AppCompatActivity {
         });
     }
 
-
     private void bookAppointment(String patientName) {
-        // Ensure selectedTimeslot is the time string as it is the key in your database.
-        if (selectedDate == null || selectedTimeslot == null || patientName == null || patientName.isEmpty()) {
-            Toast.makeText(this, "Please select a timeslot and ensure patient name is available.", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        DatabaseReference appointmentRef = FirebaseDatabase.getInstance().getReference()
+        DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference()
                 .child("Appointments")
-                .child(selectedDate)
-                .child(selectedTimeslot);
+                .child(selectedDate);
 
-        // Create a map to update the existing appointment entry with the new status and patient name
-        Map<String, Object> updates = new HashMap<>();
-        updates.put("appointment_status", "Upcoming");
-        updates.put("patient_name", patientName);
+        appointmentsRef.orderByChild("appointmentTime").equalTo(selectedTimeslot).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    for (DataSnapshot childSnapshot : dataSnapshot.getChildren()) {
+                        // Get the key of the timeslot to be booked
+                        String key = childSnapshot.getKey();
+                        if (key != null && "Available".equals(childSnapshot.child("appointment_status").getValue(String.class))) {
+                            // Found the timeslot, now update it
+                            Map<String, Object> updates = new HashMap<>();
+                            updates.put("appointment_status", "Upcoming");
+                            updates.put("patient_name", patientName);
 
-        // Update the existing entry for the timeslot
-        appointmentRef.updateChildren(updates).addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Toast.makeText(PatientSelectAppointment.this, "Appointment booked successfully!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(PatientSelectAppointment.this, "Failed to book appointment. Please try again.", Toast.LENGTH_SHORT).show();
+                            appointmentsRef.child(key).updateChildren(updates).addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(PatientSelectAppointment.this, "Appointment booked successfully!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(PatientSelectAppointment.this, "Failed to book appointment. Please try again.", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    }
+                } else {
+                    Toast.makeText(PatientSelectAppointment.this, "Selected timeslot is no longer available.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Toast.makeText(PatientSelectAppointment.this, "Failed to check timeslot availability.", Toast.LENGTH_SHORT).show();
             }
         });
     }

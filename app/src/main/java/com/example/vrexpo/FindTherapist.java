@@ -41,21 +41,25 @@ public class FindTherapist extends AppCompatActivity {
                 Intent dashIntent = new Intent(FindTherapist.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
+            case R.id.action_sessionStart:
+                Intent zoom = new Intent(FindTherapist.this, Zoom.class);
+                startActivity(zoom);
+                return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(FindTherapist.this, AccountInfo.class);
                 startActivity(actInfoIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointments = new Intent(FindTherapist.this, PatientAppointments.class);
+                startActivity(appointments);
                 return true;
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(FindTherapist.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_treatmentPlans:
-                Intent treatmentPlans = new Intent(FindTherapist.this, TreatmentPlans.class);
-                startActivity(treatmentPlans);
-                return true;
-            case R.id.action_zoom:
-                Intent zoom = new Intent(FindTherapist.this, Zoom.class);
-                startActivity(zoom);
+            case R.id.action_messages:
+                Intent messages = new Intent(FindTherapist.this, PatientMessages.class);
+                startActivity(messages);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(FindTherapist.this, PatientSettings.class);
@@ -65,6 +69,7 @@ public class FindTherapist extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

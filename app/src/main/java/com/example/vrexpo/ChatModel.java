@@ -6,13 +6,13 @@ import java.util.Date;
 public class ChatModel {
     private String message;
     private String senderId;
-    private Date timestamp;
+    private long timestamp;
 
-    public ChatModel(){
+    public ChatModel() {
 
     }
 
-    public ChatModel(String message, String senderId, Date timestamp) {
+    public ChatModel(String message, String senderId, long timestamp) {
         this.message = message;
         this.senderId = senderId;
         this.timestamp = timestamp;
@@ -37,11 +37,11 @@ public class ChatModel {
         this.senderId = senderId;
     }
 
-    public Date getTimestamp() {
-        return timestamp;
+    public Date getTimestampAsDate() {
+        return new Date(timestamp);
     }
 
-    public void setTimestamp(Date timestamp) {
+    public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
     }
 }

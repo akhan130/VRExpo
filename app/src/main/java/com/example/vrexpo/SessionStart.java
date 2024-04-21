@@ -45,26 +45,35 @@ public class SessionStart extends AppCompatActivity {
                 Intent dashIntent = new Intent(SessionStart.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
+            case R.id.action_sessionStart:
+                Intent zoom = new Intent(SessionStart.this, Zoom.class);
+                startActivity(zoom);
+                return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(SessionStart.this, AccountInfo.class);
                 startActivity(actInfoIntent);
                 return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(SessionStart.this, PatientSelectAppointment.class);
-                startActivity(scheduleIntent);
+            case R.id.action_appointments:
+                Intent appointments = new Intent(SessionStart.this, PatientAppointments.class);
+                startActivity(appointments);
                 return true;
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(SessionStart.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_zoom:
-                Intent zoom = new Intent(SessionStart.this, Zoom.class);
-                startActivity(zoom);
+            case R.id.action_messages:
+                Intent messages = new Intent(SessionStart.this, PatientMessages.class);
+                startActivity(messages);
+                return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(SessionStart.this, PatientSettings.class);
+                startActivity(settingsIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +103,7 @@ public class SessionStart extends AppCompatActivity {
                 }
             });
         } else {
-            Log.e("PresessionQuestions", "Submit button is null");
+            Log.e("", "Submit button is null");
         }
     }
 

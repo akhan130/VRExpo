@@ -17,33 +17,33 @@ public class Session extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.dashboard_menu, menu);
         return true;
     }
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.action_dashboard:
-                Intent dashIntent = new Intent(Session.this, Dashboard.class);
-                startActivity(dashIntent);
-                return true;
-            case R.id.action_accountInfo:
-                Intent actInfoIntent = new Intent(Session.this, AccountInfo.class);
-                startActivity(actInfoIntent);
-                return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(Session.this, PatientSelectAppointment.class);
-                startActivity(scheduleIntent);
-                return true;
-            case R.id.action_find_therapist:
-                Intent findIntent = new Intent(Session.this, FindTherapist.class);
-                startActivity(findIntent);
-                return true;
-            case R.id.action_zoom:
-                Intent zoom = new Intent(Session.this, Zoom.class);
-                startActivity(zoom);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch(item.getItemId()){
+//            case R.id.action_dashboard:
+//                Intent dashIntent = new Intent(Session.this, Dashboard.class);
+//                startActivity(dashIntent);
+//                return true;
+//            case R.id.action_accountInfo:
+//                Intent actInfoIntent = new Intent(Session.this, AccountInfo.class);
+//                startActivity(actInfoIntent);
+//                return true;
+//            case R.id.action_schedule:
+//                Intent scheduleIntent = new Intent(Session.this, PatientSelectAppointment.class);
+//                startActivity(scheduleIntent);
+//                return true;
+//            case R.id.action_find_therapist:
+//                Intent findIntent = new Intent(Session.this, FindTherapist.class);
+//                startActivity(findIntent);
+//                return true;
+//            case R.id.action_zoom:
+//                Intent zoom = new Intent(Session.this, Zoom.class);
+//                startActivity(zoom);
+//                return true;
+//
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

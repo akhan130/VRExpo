@@ -29,23 +29,26 @@ public class PatientSettings extends AppCompatActivity {
                 Intent sessionStart = new Intent(PatientSettings.this, SessionStart.class);
                 startActivity(sessionStart);
                 return true;
-            case R.id.action_zoom:
-                Intent zoom = new Intent(PatientSettings.this, Zoom.class);
-                startActivity(zoom);
-                return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(PatientSettings.this, AccountInfo.class);
                 startActivity(actInfoIntent);
                 return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(PatientSettings.this, PatientSelectAppointment.class);
-                startActivity(scheduleIntent);
+            case R.id.action_appointments:
+                Intent appointments = new Intent(PatientSettings.this, PatientAppointments.class);
+                startActivity(appointments);
                 return true;
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(PatientSettings.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-
+            case R.id.action_messages:
+                Intent messages = new Intent(PatientSettings.this, PatientMessages.class);
+                startActivity(messages);
+                return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(PatientSettings.this, PatientSettings.class);
+                startActivity(settingsIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

@@ -25,33 +25,33 @@ public class Arachnophobia extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.action_treatmentPlans:
-                Intent treatmentPlans = new Intent(Arachnophobia.this, TreatmentPlans.class);
-                startActivity(treatmentPlans);
-                return true;
-            case R.id.action_zoom:
-                Intent zoom = new Intent(Arachnophobia.this, Zoom.class);
-                startActivity(zoom);
-                return true;
-            case R.id.action_dashboard:
-                Intent dashIntent = new Intent(Arachnophobia.this, Dashboard.class);
-                startActivity(dashIntent);
-                return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(Arachnophobia.this, PatientSelectAppointment.class);
-                startActivity(scheduleIntent);
-                return true;
-            case R.id.action_find_therapist:
-                Intent findIntent = new Intent(Arachnophobia.this, FindTherapist.class);
-                startActivity(findIntent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch(item.getItemId()){
+//            case R.id.action_treatmentPlans:
+//                Intent treatmentPlans = new Intent(Arachnophobia.this, TreatmentPlans.class);
+//                startActivity(treatmentPlans);
+//                return true;
+//            case R.id.action_zoom:
+//                Intent zoom = new Intent(Arachnophobia.this, Zoom.class);
+//                startActivity(zoom);
+//                return true;
+//            case R.id.action_dashboard:
+//                Intent dashIntent = new Intent(Arachnophobia.this, Dashboard.class);
+//                startActivity(dashIntent);
+//                return true;
+//            case R.id.action_schedule:
+//                Intent scheduleIntent = new Intent(Arachnophobia.this, PatientSelectAppointment.class);
+//                startActivity(scheduleIntent);
+//                return true;
+//            case R.id.action_find_therapist:
+//                Intent findIntent = new Intent(Arachnophobia.this, FindTherapist.class);
+//                startActivity(findIntent);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

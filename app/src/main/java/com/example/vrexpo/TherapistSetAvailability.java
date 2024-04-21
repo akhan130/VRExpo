@@ -15,7 +15,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.vrexpo.TherapistMessages.TherapistMessages;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -100,21 +99,15 @@ public class TherapistSetAvailability extends AppCompatActivity {
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                // Construct the selected date
                 Calendar selectedCalendar = Calendar.getInstance();
                 selectedCalendar.set(year, month, dayOfMonth);
-                // Set selectedDate to the selected date in milliseconds
                 selectedDate = selectedCalendar.getTimeInMillis();
-                // Call sendAvailabilityToFirebase with the selected date
-                List<String> selectedTimeSlots = getSelectedTimeSlots();
-                sendAvailabilityToFirebase(selectedDate, selectedTimeSlots);
             }
         });
 
         sendAvailabilityButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Use selectedDate obtained from the onSelectedDayChange method
                 List<String> selectedTimeSlots = getSelectedTimeSlots();
                 sendAvailabilityToFirebase(selectedDate, selectedTimeSlots);
             }
@@ -167,28 +160,24 @@ public class TherapistSetAvailability extends AppCompatActivity {
 
 
     private void sendAvailabilityToFirebase(long selectedDate, List<String> selectedTimeSlots) {
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-        String dateString = dateFormat.format(new Date(selectedDate)); // Make sure to convert the milliseconds to a Date object
+        String dateString = dateFormat.format(new Date(selectedDate)); // Convert the milliseconds to a Date object
 
         DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference("Appointments").child(dateString);
 
         if (therapistFullName == null || therapistFullName.isEmpty()) {
-            fetchTherapistFullName(); // Attempt to fetch the name again
             Toast.makeText(this, "Unable to retrieve therapist name. Try again.", Toast.LENGTH_LONG).show();
             return;
         }
 
         for (String timeSlot : selectedTimeSlots) {
-            String appointmentKey = appointmentsRef.push().getKey();
-            if (appointmentKey != null) {
-                appointmentsRef.child(appointmentKey).child("appointmentTime").setValue(timeSlot);
-                appointmentsRef.child(appointmentKey).child("therapist_fullName").setValue(therapistFullName);
-                appointmentsRef.child(appointmentKey).child("appointment_status").setValue("Available");
-            }
+            DatabaseReference timeSlotRef = appointmentsRef.child(timeSlot);
+            timeSlotRef.child("appointmentTime").setValue(timeSlot);
+            timeSlotRef.child("therapist_fullName").setValue(therapistFullName);
+            timeSlotRef.child("appointment_status").setValue("Available");
         }
-        clearCheckboxes();
 
+        clearCheckboxes();
         Toast.makeText(this, "Availability sent successfully!", Toast.LENGTH_SHORT).show();
     }
 

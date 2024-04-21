@@ -11,6 +11,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import org.checkerframework.checker.units.qual.A;
+
 public class AccountInfo extends AppCompatActivity {
 
     @Override
@@ -27,17 +29,25 @@ public class AccountInfo extends AppCompatActivity {
                 Intent dashIntent = new Intent(AccountInfo.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_zoom:
+            case R.id.action_sessionStart:
                 Intent zoom = new Intent(AccountInfo.this, Zoom.class);
                 startActivity(zoom);
                 return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(AccountInfo.this, PatientSelectAppointment.class);
-                startActivity(scheduleIntent);
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(AccountInfo.this, AccountInfo.class);
+                startActivity(actInfoIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointments = new Intent(AccountInfo.this, PatientAppointments.class);
+                startActivity(appointments);
                 return true;
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(AccountInfo.this, FindTherapist.class);
                 startActivity(findIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messages = new Intent(AccountInfo.this, PatientMessages.class);
+                startActivity(messages);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(AccountInfo.this, PatientSettings.class);
@@ -47,6 +57,7 @@ public class AccountInfo extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

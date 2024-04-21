@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +29,42 @@ public class PatientUpdateAccount extends AppCompatActivity {
 
     Button cancelButton;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(PatientUpdateAccount.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_sessionStart:
+                Intent zoom = new Intent(PatientUpdateAccount.this, Zoom.class);
+                startActivity(zoom);
+                return true;
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(PatientUpdateAccount.this, AccountInfo.class);
+                startActivity(actInfoIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointments = new Intent(PatientUpdateAccount.this, PatientAppointments.class);
+                startActivity(appointments);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(PatientUpdateAccount.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messages = new Intent(PatientUpdateAccount.this, PatientMessages.class);
+                startActivity(messages);
+                return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(PatientUpdateAccount.this, PatientSettings.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    
 
     @SuppressLint("MissingInflatedId")
     @Override

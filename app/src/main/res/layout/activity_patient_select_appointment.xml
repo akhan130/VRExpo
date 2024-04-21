@@ -3,53 +3,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".PatientSelectAppointment">
 
-    <TextView
-        android:id="@+id/select_time_title"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:hint="Schedule Appointment"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        android:layout_above="@+id/my_toolbar"
+        android:orientation="vertical">
 
-    <CalendarView
-        android:id="@+id/appointmentCalendarView"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="16dp"
-        android:layout_below="@id/select_time_title"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/select_time_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="Schedule Appointment"
+                android:textSize="18sp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/timeslotRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/appointmentCalendarView"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"/>
+            <CalendarView
+                android:id="@+id/appointmentCalendarView"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="16dp" />
 
-    <Button
-        android:id="@+id/bookButton"
-        android:layout_width="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/timeslotRecyclerView"
-        android:layout_marginTop="20dp"
-        android:text="Book Appointment"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/timeslotRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/bookButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:text="Book Appointment" />
+        </LinearLayout>
+    </ScrollView>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_500"
-        android:elevation="4dp"
         android:layout_alignParentBottom="true"
-        />
-
-
+        android:background="@color/purple_500"
+        android:elevation="4dp" />
 
 </RelativeLayout>

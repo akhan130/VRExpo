@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -14,7 +15,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.vrexpo.TherapistMessages.TherapistMessages;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,6 +24,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import java.security.Timestamp;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -34,7 +35,6 @@ public class Chat extends AppCompatActivity {
     ChatroomModel chatroomModel;
     EditText messageInput;
     ImageButton sendMessageButton;
-    ImageButton backButton;
     TextView messagePatient;
     RecyclerView recyclerView;
     ChatRecyclerAdapter adapter;
@@ -99,14 +99,9 @@ public class Chat extends AppCompatActivity {
         chatroomId = FirebaseUtil.getChatroomId(FirebaseUtil.currentUserId(), patient.getName());
         messageInput = findViewById(R.id.message_input);
         sendMessageButton = findViewById(R.id.send_message_button);
-        backButton = findViewById(R.id.back_button);
         messagePatient = findViewById(R.id.patient_title);
         recyclerView = findViewById(R.id.chat_recycler_view);
 
-        backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(Chat.this, TherapistMessages.class);
-            startActivity(intent);
-        });
 
         messagePatient.setText(patient.getName());
 
@@ -154,7 +149,8 @@ public class Chat extends AppCompatActivity {
 
         FirebaseUtil.getChatroomReference(chatroomId).setValue(chatroomModel);
 
-        ChatModel chatMessageModel = new ChatModel(message, FirebaseUtil.currentUserId(), new Date());
+        ChatModel chatMessageModel = new ChatModel(message, FirebaseUtil.currentUserId(), System.currentTimeMillis());
+
         FirebaseUtil.getChatroomMessageReference(chatroomId).push().setValue(chatMessageModel)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {

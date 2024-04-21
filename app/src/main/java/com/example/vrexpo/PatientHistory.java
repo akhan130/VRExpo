@@ -40,20 +40,32 @@ public class PatientHistory extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_dashboard:
-                startActivity(new Intent(this, Dashboard.class));
+                Intent dashIntent = new Intent(PatientHistory.this, Dashboard.class);
+                startActivity(dashIntent);
                 return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(PatientHistory.this, PatientSelectAppointment.class);
-                startActivity(scheduleIntent);
-                return true;
-            case R.id.action_find_therapist:
-                startActivity(new Intent(this, FindTherapist.class));
+            case R.id.action_sessionStart:
+                Intent zoom = new Intent(PatientHistory.this, Zoom.class);
+                startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
-                startActivity(new Intent(this, AccountInfo.class));
+                Intent actInfoIntent = new Intent(PatientHistory.this, AccountInfo.class);
+                startActivity(actInfoIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointments = new Intent(PatientHistory.this, PatientAppointments.class);
+                startActivity(appointments);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(PatientHistory.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messages = new Intent(PatientHistory.this, PatientMessages.class);
+                startActivity(messages);
                 return true;
             case R.id.action_patient_settings:
-                startActivity(new Intent(this, PatientSettings.class));
+                Intent settingsIntent = new Intent(PatientHistory.this, PatientSettings.class);
+                startActivity(settingsIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

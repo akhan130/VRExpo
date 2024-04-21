@@ -1,4 +1,4 @@
-package com.example.vrexpo.PatientMessages;
+package com.example.vrexpo;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.vrexpo.AndroidUtil;
-import com.example.vrexpo.Chat;
-import com.example.vrexpo.R;
-import com.example.vrexpo.Therapist;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 

@@ -35,17 +35,25 @@ public class PatientInfo extends AppCompatActivity implements View.OnClickListen
                 Intent dashIntent = new Intent(PatientInfo.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
+            case R.id.action_sessionStart:
+                Intent sessionStart = new Intent(PatientInfo.this, SessionStart.class);
+                startActivity(sessionStart);
+                return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(PatientInfo.this, AccountInfo.class);
                 startActivity(actInfoIntent);
                 return true;
-            case R.id.action_schedule:
-                Intent scheduleIntent = new Intent(PatientInfo.this, PatientSelectAppointment.class);
-                startActivity(scheduleIntent);
+            case R.id.action_appointments:
+                Intent appointments = new Intent(PatientInfo.this, PatientAppointments.class);
+                startActivity(appointments);
                 return true;
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(PatientInfo.this, FindTherapist.class);
                 startActivity(findIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messages = new Intent(PatientInfo.this, PatientMessages.class);
+                startActivity(messages);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PatientInfo.this, PatientSettings.class);

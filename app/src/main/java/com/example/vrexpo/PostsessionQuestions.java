@@ -35,23 +35,35 @@ public class PostsessionQuestions extends AppCompatActivity {
         return true;
     }
 
-    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_dashboard:
-                startActivity(new Intent(this, Dashboard.class));
+                Intent dashIntent = new Intent(PostsessionQuestions.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_sessionStart:
+                Intent zoom = new Intent(PostsessionQuestions.this, Zoom.class);
+                startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
-                startActivity(new Intent(this, AccountInfo.class));
+                Intent actInfoIntent = new Intent(PostsessionQuestions.this, AccountInfo.class);
+                startActivity(actInfoIntent);
                 return true;
-            case R.id.action_schedule:
-                startActivity(new Intent(this, PatientSelectAppointment.class));
+            case R.id.action_appointments:
+                Intent appointments = new Intent(PostsessionQuestions.this, PatientAppointments.class);
+                startActivity(appointments);
                 return true;
             case R.id.action_find_therapist:
-                startActivity(new Intent(this, FindTherapist.class));
+                Intent findIntent = new Intent(PostsessionQuestions.this, FindTherapist.class);
+                startActivity(findIntent);
                 return true;
-            case R.id.action_zoom:
-                startActivity(new Intent(this, Zoom.class));
+            case R.id.action_messages:
+                Intent messages = new Intent(PostsessionQuestions.this, PatientMessages.class);
+                startActivity(messages);
+                return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(PostsessionQuestions.this, PatientSettings.class);
+                startActivity(settingsIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

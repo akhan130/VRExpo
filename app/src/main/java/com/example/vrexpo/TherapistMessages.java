@@ -1,4 +1,4 @@
-package com.example.vrexpo.TherapistMessages;
+package com.example.vrexpo;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,15 +13,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.vrexpo.PatientModel;
-import com.example.vrexpo.R;
-import com.example.vrexpo.TherapistAccountSettings;
-import com.example.vrexpo.TherapistAppointments;
-import com.example.vrexpo.TherapistDashboard;
-import com.example.vrexpo.TreatmentPlans;
-import com.example.vrexpo.ViewPatients;
-import com.example.vrexpo.WriteReport;
-import com.example.vrexpo.Zoom;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
