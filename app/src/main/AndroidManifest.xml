@@ -84,11 +84,6 @@
         <activity
             android:name=".MainActivity" />
 
-<!--Patient-->
-        <activity android:name=".Login" />
-        <activity android:name=".CreateAccount" />
-        <activity android:name=".MainActivity" />
-
         <!-- Patient -->
         <activity
             android:name=".UserProfile"
@@ -112,11 +107,9 @@
         <activity
             android:name=".PatientRecords" />
 
-        <activity
-            android:name=".TherapySchedulerActivity"
-            android:exported="true" />
 
-            android:name=".PatientSelectAppointment"
+            <activity
+                android:name=".PatientSelectAppointment"
             android:exported="false" />
         <activity
             android:name=".PatientMessages"
@@ -126,7 +119,6 @@
         <activity android:name=".PatientInfo" />
 
         <!--Therapist-->
-        <activity android:name=".PatientInfo" />
         <activity android:name=".PatientAppointments"
             android:exported="false"/>
 
@@ -165,7 +157,6 @@
         <!-- Anila Zoom Additions Start -->
             android:exported="false" />
         <!-- Other -->
-        <activity android:name=".Session" />
 
         <!-- Anila Zoom Additions Start -->
         <activity

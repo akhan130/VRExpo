@@ -28,15 +28,17 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class TherapistAppointments extends AppCompatActivity {
 
     private Button setAvaliabilityButton;
     private RecyclerView appointmentsRecyclerView;
     private AppointmentAdapter appointmentAdapter;
-    private List<AppointmentModel> appointmentList;
+    private List<AppointmentModel> appointmentList = new ArrayList<>();
 
 
     @Override
@@ -91,56 +93,55 @@ public class TherapistAppointments extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_therapist_appointments);
 
-        setAvaliabilityButton = findViewById(R.id.set_availability_button);
-
-        setAvaliabilityButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent therapistInfoIntent = new Intent(TherapistAppointments.this, TherapistSetAvailability.class);
-                startActivity(therapistInfoIntent);
-            }
-        });
-
-        RecyclerView appointmentsRecyclerView = findViewById(R.id.upcoming_appointments); // Ensure this ID matches your RecyclerView in XML
-        List<AppointmentModel> appointmentList = new ArrayList<>();
-        AppointmentAdapter appointmentAdapter = new AppointmentAdapter(appointmentList);
-        appointmentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        appointmentsRecyclerView.setAdapter(appointmentAdapter);
-
-        loadAppointments();
-
-        //Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        appointmentsRecyclerView = findViewById(R.id.upcoming_appointments_recycler_view);
+
+        initializeRecyclerView();
+
+        Button setAvailabilityButton = findViewById(R.id.set_availability_button);
+        setAvailabilityButton.setOnClickListener(v -> startActivity(new Intent(TherapistAppointments.this, TherapistSetAvailability.class)));
+
+        loadAppointments();
     }
+
+    private void initializeRecyclerView() {
+        appointmentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        appointmentAdapter = new AppointmentAdapter(appointmentList);
+        appointmentsRecyclerView.setAdapter(appointmentAdapter);
+    }
+
 
     private void loadAppointments() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Appointments");
-
             ref.orderByChild("therapist_fullName").equalTo(user.getDisplayName())
                     .addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             appointmentList.clear();
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                String dateKey = snapshot.getKey();
-                                try {
-                                    SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-                                    Date date = sdf.parse(dateKey);
-                                    long appointmentDate = date.getTime();
-
-                                    for (DataSnapshot timeSlotSnapshot : snapshot.getChildren()) {
-                                        AppointmentModel appointment = timeSlotSnapshot.getValue(AppointmentModel.class);
-                                        if (appointment != null && appointment.getAppointmentStatus() != null && appointment.getAppointmentStatus().equals("Upcoming")) {
-                                            if (appointmentDate > System.currentTimeMillis()) {
+                            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+                            for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
+                                for (DataSnapshot timeSlotSnapshot : dateSnapshot.getChildren()) {
+                                    TimeSlot slot = timeSlotSnapshot.getValue(TimeSlot.class);
+                                    if (slot != null && "Upcoming".equals(slot.getAppointmentStatus())) {
+                                        try {
+                                            String dateString = dateSnapshot.getKey();
+                                            Date date = sdf.parse(dateString);
+                                            if (date != null && date.getTime() > System.currentTimeMillis()) {
+                                                AppointmentModel appointment = new AppointmentModel();
+                                                Map<String, TimeSlot> slots = new HashMap<>();
+                                                slots.put(timeSlotSnapshot.getKey(), slot);
+                                                appointment.setSlots(slots);
+                                                appointment.setDate(dateString);
                                                 appointmentList.add(appointment);
                                             }
+                                        } catch (ParseException e) {
+                                            Log.e(TAG, "Error parsing date", e);
                                         }
                                     }
-                                } catch (ParseException e) {
-                                    Log.e(TAG, "Error parsing date", e);
                                 }
                             }
                             appointmentAdapter.notifyDataSetChanged();
@@ -153,4 +154,5 @@ public class TherapistAppointments extends AppCompatActivity {
                     });
         }
     }
+
 }

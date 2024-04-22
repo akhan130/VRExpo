@@ -1,49 +1,28 @@
 package com.example.vrexpo;
 
+import java.util.Map;
+
 public class AppointmentModel {
-    private String appointmentTime;
-    private String appointmentStatus;
-    private String patientName;
-    private String therapistFullName;
-    private long date;
+    private Map<String, TimeSlot> slots;
+    private String date;
 
-    public String getAppointmentTime() {
-        return appointmentTime;
+    // Constructor if needed
+    public AppointmentModel() {
     }
 
-    public void setAppointmentTime(String appointmentTime) {
-        this.appointmentTime = appointmentTime;
+    public Map<String, TimeSlot> getSlots() {
+        return slots;
     }
 
-    public String getAppointmentStatus() {
-        return appointmentStatus;
+    public void setSlots(Map<String, TimeSlot> slots) {
+        this.slots = slots;
     }
 
-    public void setAppointmentStatus(String appointmentStatus) {
-        this.appointmentStatus = appointmentStatus;
-    }
-
-    public String getPatientName() {
-        return patientName;
-    }
-
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
-    }
-
-    public String getTherapistFullName() {
-        return therapistFullName;
-    }
-
-    public void setTherapistFullName(String therapistFullName) {
-        this.therapistFullName = therapistFullName;
-    }
-
-    public long getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(String date) {
         this.date = date;
     }
 }

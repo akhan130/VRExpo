@@ -7,13 +7,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.AppointmentViewHolder> {
-
     private List<AppointmentModel> appointmentList;
 
     public AppointmentAdapter(List<AppointmentModel> appointmentList) {
@@ -30,9 +27,14 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @Override
     public void onBindViewHolder(@NonNull AppointmentViewHolder holder, int position) {
         AppointmentModel appointment = appointmentList.get(position);
-        holder.dateTextView.setText("Date: " + new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault()).format(new Date(appointment.getDate())));
-        holder.timeTextView.setText("Time: " + appointment.getAppointmentTime());
-        holder.nameTextView.setText("Patient: " + appointment.getPatientName());
+        // Simplified for clarity, you should format the date properly
+        holder.dateTextView.setText("Date: " + appointment.getDate());
+        // Example: just display one of the slots or handle them appropriately
+        if (!appointment.getSlots().isEmpty()) {
+            TimeSlot firstSlot = appointment.getSlots().values().iterator().next();
+            holder.timeTextView.setText("Time: " + firstSlot.getAppointmentTime());
+            holder.nameTextView.setText("Patient: " + firstSlot.getPatientName());
+        }
     }
 
     @Override
