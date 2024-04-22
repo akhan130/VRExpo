@@ -1,0 +1,15 @@
+PatientCondition,PatientPhobia,PatientPTSD,TherapSpecialization,TreatmentPlans
+N/A,N/A,N/A,General,Customized
+General Anxiety Disorder,N/A,N/A,Social Anxiety,Social Anxiety
+OCD,N/A,N/A,General,Customized
+Panic Disorder,N/A,N/A,General,Customized
+Depression,N/A,N/A,Depression,Customized
+Phobias,Arachnophobia,N/A,Arachnophobia,Arachnophobia
+Phobias,Aviophobia,N/A,Aviophobia,Aviophobia
+Phobias,Acrophobia,N/A,Acrophobia,Acrophobia
+Phobias,Claustrophobia,N/A,Claustrophobia,Claustrophobia
+Phobias,Glossophobia,N/A,Glossophobia,Glossophobia
+Phobias,N/A,N/A,General,Customized
+Phobias,None of the above,N/A,General,Customized
+PTSD,N/A,N/A,General,Customized
+PTSD,N/A,Car Accident,PTSD Car Accident,PTSD Car Accident

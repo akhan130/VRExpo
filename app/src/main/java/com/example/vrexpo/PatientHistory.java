@@ -9,6 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -77,8 +83,54 @@ public class PatientHistory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_history);
 
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
+        // Submit Button
+        Button submitButton = findViewById(R.id.submitButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Getting selected radio button text
+                RadioGroup radioGroup1 = findViewById(R.id.radioGroup);
+                RadioButton radioButtonYesNo = findViewById(radioGroup1.getCheckedRadioButtonId());
+                String diagnosed = radioButtonYesNo.getText().toString();
+
+                RadioGroup radioGroup2 = findViewById(R.id.radioGroup2);
+                RadioButton radioButtonCondition = findViewById(radioGroup2.getCheckedRadioButtonId());
+                String condition = radioButtonCondition.getText().toString();
+
+                RadioGroup radioGroup3 = findViewById(R.id.radioGroup3);
+                RadioButton radioButtonPhobia = findViewById(radioGroup3.getCheckedRadioButtonId());
+                String phobia = radioButtonPhobia.getText().toString();
+
+                RadioGroup radioGroup4 = findViewById(R.id.radioGroup4);
+                RadioButton radioButtonPTSD = findViewById(radioGroup4.getCheckedRadioButtonId());
+                String ptsd = radioButtonPTSD.getText().toString();
+
+                RadioGroup radioGroup5 = findViewById(R.id.radioGroup5);
+                RadioButton radioButtonDuration = findViewById(radioGroup5.getCheckedRadioButtonId());
+                String duration = radioButtonDuration.getText().toString();
+
+                RadioGroup radioGroup6 = findViewById(R.id.radioGroup6);
+                RadioButton radioButtonImpact = findViewById(radioGroup6.getCheckedRadioButtonId());
+                String impact = radioButtonImpact.getText().toString();
+
+                // Passing data to NLP_Matching
+                Intent submitIntent = new Intent(PatientHistory.this, NLP_Matching.class);
+                submitIntent.putExtra("Diagnosed", diagnosed);
+                submitIntent.putExtra("Condition", condition);
+                submitIntent.putExtra("Phobia", phobia);
+                submitIntent.putExtra("PTSD", ptsd);
+                submitIntent.putExtra("Duration", duration);
+                submitIntent.putExtra("Impact", impact);
+                startActivity(submitIntent);
+            }
+        });
+
+
+        //Setting up the action bar
+        //Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolbar);
+        //Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        //setSupportActionBar(myToolbar);
 
         initializeRadioGroups();
         submitButton = findViewById(R.id.submitButton);
