@@ -180,6 +180,7 @@
                     android:text="Arachnophobia"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/radioButtonAcro" />
+
                 <RadioButton
                     android:id="@+id/radioButtonAvio"
                     android:layout_width="wrap_content"
@@ -386,18 +387,6 @@
                     app:layout_constraintTop_toBottomOf="@+id/radioButtonYear2" />
             </RadioGroup>
 
-            <Button
-                android:id="@+id/submitButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="32dp"
-                android:text="Submit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup6" />
 
             <TextView
                 android:id="@+id/textView"
@@ -414,11 +403,23 @@
                 android:id="@+id/submitButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="Submit"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.206"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/radioGroup6"
-                />
+                app:layout_constraintTop_toBottomOf="@id/radioGroup6" />
+
+            <Button
+                android:id="@+id/matchButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Match Therapist"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.781"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/radioGroup6" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -431,23 +432,16 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
-
-    <!---
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/purple_500"
         android:elevation="4dp"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-        -->
 
-
-
-        android:layout_alignParentBottom="true"
-        />
 
 </RelativeLayout>

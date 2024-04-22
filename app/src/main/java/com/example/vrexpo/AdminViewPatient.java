@@ -21,9 +21,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class AdminViewTherapist extends AppCompatActivity {
+public class AdminViewPatient extends AppCompatActivity {
 
-    private TherapistAdapter2 adapter;
+    private PatientAdapter adapter;
     private EditText searchInput;
     RecyclerView recyclerView;
     private Context context;
@@ -40,19 +40,19 @@ public class AdminViewTherapist extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_home:
-                Intent dashIntent = new Intent(AdminViewTherapist.this, AdminDashboard.class);
+                Intent dashIntent = new Intent(AdminViewPatient.this, AdminDashboard.class);
                 startActivity(dashIntent);
                 return true;
             case R.id.action_therapist_accounts:
-                Intent viewTherapistAcct = new Intent(AdminViewTherapist.this, AdminCreateTherapistAcct.class);
+                Intent viewTherapistAcct = new Intent(AdminViewPatient.this, AdminCreateTherapistAcct.class);
                 startActivity(viewTherapistAcct);
                 return true;
             case R.id.action_patient_accounts:
-                Intent viewPatientAcct = new Intent(AdminViewTherapist.this, AdminViewPatient.class);
+                Intent viewPatientAcct = new Intent(AdminViewPatient.this, AdminViewPatient.class);
                 startActivity(viewPatientAcct);
                 return true;
             case R.id.action_admin_settings:
-                Intent settingsAcct = new Intent(AdminViewTherapist.this, AdminAccountSettings.class);
+                Intent settingsAcct = new Intent(AdminViewPatient.this, AdminAccountSettings.class);
                 startActivity(settingsAcct);
                 return true;
             default:
@@ -64,7 +64,7 @@ public class AdminViewTherapist extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_view_therapist);
+        setContentView(R.layout.activity_admin_view_patient);
 
         // Initialize searchInput and searchButton
         searchInput = findViewById(R.id.search_therapist);
@@ -87,23 +87,23 @@ public class AdminViewTherapist extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         // Reference to Firebase database
-        DatabaseReference therapistsRef = FirebaseDatabase.getInstance().getReference("TherapistInfo");
+        DatabaseReference patientRef = FirebaseDatabase.getInstance().getReference("PatientAccount");
 
         // Set up FirebaseRecyclerOptions
-        FirebaseRecyclerOptions<Therapist> options =
-                new FirebaseRecyclerOptions.Builder<Therapist>()
-                        .setQuery(therapistsRef, Therapist.class)
+        FirebaseRecyclerOptions<PatientModel> options =
+                new FirebaseRecyclerOptions.Builder<PatientModel>()
+                        .setQuery(patientRef, PatientModel.class)
                         .build();
 
         // Initialize adapter with FirebaseRecyclerOptions
-        adapter = new TherapistAdapter2(options, this);
+        adapter = new PatientAdapter(options, this);
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(view -> {
             int position = recyclerView.getChildAdapterPosition(view);
-            Therapist therapist = adapter.getItem(position);
-            Intent intent = new Intent(AdminViewTherapist.this, AdminViewTherapistDetails.class);
-            intent.putExtra("therapist_phone", therapist.getPhoneNumber());
+            PatientModel patient = adapter.getItem(position);
+            Intent intent = new Intent(AdminViewPatient.this, AdminViewPatientDetails.class);
+            intent.putExtra("phone", patient.getPhone());
             startActivity(intent);
         });
 
@@ -118,13 +118,13 @@ public class AdminViewTherapist extends AppCompatActivity {
 
     @SuppressLint("NotifyDataSetChanged")
     private void setupSearchRecyclerView(String searchQuery) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("TherapistInfo");
-        Query query = databaseReference.orderByChild("therapist_fullName")
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("PatientAccount");
+        Query query = databaseReference.orderByChild("name")
                 .startAt(searchQuery)
                 .endAt(searchQuery + "\uf8ff");
 
-        FirebaseRecyclerOptions<Therapist> options = new FirebaseRecyclerOptions.Builder<Therapist>()
-                .setQuery(query, Therapist.class).build();
+        FirebaseRecyclerOptions<PatientModel> options = new FirebaseRecyclerOptions.Builder<PatientModel>()
+                .setQuery(query, PatientModel.class).build();
 
         // Update the adapter with the new options
         adapter.updateOptions(options);

@@ -8,10 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-public class AdminDashboard extends AppCompatActivity {
-
-    private static final String TAG = "VRExpo";
+public class AdminAccountSettings extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -24,19 +24,19 @@ public class AdminDashboard extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_home:
-                Intent dashIntent = new Intent(AdminDashboard.this, AdminDashboard.class);
+                Intent dashIntent = new Intent(AdminAccountSettings.this, AdminDashboard.class);
                 startActivity(dashIntent);
                 return true;
             case R.id.action_therapist_accounts:
-                Intent viewTherapistAcct = new Intent(AdminDashboard.this, AdminCreateTherapistAcct.class);
+                Intent viewTherapistAcct = new Intent(AdminAccountSettings.this, AdminCreateTherapistAcct.class);
                 startActivity(viewTherapistAcct);
                 return true;
             case R.id.action_patient_accounts:
-                Intent viewPatientAcct = new Intent(AdminDashboard.this, AdminViewPatient.class);
+                Intent viewPatientAcct = new Intent(AdminAccountSettings.this, AdminViewPatient.class);
                 startActivity(viewPatientAcct);
                 return true;
-            case R.id.action_admin_settings:
-                Intent settingsAcct = new Intent(AdminDashboard.this, AdminAccountSettings.class);
+            case R.id.action_account_settings:
+                Intent settingsAcct = new Intent(AdminAccountSettings.this, AdminAccountSettings.class);
                 startActivity(settingsAcct);
                 return true;
             default:
@@ -47,10 +47,20 @@ public class AdminDashboard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_dashboard);
+        setContentView(R.layout.activity_admin_account_settings);
 
-        //Setting up the action bar
-        Toolbar myToolbar = findViewById(R.id.admin_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+        Button logoutBtn = findViewById(R.id.logoutButton);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logoutIntent = new Intent(AdminAccountSettings.this, Login.class);
+                startActivity(logoutIntent);
+            }
+        });
+
+
     }
 }

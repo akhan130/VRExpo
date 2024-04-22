@@ -4,7 +4,7 @@
     android:id="@+id/drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AdminViewTherapist">
+    tools:context=".AdminViewPatient">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="Therapist Accounts"
+            android:text="Patient Accounts"
             android:textAlignment="center"
             android:textColor="#000"
             android:textSize="30dp"
@@ -40,7 +40,7 @@
                 android:background="@drawable/edit_text_rounded_corner"
                 android:backgroundTint="#FAFAFA"
                 android:elevation="4dp"
-                android:hint="Search Therapist"
+                android:hint="Search Patients"
                 android:padding="10dp" />
 
             <ImageButton

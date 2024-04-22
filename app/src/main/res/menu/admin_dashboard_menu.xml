@@ -9,15 +9,21 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/action_create_account"
-        android:icon="@drawable/user"
-        android:title="Create Therapist Account"
+        android:id="@+id/action_therapist_accounts"
+        android:icon="@drawable/therapist"
+        android:title="Create/View Therapist Accounts"
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/action_view_therapist"
-        android:icon="@drawable/checklist"
-        android:title="Create Therapist Account"
+        android:id="@+id/action_patient_accounts"
+        android:icon="@drawable/viewpatient"
+        android:title="View Patient Accounts"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_admin_settings"
+        android:icon="@drawable/setting"
+        android:title="Settings"
         app:showAsAction="always"/>
 
 </menu>
