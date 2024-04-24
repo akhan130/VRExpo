@@ -30,7 +30,7 @@ public class PatientAppointments extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(PatientAppointments.this, Zoom.class);
+                Intent zoom = new Intent(PatientAppointments.this, SessionStart.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:

@@ -43,7 +43,7 @@ public class PresessionQuestions extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(PresessionQuestions.this, Zoom.class);
+                Intent zoom = new Intent(PresessionQuestions.this, PresessionQuestions.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
