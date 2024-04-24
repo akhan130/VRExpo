@@ -29,6 +29,11 @@ public class Therapist {
     }
 
     public Therapist(String fullName, String email, String phoneNumber, String specialization, String password) {
+        this.fullName = fullName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.specialization = specialization;
+        this.password = password;
     }
 
     // Use PropertyName annotation to specify the field names in Firebase

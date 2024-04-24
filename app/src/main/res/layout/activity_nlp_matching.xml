@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".NLP_Matching">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/purple_500"
-        android:elevation="4dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <!-- TextView Header -->
     <TextView
         android:id="@+id/NLP_Match_Message"
@@ -24,13 +14,13 @@
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:text="Patient Therapist Match ...."
+        android:text="Patient Therapist Match ..."
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/my_toolbar" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/NLP_Match_Message1"
@@ -65,6 +55,17 @@
         app:layout_constraintTop_toBottomOf="@id/NLP_Match_Message1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/purple_500"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

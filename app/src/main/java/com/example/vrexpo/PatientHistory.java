@@ -7,7 +7,6 @@ import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.se.omapi.Session;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
