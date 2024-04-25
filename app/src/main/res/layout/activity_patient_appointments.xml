@@ -46,6 +46,15 @@
             android:text="Book Appointment"
             />
 
+        <Button
+            android:id="@+id/upcoming_appointment_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:text="Upcoming Appointments"
+            />
+
     </LinearLayout>
 
     <androidx.appcompat.widget.Toolbar

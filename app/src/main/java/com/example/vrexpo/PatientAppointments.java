@@ -64,12 +64,22 @@ public class PatientAppointments extends AppCompatActivity {
         setContentView(R.layout.activity_patient_appointments);
 
         bookAppointmentButton = findViewById(R.id.book_appointment_button);
+        Button upcomingAppointmentButton = findViewById(R.id.upcoming_appointment_button);
+
 
         bookAppointmentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent patientInfoIntent = new Intent(PatientAppointments.this, PatientSelectAppointment.class);
                 startActivity(patientInfoIntent);
+            }
+        });
+
+        upcomingAppointmentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent upcomingIntent = new Intent(PatientAppointments.this, WeekViewActivity.class);
+                startActivity(upcomingIntent);
             }
         });
 
