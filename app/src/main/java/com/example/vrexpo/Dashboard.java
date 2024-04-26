@@ -25,21 +25,21 @@ public class Dashboard extends AppCompatActivity {
                 Intent dashIntent = new Intent(Dashboard.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_sessionStart:
-                Intent sessionStart = new Intent(Dashboard.this, SessionStart.class);
-                startActivity(sessionStart);
-                return true;
             case R.id.action_accountInfo:
                 Intent actInfoIntent = new Intent(Dashboard.this, AccountInfo.class);
                 startActivity(actInfoIntent);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
+                startActivity(findIntent);
                 return true;
             case R.id.action_appointments:
                 Intent appointmentsIntent = new Intent(Dashboard.this, PatientAppointments.class);
                 startActivity(appointmentsIntent);
                 return true;
-            case R.id.action_find_therapist:
-                Intent findIntent = new Intent(Dashboard.this, FindTherapist.class);
-                startActivity(findIntent);
+            case R.id.action_sessionStart:
+                Intent sessionStart = new Intent(Dashboard.this, SessionStart.class);
+                startActivity(sessionStart);
                 return true;
             case R.id.action_messages:
                 Intent messages = new Intent(Dashboard.this, PatientMessages.class);
