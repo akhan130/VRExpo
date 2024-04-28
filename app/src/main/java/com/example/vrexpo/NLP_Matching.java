@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.vrexpo.treatments.Acrophobia;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -76,10 +77,19 @@ public class NLP_Matching extends AppCompatActivity {
 
         // Perform NLP matching
         performNLPMatching();
+
+        // Session 1 - Acrophobia
+        Button TreatmentPlans = findViewById(R.id.treatmentPlansButton);
+        TreatmentPlans.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent TreatmentPlans = new Intent(NLP_Matching.this, ML_matching.class);
+                startActivity(TreatmentPlans);
+            }
+        });
     }
 
     private void performNLPMatching() {
-        // Construct a query to search therapist_specialization column in Firebase
         Query query = databaseReference.orderByChild("therapist_specialization");
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,14 +98,20 @@ public class NLP_Matching extends AppCompatActivity {
                 List<String> matchedTherapists = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     String specialization = snapshot.child("therapist_specialization").getValue(String.class);
-                    // Log the retrieved therapist specialization
                     Log.d("TherapistSpecialization", "Specialization: " + specialization);
                     if (specialization != null && containsAnyNLP(specialization, selectedOptions)) {
-                        matchedTherapists.add(snapshot.getKey()); // Add therapist ID to the list
+                        matchedTherapists.add(snapshot.getKey());
+                        // Set matched data
+                        MatchedData.setTherapistSpecialization(specialization);
+                        // Set other matched data
+                        MatchedData.setPatientCondition(selectedOptions.get(0)); // Assuming 'diagnosed' is the patient condition
+                        MatchedData.setPatientPhobia(selectedOptions.get(2)); // Assuming 'phobia' is the patient phobia
+                        MatchedData.setPatientPTSD(selectedOptions.get(3)); // Assuming 'ptsd' is the patient PTSD
+                        MatchedData.setMatchedTherapistIds(matchedTherapists);
+                        break; // Exit the loop after finding the first match
                     }
                 }
 
-                // Update UI based on matchedTherapists
                 updateUI(matchedTherapists);
             }
 
@@ -183,6 +199,7 @@ public class NLP_Matching extends AppCompatActivity {
         }
     }
 }
+
 
 /***
 Toast.makeText(getApplicationContext(), "Congrats, you have been matched with a therapist", Toast.LENGTH_LONG).show();

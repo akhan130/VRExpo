@@ -1,3 +1,54 @@
+package com.example.vrexpo;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+
+import com.example.vrexpo.MatchedData;
+
+import java.util.List;
+
+public class ML_matching extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_ml_matching);
+
+        // Call retrieveMatchedData method
+        retrieveMatchedData();
+    }
+
+    private void retrieveMatchedData() {
+        String patientCondition = MatchedData.getPatientCondition();
+        String patientPhobia = MatchedData.getPatientPhobia();
+        String patientPTSD = MatchedData.getPatientPTSD();
+        String therapistSpecialization = MatchedData.getTherapistSpecialization();
+        List<String> matchedTherapistIds = MatchedData.getMatchedTherapistIds();
+
+        // Log retrieved data
+        Log.d("MatchedData", "Patient Condition: " + patientCondition);
+        Log.d("MatchedData", "Patient Phobia: " + patientPhobia);
+        Log.d("MatchedData", "Patient PTSD: " + patientPTSD);
+
+        if (therapistSpecialization != null) {
+            Log.d("MatchedData", "Therapist Specialization: " + therapistSpecialization);
+        } else {
+            Log.d("MatchedData", "Therapist Specialization: null");
+        }
+
+        if (matchedTherapistIds != null) {
+            for (String therapistId : matchedTherapistIds) {
+                Log.d("MatchedData", "Matched Therapist ID: " + therapistId);
+            }
+        } else {
+            Log.d("MatchedData", "Matched Therapist IDs: null");
+        }
+    }
+}
+
+
+
 /***
 package com.example.vrexpo;
 
