@@ -65,4 +65,7 @@
     <string name="open">Open</string>
     <string name="refresh_description" />
 
+    <string name="back"><![CDATA[<-]]></string>
+    <string name="forward"><![CDATA[->]]></string>
+
 </resources>

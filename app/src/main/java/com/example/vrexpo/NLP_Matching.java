@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +32,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class NLP_Matching extends AppCompatActivity {
 
@@ -36,12 +40,57 @@ public class NLP_Matching extends AppCompatActivity {
     private TextView messageTextView;
     private DatabaseReference databaseReference;
     private List<String> selectedOptions;
-    private TherapistAdapter adapter;
+    private TherapistAdapterNLP adapter;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(NLP_Matching.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_sessionStart:
+                Intent zoom = new Intent(NLP_Matching.this, SessionStart.class);
+                startActivity(zoom);
+                return true;
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(NLP_Matching.this, AccountInfo.class);
+                startActivity(actInfoIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointments = new Intent(NLP_Matching.this, PatientAppointments.class);
+                startActivity(appointments);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(NLP_Matching.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messages = new Intent(NLP_Matching.this, PatientMessages.class);
+                startActivity(messages);
+                return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(NLP_Matching.this, PatientSettings.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nlp_matching);
+
+        // Setting up the action bar
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
         recyclerView = findViewById(R.id.recycler_view_matched_therapists);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -166,38 +215,44 @@ public class NLP_Matching extends AppCompatActivity {
     // Method to update the UI based on the matched therapists
     private void updateUI(List<String> matchedTherapists) {
         if (matchedTherapists.isEmpty()) {
-            // Concatenate both messages into one
-            String message = "Sorry, you have not been matched with a therapist.\n\nClick the button below to be directed to the Find Therapist section and look for a therapist you might be interested in.\n\n\n";
-            messageTextView.setText(message);
-
-            // Adjust text size for the sorry message
-            messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20); // Adjust the text size as needed
-
-            // Show the "Find a Therapist" button
+            messageTextView.setText("Sorry, you have not been matched with a therapist.\n\nClick the button below to be directed to the Find Therapist section and look for a therapist you might be interested in.\n\n\n");
+            messageTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
             Button findTherapistButton = findViewById(R.id.findTherapistButton);
             findTherapistButton.setVisibility(View.VISIBLE);
-            findTherapistButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // Navigate to FindTherapist activity or perform any desired action
-                    Intent intent = new Intent(NLP_Matching.this, FindTherapist.class);
-                    startActivity(intent);
-                }
+            findTherapistButton.setOnClickListener(v -> {
+                Intent intent = new Intent(NLP_Matching.this, FindTherapist.class);
+                startActivity(intent);
             });
-
         } else {
             Toast.makeText(getApplicationContext(), "Congrats, you have been matched with a therapist", Toast.LENGTH_LONG).show();
-            // Show a message before listing the matched therapists
-            StringBuilder builder = new StringBuilder();
+            List<Therapist> therapists = new ArrayList<>();
+            AtomicInteger count = new AtomicInteger();
 
-            // Append the list of matched therapists
-            for (String therapist : matchedTherapists) {
-                builder.append(therapist).append("\n");
+            for (String phone : matchedTherapists) {
+                databaseReference.child(phone).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        String name = snapshot.child("therapist_fullName").getValue(String.class);
+                        if (name != null) {
+                            Therapist therapist = new Therapist(name, snapshot.child("therapist_email").getValue(String.class), phone, snapshot.child("therapist_specialization").getValue(String.class), snapshot.child("therapist_password").getValue(String.class));
+                            therapists.add(therapist);
+                        }
+                        // Check if all callbacks have completed
+                        if (count.incrementAndGet() == matchedTherapists.size()) {
+                            adapter = new TherapistAdapterNLP(therapists);
+                            recyclerView.setAdapter(adapter);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.w("DB_ERROR", "Failed to read value.", databaseError.toException());
+                    }
+                });
             }
-
-            messageTextView.setText(builder.toString());
         }
     }
+
 }
 
 

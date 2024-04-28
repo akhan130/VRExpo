@@ -45,7 +45,7 @@ public class PatientHistory extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(PatientHistory.this, Zoom.class);
+                Intent zoom = new Intent(PatientHistory.this, SessionStart.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:

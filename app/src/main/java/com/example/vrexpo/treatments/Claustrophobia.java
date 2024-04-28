@@ -15,7 +15,13 @@ import com.example.vrexpo.Dashboard;
 import com.example.vrexpo.FindTherapist;
 import com.example.vrexpo.R;
 import com.example.vrexpo.PatientSelectAppointment;
+import com.example.vrexpo.TherapistAccountSettings;
+import com.example.vrexpo.TherapistAppointments;
+import com.example.vrexpo.TherapistDashboard;
+import com.example.vrexpo.TherapistMessages;
 import com.example.vrexpo.TreatmentPlans;
+import com.example.vrexpo.ViewPatients;
+import com.example.vrexpo.WriteReport;
 import com.example.vrexpo.Zoom;
 
 public class Claustrophobia extends AppCompatActivity {
@@ -26,33 +32,45 @@ public class Claustrophobia extends AppCompatActivity {
         return true;
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch(item.getItemId()){
-//            case R.id.action_treatmentPlans:
-//                Intent treatmentPlans = new Intent(Claustrophobia.this, TreatmentPlans.class);
-//                startActivity(treatmentPlans);
-//                return true;
-//            case R.id.action_zoom:
-//                Intent zoom = new Intent(Claustrophobia.this, Zoom.class);
-//                startActivity(zoom);
-//                return true;
-//            case R.id.action_dashboard:
-//                Intent dashIntent = new Intent(Claustrophobia.this, Dashboard.class);
-//                startActivity(dashIntent);
-//                return true;
-//            case R.id.action_schedule:
-//                Intent scheduleIntent = new Intent(Claustrophobia.this, PatientSelectAppointment.class);
-//                startActivity(scheduleIntent);
-//                return true;
-//            case R.id.action_find_therapist:
-//                Intent findIntent = new Intent(Claustrophobia.this, FindTherapist.class);
-//                startActivity(findIntent);
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_home:
+                Intent dashIntent = new Intent(Claustrophobia.this, TherapistDashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointmentsIntent = new Intent(Claustrophobia.this, TherapistAppointments.class);
+                startActivity(appointmentsIntent);
+                return true;
+            case R.id.action_view_patient:
+                Intent patientInfoIntent = new Intent(Claustrophobia.this, ViewPatients.class);
+                startActivity(patientInfoIntent);
+                return true;
+            case R.id.action_write_report:
+                Intent reportIntent = new Intent(Claustrophobia.this, WriteReport.class);
+                startActivity(reportIntent);
+                return true;
+            case R.id.action_messages:
+                Intent messagesIntent = new Intent(Claustrophobia.this, TherapistMessages.class);
+                startActivity(messagesIntent);
+                return true;
+            case R.id.action_account_settings:
+                Intent settingsIntent = new Intent(Claustrophobia.this, TherapistAccountSettings.class);
+                startActivity(settingsIntent);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(Claustrophobia.this, Zoom.class);
+                startActivity(zoom);
+                return true;
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(Claustrophobia.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

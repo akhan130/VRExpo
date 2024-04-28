@@ -8,15 +8,15 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/action_sessionStart"
-        android:icon="@drawable/zoom"
-        android:title="Start Session"
-        app:showAsAction="always"/>
-
-    <item
         android:id="@+id/action_accountInfo"
         android:icon="@drawable/report"
         android:title="Account Info"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/action_find_therapist"
+        android:icon="@drawable/baseline_search_24"
+        android:title="Find therapist"
         app:showAsAction="always"/>
 
     <item
@@ -26,9 +26,9 @@
         app:showAsAction="always"/>
 
     <item
-        android:id="@+id/action_find_therapist"
-        android:icon="@drawable/baseline_search_24"
-        android:title="Find therapist"
+        android:id="@+id/action_sessionStart"
+        android:icon="@drawable/zoom"
+        android:title="Start Session"
         app:showAsAction="always"/>
 
     <item

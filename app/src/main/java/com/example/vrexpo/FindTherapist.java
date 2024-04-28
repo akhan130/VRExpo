@@ -42,7 +42,7 @@ public class FindTherapist extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(FindTherapist.this, Zoom.class);
+                Intent zoom = new Intent(FindTherapist.this, SessionStart.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
