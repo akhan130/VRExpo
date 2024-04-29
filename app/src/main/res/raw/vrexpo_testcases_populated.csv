@@ -1,0 +1,149 @@
+PatientCondition,PatientPhobia,PatientPTSD,TherapSpecialization,TreatmentPlans
+N/A,N/A,N/A,General,Customized
+N/A,Acrophobia,N/A,General,Customized
+N/A,Arachnophobia,N/A,General,Customized
+N/A,Aviophobia,N/A,General,Customized
+N/A,Claustrophobia,N/A,General,Customized
+N/A,Glossophobia,N/A,General,Customized
+N/A,None of the above,N/A,General,Customized
+N/A,Acrophobia,N/A,Acrophobia,Customized
+N/A,Arachnophobia,N/A,Arachnophobia,Customized
+N/A,Aviophobia,N/A,Aviophobia,Customized
+N/A,Claustrophobia,N/A,Claustrophobia,Customized
+N/A,Glossophobia,N/A,Glossophobia,Customized
+N/A,Acrophobia,N/A,Acrophobia,Acrophobia
+N/A,Arachnophobia,N/A,Arachnophobia,Arachnophobia
+N/A,Aviophobia,N/A,Aviophobia,Aviophobia
+N/A,Claustrophobia,N/A,Claustrophobia,Claustrophobia
+N/A,Glossophobia,N/A,Glossophobia,Glossophobia
+N/A,Acrophobia,N/A,General,Acrophobia
+N/A,Arachnophobia,N/A,General,Arachnophobia
+N/A,Aviophobia,N/A,General,Aviophobia
+N/A,Claustrophobia,N/A,General,Claustrophobia
+N/A,Glossophobia,N/A,General,Glossophobia
+General Anxiety Disorder,N/A,N/A,Social Anxiety,Social Anxiety
+General Anxiety Disorder,None of the above,N/A,Social Anxiety,Social Anxiety
+General Anxiety Disorder,N/A,N/A,General Anxiety,Social Anxiety
+General Anxiety Disorder,None of the above,N/A,General Anxiety,Social Anxiety
+OCD,N/A,N/A,General,Customized
+OCD,None of the above,N/A,General,Customized
+Panic Disorder,N/A,N/A,General,Customized
+Panic Disorder,None of the above,N/A,General,Customized
+Phobias,N/A,N/A,General,Customized
+Phobias,Acrophobia,N/A,General,Acrophobia
+Phobias,Arachnophobia,N/A,General,Arachnophobia
+Phobias,Aviophobia,N/A,General,Aviophobia
+Phobias,Claustrophobia,N/A,General,Claustrophobia
+Phobias,Glossophobia,N/A,General,Glossophobia
+Phobias,None of the above,N/A,General,Customized
+PTSD,N/A,N/A,General,Customized
+PTSD,N/A,Car Accident,General,PTSD Car Accident
+PTSD,N/A,Car Accident,PTSD Car Accident,PTSD Car Accident
+PTSD,None of the above ,N/A,General,Customized
+PTSD,None of the above,Car Accident,General,PTSD Car Accident
+PTSD,None of the above,Car Accident,PTSD Car Accident,PTSD Car Accident
+OCD,N/A,N/A,General,Customized
+OCD,None of the above,N/A,General,Customized
+Panic Disorder,N/A,N/A,General,Customized
+Panic Disorder,None of the above,N/A,General,Customized
+N/A,N/A,N/A,General,Customized
+N/A,Acrophobia,N/A,General,Customized
+N/A,Arachnophobia,N/A,General,Customized
+N/A,Aviophobia,N/A,General,Customized
+N/A,Claustrophobia,N/A,General,Customized
+N/A,Glossophobia,N/A,General,Customized
+N/A,None of the above,N/A,General,Customized
+Phobias,N/A,N/A,General,Customized
+Phobias,Acrophobia,N/A,General,Acrophobia
+Phobias,Arachnophobia,N/A,General,Arachnophobia
+Phobias,Aviophobia,N/A,General,Aviophobia
+Phobias,Claustrophobia,N/A,General,Claustrophobia
+Phobias,Glossophobia,N/A,General,Glossophobia
+Phobias,None of the above,N/A,General,Customized
+N/A,Acrophobia,N/A,Acrophobia,Customized
+N/A,Arachnophobia,N/A,Arachnophobia,Customized
+N/A,Aviophobia,N/A,Aviophobia,Customized
+N/A,Claustrophobia,N/A,Claustrophobia,Customized
+N/A,Glossophobia,N/A,Glossophobia,Customized
+General Anxiety Disorder,N/A,N/A,Social Anxiety,Social Anxiety
+General Anxiety Disorder,None of the above,N/A,Social Anxiety,Social Anxiety
+General Anxiety Disorder,N/A,N/A,General Anxiety,Social Anxiety
+General Anxiety Disorder,None of the above,N/A,General Anxiety,Social Anxiety
+OCD,N/A,N/A,General,Customized
+OCD,None of the above,N/A,General,Customized
+Panic Disorder,N/A,N/A,General,Customized
+Panic Disorder,None of the above,N/A,General,Customized
+N/A,Acrophobia,N/A,Acrophobia,Acrophobia
+N/A,Arachnophobia,N/A,Arachnophobia,Arachnophobia
+N/A,Aviophobia,N/A,Aviophobia,Aviophobia
+N/A,Claustrophobia,N/A,Claustrophobia,Claustrophobia
+N/A,Glossophobia,N/A,Glossophobia,Glossophobia
+N/A,Acrophobia,N/A,General,Acrophobia
+N/A,Arachnophobia,N/A,General,Arachnophobia
+N/A,Aviophobia,N/A,General,Aviophobia
+N/A,Claustrophobia,N/A,General,Claustrophobia
+N/A,Glossophobia,N/A,General,Glossophobia
+Phobias,N/A,N/A,General,Customized
+Phobias,Acrophobia,N/A,General,Acrophobia
+Phobias,Arachnophobia,N/A,General,Arachnophobia
+Phobias,Aviophobia,N/A,General,Aviophobia
+Phobias,Claustrophobia,N/A,General,Claustrophobia
+Phobias,Glossophobia,N/A,General,Glossophobia
+Phobias,None of the above,N/A,General,Customized
+PTSD,N/A,N/A,General,Customized
+PTSD,N/A,Car Accident,General,PTSD Car Accident
+PTSD,N/A,Car Accident,PTSD Car Accident,PTSD Car Accident
+PTSD,None of the above ,N/A,General,Customized
+PTSD,None of the above,Car Accident,General,PTSD Car Accident
+PTSD,None of the above,Car Accident,PTSD Car Accident,PTSD Car Accident
+General Anxiety Disorder,N/A,N/A,Social Anxiety,Social Anxiety
+General Anxiety Disorder,None of the above,N/A,Social Anxiety,Social Anxiety
+General Anxiety Disorder,N/A,N/A,General Anxiety,Social Anxiety
+General Anxiety Disorder,None of the above,N/A,General Anxiety,Social Anxiety
+OCD,N/A,N/A,General,Customized
+OCD,None of the above,N/A,General,Customized
+Panic Disorder,N/A,N/A,General,Customized
+Panic Disorder,None of the above,N/A,General,Customized
+N/A,N/A,N/A,General,Customized
+N/A,Acrophobia,N/A,General,Customized
+N/A,Arachnophobia,N/A,General,Customized
+N/A,Aviophobia,N/A,General,Customized
+N/A,Claustrophobia,N/A,General,Customized
+N/A,Glossophobia,N/A,General,Customized
+N/A,None of the above,N/A,General,Customized
+N/A,Acrophobia,N/A,Acrophobia,Customized
+N/A,Arachnophobia,N/A,Arachnophobia,Customized
+N/A,Aviophobia,N/A,Aviophobia,Customized
+N/A,Claustrophobia,N/A,Claustrophobia,Customized
+N/A,Glossophobia,N/A,Glossophobia,Customized
+N/A,Acrophobia,N/A,Acrophobia,Acrophobia
+N/A,Arachnophobia,N/A,Arachnophobia,Arachnophobia
+N/A,Aviophobia,N/A,Aviophobia,Aviophobia
+N/A,Claustrophobia,N/A,Claustrophobia,Claustrophobia
+N/A,Glossophobia,N/A,Glossophobia,Glossophobia
+N/A,Acrophobia,N/A,General,Acrophobia
+N/A,Arachnophobia,N/A,General,Arachnophobia
+N/A,Aviophobia,N/A,General,Aviophobia
+N/A,Claustrophobia,N/A,General,Claustrophobia
+N/A,Glossophobia,N/A,General,Glossophobia
+General Anxiety Disorder,N/A,N/A,Social Anxiety,Social Anxiety
+General Anxiety Disorder,None of the above,N/A,Social Anxiety,Social Anxiety
+General Anxiety Disorder,N/A,N/A,General Anxiety,Social Anxiety
+General Anxiety Disorder,None of the above,N/A,General Anxiety,Social Anxiety
+OCD,N/A,N/A,General,Customized
+OCD,None of the above,N/A,General,Customized
+Panic Disorder,N/A,N/A,General,Customized
+Panic Disorder,None of the above,N/A,General,Customized
+Phobias,N/A,N/A,General,Customized
+Phobias,Acrophobia,N/A,General,Acrophobia
+Phobias,Arachnophobia,N/A,General,Arachnophobia
+Phobias,Aviophobia,N/A,General,Aviophobia
+Phobias,Claustrophobia,N/A,General,Claustrophobia
+Phobias,Glossophobia,N/A,General,Glossophobia
+Phobias,None of the above,N/A,General,Customized
+PTSD,N/A,N/A,General,Customized
+PTSD,N/A,Car Accident,General,PTSD Car Accident
+PTSD,N/A,Car Accident,PTSD Car Accident,PTSD Car Accident
+PTSD,None of the above ,N/A,General,Customized
+PTSD,None of the above,Car Accident,General,PTSD Car Accident
+PTSD,None of the above,Car Accident,PTSD Car Accident,PTSD Car Accident

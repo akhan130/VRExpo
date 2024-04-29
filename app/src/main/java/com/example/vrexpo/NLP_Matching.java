@@ -127,7 +127,7 @@ public class NLP_Matching extends AppCompatActivity {
         // Perform NLP matching
         performNLPMatching();
 
-        // Session 1 - Acrophobia
+        // Go to treatment plan page
         Button TreatmentPlans = findViewById(R.id.treatmentPlansButton);
         TreatmentPlans.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -254,65 +254,3 @@ public class NLP_Matching extends AppCompatActivity {
     }
 
 }
-
-
-/***
-Toast.makeText(getApplicationContext(), "Congrats, you have been matched with a therapist", Toast.LENGTH_LONG).show();
-// Create a list to hold the matched therapists
-List<Therapist> therapists = new ArrayList<>();
-
-// Loop through all matched therapists
-for (String therapistId : matchedTherapists) {
-    // Retrieve each matched therapist from the database
-    databaseReference.child(therapistId).addListenerForSingleValueEvent(new ValueEventListener() {
-        @Override
-        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            // Convert the dataSnapshot to a Therapist object
-            Therapist therapist = dataSnapshot.getValue(Therapist.class);
-            if (therapist != null) {
-                // Add the therapist to the list
-                therapists.add(therapist);
-
-                // Update the UI once all therapists are retrieved
-                if (therapists.size() == matchedTherapists.size()) {
-                    displayMatchedTherapists(therapists);
-                }
-            }
-        }
-
-        @Override
-        public void onCancelled(@NonNull DatabaseError databaseError) {
-            // Handle error
-        }
-    });
-}
-}
-}
-
-// Method to display the matched therapists in the RecyclerView
-private void displayMatchedTherapists(List<Therapist> therapists) {
-// Create FirebaseRecyclerOptions using the list of matched therapists
-FirebaseRecyclerOptions<Therapist> options = new FirebaseRecyclerOptions.Builder<Therapist>()
-    .setIndexedQuery(databaseReference.child("TherapistInfo"), databaseReference, Therapist.class)
-    .build();
-
-// Initialize adapter with FirebaseRecyclerOptions
-adapter = new TherapistAdapter(options, this);
-recyclerView.setAdapter(adapter);
-}
-
-} **/
-
-
-/***
- * After submit button is selected in patient history
- * Go to NLP_Matching.java
- *
- * Print out --> you have been matched with a therapist
- *
- * call firebase database to retrieve
- * therapist email
- * therapist number
- * therapist full name
- * therapist specialization
- */
