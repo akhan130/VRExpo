@@ -224,7 +224,6 @@ public class NLP_Matching extends AppCompatActivity {
                 startActivity(intent);
             });
         } else {
-            Toast.makeText(getApplicationContext(), "Congrats, you have been matched with a therapist", Toast.LENGTH_LONG).show();
             List<Therapist> therapists = new ArrayList<>();
             AtomicInteger count = new AtomicInteger();
 
