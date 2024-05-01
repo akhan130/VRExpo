@@ -9,13 +9,13 @@
               <type value="RUNNING_DEVICE_TARGET" />
               <deviceKey>
                 <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="4246514536483098" />
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\JARib\.android\avd\Medium_Phone_API_30.avd" />
                 </Key>
               </deviceKey>
             </Target>
           </runningDeviceTargetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2024-05-01T18:18:58.364141200Z" />
+          <timeTargetWasSelectedWithDropDown value="2024-05-01T18:39:38.207848900Z" />
         </State>
       </entry>
     </value>
