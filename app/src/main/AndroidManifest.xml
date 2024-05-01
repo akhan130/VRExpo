@@ -39,6 +39,9 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".Notification"
+            android:exported="false" />
+        <activity
             android:name=".PostsessionAnswers"
             android:exported="false" />
         <activity
@@ -520,7 +523,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ML_matching"
             android:exported="true">
