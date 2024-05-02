@@ -11,15 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-
-public class TherapistHistory extends AppCompatActivity {
-
-    private Button updateButton;
-    private DatabaseReference databaseReference;
-    private FirebaseAuth mAuth;
-
+public class ViewPatientPostsession extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu
@@ -30,35 +22,35 @@ public class TherapistHistory extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_home:
-                Intent dashIntent = new Intent(TherapistHistory.this, TherapistDashboard.class);
+                Intent dashIntent = new Intent(ViewPatientPostsession.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
             case R.id.action_appointments:
-                Intent appointmentsIntent = new Intent(TherapistHistory.this, TherapistAppointments.class);
+                Intent appointmentsIntent = new Intent(ViewPatientPostsession.this, TherapistAppointments.class);
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(TherapistHistory.this, SearchPatient.class);
+                Intent patientInfoIntent = new Intent(ViewPatientPostsession.this, SearchPatient.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_write_report:
-                Intent reportIntent = new Intent(TherapistHistory.this, WriteReport.class);
+                Intent reportIntent = new Intent(ViewPatientPostsession.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistHistory.this, TherapistMessages.class);
+                Intent messagesIntent = new Intent(ViewPatientPostsession.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:
-                Intent settingsIntent = new Intent(TherapistHistory.this, TherapistAccountSettings.class);
+                Intent settingsIntent = new Intent(ViewPatientPostsession.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_treatmentPlans:
-                Intent treatmentPlans = new Intent(TherapistHistory.this, TreatmentPlans.class);
+                Intent treatmentPlans = new Intent(ViewPatientPostsession.this, TreatmentPlans.class);
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TherapistHistory.this, Zoom.class);
+                Intent zoom = new Intent(ViewPatientPostsession.this, Zoom.class);
                 startActivity(zoom);
                 return true;
             default:
@@ -69,20 +61,10 @@ public class TherapistHistory extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_therapist_history);
+        setContentView(R.layout.activity_view_patient_questions);
 
-
-        updateButton = findViewById(R.id.update_button);
-
-        updateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Update user profile logic here
-            }
-        });
-
-        // Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+        
     }
 }

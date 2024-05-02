@@ -1,16 +1,22 @@
 package com.example.vrexpo;
 
 public class TimeSlot {
+    private String date;
     private String appointmentTime;
     private String appointmentStatus;
     private String patientName;
     private String therapistFullName;
 
-    // Default constructor required for calls to DataSnapshot.getValue(TimeSlot.class)
-    public TimeSlot() {
+    public TimeSlot() {}
+
+    public String getDate() {
+        return date;
     }
 
-    // Getters and setters
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     public String getAppointmentTime() {
         return appointmentTime;
     }

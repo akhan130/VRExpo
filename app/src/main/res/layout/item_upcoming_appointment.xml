@@ -33,28 +33,28 @@
             android:layout_margin="10dp"
             />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Time"
-            android:textSize="10sp"
-            android:textStyle="bold"
-            android:textColor="#111111"
-            android:id="@+id/appointment_time"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="Name"
-            android:id="@+id/person_name"/>
+            android:orientation="vertical"
+            android:layout_gravity="center">
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#111111"
+                android:id="@+id/appointment_time"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10dp"
+                android:text="Name"
+                android:id="@+id/person_name"/>
+
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

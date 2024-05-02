@@ -39,6 +39,9 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".ViewPatientQuestions"
+            android:exported="false" />
+        <activity
             android:name=".PostsessionAnswers"
             android:exported="false" />
         <activity
@@ -128,7 +131,7 @@
             android:exported="false" />
         <activity android:name=".TherapistSetAvailability" />
         <activity
-            android:name=".ViewPatients"
+            android:name=".SearchPatient"
             android:exported="false" />
         <activity
             android:name=".TherapistDashboard"
@@ -520,7 +523,6 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".ML_matching"
             android:exported="true">

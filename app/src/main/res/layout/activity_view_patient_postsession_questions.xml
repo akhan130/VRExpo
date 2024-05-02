@@ -16,10 +16,11 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:padding="10dp"
-            android:text="Postsession Questions Response"
+            android:text="Patient Postsession Questions"
+            android:textColor="@color/black"
             android:textAlignment="center"
-            android:textSize="24sp"
-            />
+            android:textSize="30sp"
+            android:textStyle="bold"/>
     </RelativeLayout>
 
     <ScrollView
@@ -35,21 +36,21 @@
             >
 
             <TextView
-                android:id="@+id/postsessionQ1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="How comfortable did you feel throughout the session? Any physical discomfort?"
-                android:layout_marginTop="8dp"
-                />
+            android:id="@+id/postsessionQ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How comfortable did you feel throughout the session? Any physical discomfort?"
+            android:layout_marginTop="8dp"
+            />
 
             <EditText
-                android:id="@+id/postResponseQ1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:hint="Answer"
-                android:layout_marginTop="8dp"
-                android:layout_below="@+id/postsessionQ1"/>
+            android:id="@+id/postResponseQ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Answer"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/postsessionQ1"/>
 
             <TextView
                 android:id="@+id/postsessionQ2"

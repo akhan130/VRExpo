@@ -4,17 +4,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.AppointmentViewHolder> {
-    private List<AppointmentModel> appointmentList;
+    private List<TimeSlot> appointments;
 
-    public AppointmentAdapter(List<AppointmentModel> appointmentList) {
-        this.appointmentList = appointmentList;
+    public AppointmentAdapter(List<TimeSlot> appointments) {
+        this.appointments = appointments;
     }
 
     @NonNull
@@ -26,20 +30,33 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull AppointmentViewHolder holder, int position) {
-        AppointmentModel appointment = appointmentList.get(position);
-        // Simplified for clarity, you should format the date properly
-        holder.dateTextView.setText("Date: " + appointment.getDate());
-        // Example: just display one of the slots or handle them appropriately
-        if (!appointment.getSlots().isEmpty()) {
-            TimeSlot firstSlot = appointment.getSlots().values().iterator().next();
-            holder.timeTextView.setText("Time: " + firstSlot.getAppointmentTime());
-            holder.nameTextView.setText("Patient: " + firstSlot.getPatientName());
+        TimeSlot appointment = appointments.get(position);
+        // Assuming you have a date field now in TimeSlot class
+        holder.dateTextView.setText("Date: " + formatDate(appointment.getDate()));
+        holder.timeTextView.setText("Time: " + appointment.getAppointmentTime());
+        holder.nameTextView.setText("Patient: " + appointment.getPatientName());
+    }
+
+    private String formatDate(String dateString) {
+        // Assuming dateString is in "MM-dd-yyyy" format
+        SimpleDateFormat format = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
+        try {
+            Date date = format.parse(dateString);
+            // Format date to a different format if required
+            return new SimpleDateFormat("EEE, MMM d, yyyy", Locale.getDefault()).format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return dateString; // Return original string if parsing fails
         }
     }
 
     @Override
     public int getItemCount() {
-        return appointmentList.size();
+        return appointments.size();
+    }
+
+    public void setAppointments(List<TimeSlot> appointments) {
+        this.appointments = appointments;
     }
 
     static class AppointmentViewHolder extends RecyclerView.ViewHolder {

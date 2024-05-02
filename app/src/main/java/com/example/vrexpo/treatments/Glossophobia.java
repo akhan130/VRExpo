@@ -11,16 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.vrexpo.Dashboard;
-import com.example.vrexpo.FindTherapist;
 import com.example.vrexpo.R;
-import com.example.vrexpo.PatientSelectAppointment;
 import com.example.vrexpo.TherapistAccountSettings;
 import com.example.vrexpo.TherapistAppointments;
 import com.example.vrexpo.TherapistDashboard;
 import com.example.vrexpo.TherapistMessages;
 import com.example.vrexpo.TreatmentPlans;
-import com.example.vrexpo.ViewPatients;
+import com.example.vrexpo.SearchPatient;
 import com.example.vrexpo.WriteReport;
 import com.example.vrexpo.Zoom;
 
@@ -44,7 +41,7 @@ public class Glossophobia extends AppCompatActivity {
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(Glossophobia.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(Glossophobia.this, SearchPatient.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_write_report:

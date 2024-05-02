@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -24,7 +23,6 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
-import java.security.Timestamp;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -58,7 +56,7 @@ public class Chat extends AppCompatActivity {
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(Chat.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(Chat.this, SearchPatient.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_messages:

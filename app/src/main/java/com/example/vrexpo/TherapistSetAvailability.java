@@ -55,7 +55,7 @@ public class TherapistSetAvailability extends AppCompatActivity {
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(TherapistSetAvailability.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(TherapistSetAvailability.this, SearchPatient.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_write_report:

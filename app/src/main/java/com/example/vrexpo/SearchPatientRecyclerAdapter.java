@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -40,12 +41,34 @@ public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Patien
         TextView patientNameText;
         TextView phoneNumberText;
         ImageView profilePic;
+        ImageButton reportButton;
+        ImageButton questionsButton;
 
         public PatientModelViewHolder(@NonNull View itemView) {
             super(itemView);
             patientNameText = itemView.findViewById(R.id.patient_name);
             phoneNumberText = itemView.findViewById(R.id.phone_number);
             profilePic = itemView.findViewById(R.id.profile_pic_image_view);
+            reportButton = itemView.findViewById(R.id.report_button);
+            questionsButton = itemView.findViewById(R.id.questions_button);
+
+            reportButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Context can be used from the adapter directly if passed or from itemView.getContext()
+                    Intent intent = new Intent(context, WriteReport.class);
+                    context.startActivity(intent);
+                }
+            });
+
+            questionsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Similar handling for questions button
+                    Intent intent = new Intent(context, ViewPatientQuestions.class); // Update with actual Activity class
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
