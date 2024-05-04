@@ -38,7 +38,7 @@ public class TherapistHistory extends AppCompatActivity {
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(TherapistHistory.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(TherapistHistory.this, SearchPatient.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_write_report:

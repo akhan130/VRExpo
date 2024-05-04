@@ -42,6 +42,9 @@
             android:name=".Notification"
             android:exported="false" />
         <activity
+            android:name=".ViewPatientQuestions"
+            android:exported="false" />
+        <activity
             android:name=".PostsessionAnswers"
             android:exported="false" />
         <activity
@@ -90,9 +93,6 @@
         <activity android:name=".CreateAccount" />
         <activity android:name=".MainActivity" /> <!-- Patient -->
         <activity
-            android:name=".UserProfile"
-            android:exported="false" />
-        <activity
             android:name=".PatientHistory"
             android:exported="false" />
         <activity
@@ -131,7 +131,7 @@
             android:exported="false" />
         <activity android:name=".TherapistSetAvailability" />
         <activity
-            android:name=".ViewPatients"
+            android:name=".SearchPatient"
             android:exported="false" />
         <activity
             android:name=".TherapistDashboard"

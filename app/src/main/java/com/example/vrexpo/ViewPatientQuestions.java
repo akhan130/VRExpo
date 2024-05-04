@@ -18,7 +18,7 @@ import android.widget.ToggleButton;
 
 import java.util.Calendar;
 
-public class PatientRecords extends AppCompatActivity {
+public class ViewPatientQuestions extends AppCompatActivity {
 
     private ToggleButton toggleButton;
     private RelativeLayout preSessionContainer, postSessionContainer;
@@ -30,39 +30,43 @@ public class PatientRecords extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //Inflate the menu
-        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        getMenuInflater().inflate(R.menu.therapist_dashboard_menu, menu);
         return true;
     }
 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_dashboard:
-                Intent dashIntent = new Intent(PatientRecords.this, Dashboard.class);
+            case R.id.action_home:
+                Intent dashIntent = new Intent(ViewPatientQuestions.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
-            case R.id.action_sessionStart:
-                Intent zoom = new Intent(PatientRecords.this, SessionStart.class);
-                startActivity(zoom);
-                return true;
-            case R.id.action_accountInfo:
-                Intent actInfoIntent = new Intent(PatientRecords.this, AccountInfo.class);
-                startActivity(actInfoIntent);
-                return true;
             case R.id.action_appointments:
-                Intent appointments = new Intent(PatientRecords.this, PatientAppointments.class);
-                startActivity(appointments);
+                Intent appointmentsIntent = new Intent(ViewPatientQuestions.this, TherapistAppointments.class);
+                startActivity(appointmentsIntent);
                 return true;
-            case R.id.action_find_therapist:
-                Intent findIntent = new Intent(PatientRecords.this, FindTherapist.class);
-                startActivity(findIntent);
+            case R.id.action_view_patient:
+                Intent patientInfoIntent = new Intent(ViewPatientQuestions.this, SearchPatient.class);
+                startActivity(patientInfoIntent);
+                return true;
+            case R.id.action_write_report:
+                Intent reportIntent = new Intent(ViewPatientQuestions.this, WriteReport.class);
+                startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messages = new Intent(PatientRecords.this, PatientMessages.class);
-                startActivity(messages);
+                Intent messagesIntent = new Intent(ViewPatientQuestions.this, TherapistMessages.class);
+                startActivity(messagesIntent);
                 return true;
-            case R.id.action_patient_settings:
-                Intent settingsIntent = new Intent(PatientRecords.this, PatientSettings.class);
+            case R.id.action_account_settings:
+                Intent settingsIntent = new Intent(ViewPatientQuestions.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
+                return true;
+            case R.id.action_treatmentPlans:
+                Intent treatmentPlans = new Intent(ViewPatientQuestions.this, TreatmentPlans.class);
+                startActivity(treatmentPlans);
+                return true;
+            case R.id.action_zoom:
+                Intent zoom = new Intent(ViewPatientQuestions.this, Zoom.class);
+                startActivity(zoom);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

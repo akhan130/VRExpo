@@ -52,7 +52,7 @@ public class WriteReport extends AppCompatActivity {
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(WriteReport.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(WriteReport.this, SearchPatient.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_write_report:

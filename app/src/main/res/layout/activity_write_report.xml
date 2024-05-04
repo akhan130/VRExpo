@@ -38,7 +38,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
-            android:hint="Today's Date"
+            android:hint="Date of Session"
             android:inputType="text"
             android:padding="10dp" />
 

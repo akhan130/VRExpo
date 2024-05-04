@@ -18,7 +18,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class ViewPatients extends AppCompatActivity {
+public class SearchPatient extends AppCompatActivity {
 
     EditText searchInput;
     ImageButton searchButton;
@@ -37,35 +37,35 @@ public class ViewPatients extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_home:
-                Intent dashIntent = new Intent(ViewPatients.this, TherapistDashboard.class);
+                Intent dashIntent = new Intent(SearchPatient.this, TherapistDashboard.class);
                 startActivity(dashIntent);
                 return true;
             case R.id.action_appointments:
-                Intent appointmentsIntent = new Intent(ViewPatients.this, TherapistAppointments.class);
+                Intent appointmentsIntent = new Intent(SearchPatient.this, TherapistAppointments.class);
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(ViewPatients.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(SearchPatient.this, SearchPatient.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_write_report:
-                Intent reportIntent = new Intent(ViewPatients.this, WriteReport.class);
+                Intent reportIntent = new Intent(SearchPatient.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(ViewPatients.this, TherapistMessages.class);
+                Intent messagesIntent = new Intent(SearchPatient.this, TherapistMessages.class);
                 startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:
-                Intent settingsIntent = new Intent(ViewPatients.this, TherapistAccountSettings.class);
+                Intent settingsIntent = new Intent(SearchPatient.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_treatmentPlans:
-                Intent treatmentPlans = new Intent(ViewPatients.this, TreatmentPlans.class);
+                Intent treatmentPlans = new Intent(SearchPatient.this, TreatmentPlans.class);
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(ViewPatients.this, Zoom.class);
+                Intent zoom = new Intent(SearchPatient.this, Zoom.class);
                 startActivity(zoom);
                 return true;
 
@@ -77,7 +77,7 @@ public class ViewPatients extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_patients);
+        setContentView(R.layout.activity_search_patients);
 
         //Search
         searchInput = findViewById(R.id.search_patient);

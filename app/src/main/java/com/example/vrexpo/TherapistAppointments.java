@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -24,14 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
 
 public class TherapistAppointments extends AppCompatActivity {
 
@@ -60,7 +53,7 @@ public class TherapistAppointments extends AppCompatActivity {
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(TherapistAppointments.this, ViewPatients.class);
+                Intent patientInfoIntent = new Intent(TherapistAppointments.this, SearchPatient.class);
                 startActivity(patientInfoIntent);
                 return true;
             case R.id.action_write_report:
@@ -108,7 +101,6 @@ public class TherapistAppointments extends AppCompatActivity {
 
     private void initializeRecyclerView() {
         appointmentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        appointmentAdapter = new AppointmentAdapter(appointmentList);
         appointmentsRecyclerView.setAdapter(appointmentAdapter);
     }
 
@@ -117,42 +109,40 @@ public class TherapistAppointments extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Appointments");
-            ref.orderByChild("therapist_fullName").equalTo(user.getDisplayName())
-                    .addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            appointmentList.clear();
-                            SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-                            for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
-                                for (DataSnapshot timeSlotSnapshot : dateSnapshot.getChildren()) {
-                                    TimeSlot slot = timeSlotSnapshot.getValue(TimeSlot.class);
-                                    if (slot != null && "Upcoming".equals(slot.getAppointmentStatus())) {
-                                        try {
-                                            String dateString = dateSnapshot.getKey();
-                                            Date date = sdf.parse(dateString);
-                                            if (date != null && date.getTime() > System.currentTimeMillis()) {
-                                                AppointmentModel appointment = new AppointmentModel();
-                                                Map<String, TimeSlot> slots = new HashMap<>();
-                                                slots.put(timeSlotSnapshot.getKey(), slot);
-                                                appointment.setSlots(slots);
-                                                appointment.setDate(dateString);
-                                                appointmentList.add(appointment);
-                                            }
-                                        } catch (ParseException e) {
-                                            Log.e(TAG, "Error parsing date", e);
-                                        }
-                                    }
-                                }
+            // Let's assume that appointments are stored by date at the top level
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    List<TimeSlot> appointmentsForTheDay = new ArrayList<>();
+                    for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
+                        String date = dateSnapshot.getKey(); // The date of the appointments
+                        for (DataSnapshot timeSlotSnapshot : dateSnapshot.getChildren()) {
+                            TimeSlot slot = timeSlotSnapshot.getValue(TimeSlot.class);
+                            if (slot != null && "Upcoming".equals(slot.getAppointmentStatus()) && slot.getTherapistFullName().equals(user.getDisplayName())) {
+                                slot.setDate(date); // Assuming you add a date field in TimeSlot class
+                                appointmentsForTheDay.add(slot);
                             }
-                            appointmentAdapter.notifyDataSetChanged();
                         }
+                    }
+                    updateRecyclerView(appointmentsForTheDay);
+                }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Log.w(TAG, "loadAppointments:onCancelled", databaseError.toException());
-                        }
-                    });
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Log.w(TAG, "loadAppointments:onCancelled", databaseError.toException());
+                }
+            });
         }
     }
 
+    private void updateRecyclerView(List<TimeSlot> appointments) {
+        AppointmentAdapter adapter = (AppointmentAdapter) appointmentsRecyclerView.getAdapter();
+        if (adapter != null) {
+            adapter.setAppointments(appointments);
+            adapter.notifyDataSetChanged();
+        } else {
+            appointmentAdapter = new AppointmentAdapter(appointments);
+            appointmentsRecyclerView.setAdapter(appointmentAdapter);
+        }
+    }
 }
