@@ -105,7 +105,7 @@ public class Dashboard extends AppCompatActivity {
         Intent notifIntent = new Intent(getApplicationContext(), Notification.class);
         notifIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //can pass a url with this
-        notifIntent.putExtra("data", "Hello");
+        notifIntent.putExtra("data", "https://www.youtube.com/watch?v=vyt20Gg2Ckg&ab_channel=CodesEasy");
 
         PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, notifIntent, PendingIntent.FLAG_MUTABLE);
         builder.setContentIntent(pendingIntent);
