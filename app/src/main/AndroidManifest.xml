@@ -90,9 +90,6 @@
         <activity android:name=".CreateAccount" />
         <activity android:name=".MainActivity" /> <!-- Patient -->
         <activity
-            android:name=".UserProfile"
-            android:exported="false" />
-        <activity
             android:name=".PatientHistory"
             android:exported="false" />
         <activity

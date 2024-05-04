@@ -22,23 +22,280 @@
             android:textStyle="bold"/>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/presessionButton"
-        android:layout_width="250dp"
+    <RelativeLayout
+        android:id="@+id/dateSelector"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="312dp"
-        android:text="Pression Questions"
-        />
+        android:layout_below="@+id/contentName"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true">
 
-    <Button
-        android:id="@+id/postsessionButton"
-        android:layout_width="250dp"
+        <EditText
+            android:id="@+id/dateText"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            />
+
+        <Button
+            android:id="@+id/dateButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Date"
+            android:layout_toRightOf="@+id/dateText"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/toggleSession"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/dateSelector"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="372dp"
-        android:text="Postsession Questions"
-        />
+        android:layout_marginTop="10dp"
+        >
+
+        <ToggleButton
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="Post-session"
+            android:textOff="Pre-session"
+            android:checked="false"
+            android:layout_marginTop="10dp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/presessionContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toggleSession"
+        android:visibility="visible"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp">
+
+        <!-- Pre-session questions -->
+
+        <TextView
+            android:id="@+id/presessionQ1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="What do you expect to get out of this session?"
+            android:layout_marginTop="8dp"
+            />
+
+        <EditText
+            android:id="@+id/preResponseQ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Answer"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/presessionQ1"/>
+
+        <TextView
+            android:id="@+id/presessionQ2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have you noticed any difference when exposed to your phobias/trauma after sessions? (write N/A if this is your first session)"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/preResponseQ1"
+            />
+
+        <EditText
+            android:id="@+id/preResponseQ2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Answer"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/presessionQ2"/>
+
+        <TextView
+            android:id="@+id/presessionQ3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="How has VRExpo helped and/or hurt your interactions in the real world over the past week (write N/A if this is your first session)"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/preResponseQ2"
+            />
+
+        <EditText
+            android:id="@+id/preResponseQ3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:hint="Answer"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/presessionQ3"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/postsessionContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toggleSession"
+        android:visibility="gone"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="32dp">
+
+        <!-- Post-session questions -->
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/postsessionQ1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="How comfortable did you feel throughout the session? Any physical discomfort?"
+                    android:layout_marginTop="8dp"
+                    />
+
+                <EditText
+                    android:id="@+id/postResponseQ1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:hint="Answer"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postsessionQ1"/>
+
+                <TextView
+                    android:id="@+id/postsessionQ2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Did you feel fully immersed in the environment? What were the distractions, if any?"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postResponseQ1" />
+
+                <EditText
+                    android:id="@+id/postResponseQ2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:hint="Answer"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postsessionQ2"/>
+
+                <TextView
+                    android:id="@+id/postsessionQ3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="What moments of the session did you feel were very helpful? Harmful?"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postResponseQ2" />
+
+                <EditText
+                    android:id="@+id/postResponseQ3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:hint="Answer"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postsessionQ3"/>
+
+                <TextView
+                    android:id="@+id/postsessionQ4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reflect back on your expectations for this session. Did we meet your expectations, exceed, or not meet expectations?"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postResponseQ3" />
+
+                <EditText
+                    android:id="@+id/postResponseQ4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:hint="Answer"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postsessionQ4"/>
+
+                <TextView
+                    android:id="@+id/postsessionQ5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Were there any components of VRExpo that were difficult to use?"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postResponseQ4" />
+
+                <EditText
+                    android:id="@+id/postResponseQ5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:hint="Answer"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postsessionQ5"/>
+
+                <TextView
+                    android:id="@+id/postsessionQ6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Are there any modifications you would like to make, to make the sessions more suitable to you?"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postResponseQ5" />
+
+                <EditText
+                    android:id="@+id/postResponseQ6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:hint="Answer"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postsessionQ6"/>
+
+                <TextView
+                    android:id="@+id/postsessionQ7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="On a scale from 1-10, how would you rate VRExpo? Would you recommend it to a friend?"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postResponseQ6" />
+
+                <EditText
+                    android:id="@+id/postResponseQ7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:hint="Answer"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postsessionQ7"/>
+
+                <TextView
+                    android:id="@+id/postsessionQ8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Are there any other comments/feedback you would like to share? "
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postResponseQ7" />
+
+                <EditText
+                    android:id="@+id/postResponseQ8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:hint="Answer"
+                    android:layout_marginTop="8dp"
+                    android:layout_below="@+id/postsessionQ8"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/postResponseQ8"
+                    android:layout_marginTop="60dp"/>
+
+            </RelativeLayout>
+        </ScrollView>
+
+    </RelativeLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
