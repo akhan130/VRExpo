@@ -32,7 +32,6 @@
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
-            android:enabled="false"
             android:id="@+id/Certificates"
             />
 
@@ -45,7 +44,6 @@
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
-            android:enabled="false"
             android:id="@+id/Degree"/>
 
         <EditText
@@ -57,7 +55,6 @@
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
-            android:enabled="false"
             android:id="@+id/Education"/>
 
         <EditText
@@ -69,7 +66,6 @@
             android:layout_margin="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
-            android:enabled="false"
             android:id="@+id/WorkHistory"/>
 
         <Button

@@ -102,7 +102,7 @@ public class TherapistInfo extends AppCompatActivity {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(TherapistInfo.this, TherapistDashboard.class);
+                Intent intent = new Intent(TherapistInfo.this, TherapistAccountSettings.class);
                 startActivity(intent);
             }
         });
