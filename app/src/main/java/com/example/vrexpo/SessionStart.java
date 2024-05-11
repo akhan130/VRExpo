@@ -119,7 +119,7 @@ public class SessionStart extends AppCompatActivity {
                     if (snapshot.exists()) {
                         for (DataSnapshot childSnapshot : snapshot.getChildren()) {
                             String currentPhoneNumber = childSnapshot.getKey();
-                            String dateTimeKey = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault()).format(new java.util.Date());
+                            String dateTimeKey = new SimpleDateFormat("MM_dd_yyyy", Locale.getDefault()).format(new java.util.Date());
 
                             Map<String, String> sessionData = new HashMap<>();
                             sessionData.put("Q1 - What do you expect?", answerOne);
