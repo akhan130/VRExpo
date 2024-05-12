@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,53 +23,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Date;
 
 public class PostsessionQuestions extends AppCompatActivity {
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.action_dashboard:
-                Intent dashIntent = new Intent(PostsessionQuestions.this, Dashboard.class);
-                startActivity(dashIntent);
-                return true;
-            case R.id.action_sessionStart:
-                Intent zoom = new Intent(PostsessionQuestions.this, Zoom.class);
-                startActivity(zoom);
-                return true;
-            case R.id.action_accountInfo:
-                Intent actInfoIntent = new Intent(PostsessionQuestions.this, AccountInfo.class);
-                startActivity(actInfoIntent);
-                return true;
-            case R.id.action_appointments:
-                Intent appointments = new Intent(PostsessionQuestions.this, PatientAppointments.class);
-                startActivity(appointments);
-                return true;
-            case R.id.action_find_therapist:
-                Intent findIntent = new Intent(PostsessionQuestions.this, FindTherapist.class);
-                startActivity(findIntent);
-                return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PostsessionQuestions.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
-            case R.id.action_patient_settings:
-                Intent settingsIntent = new Intent(PostsessionQuestions.this, PatientSettings.class);
-                startActivity(settingsIntent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
+    Button submitBtn;
+    private static final String TAG = "PostsessionQuestions";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,13 +41,48 @@ public class PostsessionQuestions extends AppCompatActivity {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        Button submitBtn = findViewById(R.id.submitButton);
+        submitBtn = findViewById(R.id.submitButton);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 submitData();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_dashboard:
+                startActivity(new Intent(PostsessionQuestions.this, Dashboard.class));
+                return true;
+            case R.id.action_sessionStart:
+                startActivity(new Intent(PostsessionQuestions.this, ZegoCloudHome.class));
+                return true;
+            case R.id.action_accountInfo:
+                startActivity(new Intent(PostsessionQuestions.this, AccountInfo.class));
+                return true;
+            case R.id.action_appointments:
+                startActivity(new Intent(PostsessionQuestions.this, PatientAppointments.class));
+                return true;
+            case R.id.action_find_therapist:
+                startActivity(new Intent(PostsessionQuestions.this, FindTherapist.class));
+                return true;
+            case R.id.action_messages:
+                startActivity(new Intent(PostsessionQuestions.this, PatientMessages.class));
+                return true;
+            case R.id.action_patient_settings:
+                startActivity(new Intent(PostsessionQuestions.this, PatientSettings.class));
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     private void submitData() {
@@ -149,25 +147,48 @@ public class PostsessionQuestions extends AppCompatActivity {
                             reference.child(currentPhoneNumber).child("Post-Session Questions").child(dateTimeKey).setValue(sessionData)
                                     .addOnSuccessListener(aVoid -> {
                                         Toast.makeText(PostsessionQuestions.this, "Answers submitted successfully!", Toast.LENGTH_SHORT).show();
-                                        Intent sessionIntent = new Intent(PostsessionQuestions.this, Dashboard.class);
+                                        Log.d(TAG, "Data submitted successfully");
+                                        Intent sessionIntent = new Intent(PostsessionQuestions.this, AI_Analysis.class);
+                                        sessionIntent.putExtra("Comfort", comfort);
+                                        sessionIntent.putExtra("Immersion", immersion);
+                                        sessionIntent.putExtra("HelpfulHarmful", helpfulHarmful);
+                                        sessionIntent.putExtra("Expectations", expectations);
+                                        sessionIntent.putExtra("DifficultComponents", difficultComponents);
+                                        sessionIntent.putExtra("Modifications", modifications);
+                                        sessionIntent.putExtra("Rating", rating);
+                                        sessionIntent.putExtra("AdditionalFeedback", additionalFeedback);
+
+                                        Log.d("Comfort: ", comfort);
+                                        Log.d("Immersion: ", immersion);
+                                        Log.d("HelpfulHarmful: ", helpfulHarmful);
+                                        Log.d("Expectations: ", expectations);
+                                        Log.d("DifficultComponents: ", difficultComponents);
+                                        Log.d("Modifications: ", modifications);
+                                        Log.d("Rating: ", rating);
+                                        Log.d("AdditionalFeedback: ", additionalFeedback);
+
                                         startActivity(sessionIntent);
                                     })
                                     .addOnFailureListener(e -> {
                                         Toast.makeText(PostsessionQuestions.this, "Failed to submit answers.", Toast.LENGTH_SHORT).show();
+                                        Log.e(TAG, "Failed to submit answers: " + e.getMessage());
                                     });
                         }
                     } else {
                         Toast.makeText(PostsessionQuestions.this, "User not found.", Toast.LENGTH_SHORT).show();
+                        Log.e(TAG, "User not found");
                     }
                 }
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(PostsessionQuestions.this, "Database error: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Database error: " + error.getMessage());
                 }
             });
         } else {
             Toast.makeText(PostsessionQuestions.this, "No user is logged in.", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "No user is logged in");
         }
     }
 

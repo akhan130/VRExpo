@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "vrexpo-421920",
+  "private_key_id": "bb80706eb4015f06d53fd92f005d6346d69cb92c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDPmttpjiQxrqdM\ntRH316A8/+bQ7eR/UaQ5hKJ+olJSQeVbBHYW2gMuU4rouAW6y5ZNUtZy4VDPw+ES\n1vebZ4nqLh4uXPG1NhG9I9tAaQohirHc8C8DGNKQ8TISjxOZp2plAPv7KPVypLgC\njnImML3a0rbtKCVbDtPAKm0WzkOtKOnzPj1YDcCgIe307FhA1Yn7A3/3IR02jS1v\nK+CDpCLBWLkvdiZ2sK5hHICcv/Y0OgrACZbZ3pxyhD11CzzDWAV0w0xKlwTKyRFh\nG/6/FMW97R7gIgfQ2vVnBUINuA3PVVzrHWvehOyu0/wy5nTFXgeUs42qB28PYaY0\n13FsZ311AgMBAAECggEAF0hwzxfH62KBFNNB3p/qMq0of8oOVFEdr+22I6mkveDy\nDhEkBVASB0ILVCo/SkHG64kcz+mBHKwFNA2z21PzXbYqYFzAJuiXeLTqxACDyFs7\ns2GkhB5mjybdzMMLGbJy9jz0BakETgU3NeIv3yScRkxXg6V6+wlgqi6X6XTcljDK\nirRVTxcUYzD5ZnxPq+tskqxw5nKQre6MHhI+OmkgHnkR9+r799Ps0+B5llyxoS5N\nMztPbFmtcpzca1p6nsByUbGURMW1C23SrWXxutnzLNw31pZz20FacAG5mVb/SV+l\nwj3N7n8E8MXaWmSGCctzfKiIT0mjrLgHnHbwE3/OAQKBgQD9eqixBcHQnmOSV7BR\nz0NPMBsuJNBHmqx31z3TNq3ddDexpQHvrWT1QVMJq+ol1GMc8chqoC0XXjcm8QRE\nQuArewyRmK1nJHKtqNCrMwRn+B2xG84uROctDNPK5pUl6m4XuzCDHC4dB/1FuE8C\nwuUQfCRML1PppyQRqRDDpdMuQQKBgQDRq2fH+Gv/z2bYL1I9vtsBzrQW7ZJGgp5A\nixmUNYJWl0Z9uB4eTrK6LQvwVCkOy0HpyBtTG34MWUDuYlmoa3ahRHZdaH3tlGeX\ngRobcXcLRGdDUOQZkwP0VHm3aW6I3XymtwLYlmuW4tuek7VQff9LYWxSjV8y/LIt\n63g5FIhqNQKBgQDNBjaGIOL4q/Rb/UNnmJ6X4ZBKjYpOMISJ1nZybcrJ0ePuc0oS\npAyB95mDvCMDADw+wC5cWDzApvszK0VJNVJ+uOOcrIKtZ6S+ZEqL/xL0SZMymwv1\nDtRx8usoNcOzzF/KICWIFvYRk1G/3+lAkYWYBOGTIcDcv82D31zo8yrSQQKBgQDP\n9t+dbT5SIXm0/Frqe5/nDwt5onLwFSa6hj38z4ZUNP/qOvFExnJoT74DxrZiwiDC\nrYTMzfwca3sH9+1OLCkilDGDPN2LBSQrFha7GbQmLNbv4hAdfcDyW8fOsHi+sFGv\nWt8rzScyJhoIFCJHkHHkZuF2kFrYy+Q/v8sjcsZL8QKBgD0RyZT8EQ3USQvw9sUS\niSPnodHh8ccEwPjFeNmyu5Q95tRQS3IS5DZhOnM6radM1WuznwkFIUejJKYF7ZPP\ndSgsm3MRn7fW9X/5IpZyOTUrQ7StmsXQ1stWzBPZGABiMKYXMPaM8GItxF8v3F7f\nIN/8vnJocXSUA+TR4xduYAI/\n-----END PRIVATE KEY-----\n",
+  "client_email": "vrexpo@vrexpo-421920.iam.gserviceaccount.com",
+  "client_id": "101812614355164405723",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/vrexpo%40vrexpo-421920.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

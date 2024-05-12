@@ -66,7 +66,7 @@ public class ViewPatientQuestions extends AppCompatActivity implements View.OnCl
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(ViewPatientQuestions.this, Zoom.class);
+                Intent zoom = new Intent(ViewPatientQuestions.this, ZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             default:

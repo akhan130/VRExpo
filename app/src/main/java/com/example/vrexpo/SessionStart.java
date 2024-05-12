@@ -46,7 +46,7 @@ public class SessionStart extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(SessionStart.this, Zoom.class);
+                Intent zoom = new Intent(SessionStart.this, ZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
@@ -130,7 +130,7 @@ public class SessionStart extends AppCompatActivity {
                             reference.child(currentPhoneNumber).child("Pre-Session Questions").child(dateTimeKey).setValue(sessionData)
                                     .addOnSuccessListener(aVoid -> {
                                         Toast.makeText(SessionStart.this, "Answers submitted successfully!", Toast.LENGTH_SHORT).show();
-                                        Intent sessionIntent = new Intent(SessionStart.this, Zoom.class);
+                                        Intent sessionIntent = new Intent(SessionStart.this, ZegoCloudHome.class);
                                         startActivity(sessionIntent);
                                     })
                                     .addOnFailureListener(e -> {

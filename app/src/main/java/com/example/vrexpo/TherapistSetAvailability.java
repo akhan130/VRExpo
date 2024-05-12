@@ -74,7 +74,7 @@ public class TherapistSetAvailability extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TherapistSetAvailability.this, Zoom.class);
+                Intent zoom = new Intent(TherapistSetAvailability.this, ZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             default:

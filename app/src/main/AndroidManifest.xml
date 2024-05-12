@@ -39,6 +39,9 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".CallActivity"
+            android:exported="false" />
+        <activity
             android:name=".Notification"
             android:exported="false" />
         <activity
@@ -95,12 +98,14 @@
         <activity
             android:name=".PatientHistory"
             android:exported="false" />
-        <activity
+
+        <!--<activity
             android:name=".PostsessionQuestions"
             android:exported="false" />
         <activity
             android:name=".PresessionQuestions"
-            android:exported="false" />
+            android:exported="false" /> -->
+
         <activity
             android:name=".Dashboard"
             android:exported="false" />
@@ -143,28 +148,7 @@
             android:name=".TherapistHistory"
             android:exported="false" /> <!-- Other -->
         <activity android:name=".Session" />
-        <activity
-            android:name=".MeetingActivity"
-            android:exported="true" />
-        <activity
-            android:name=".JoinSessionActivity"
-            android:exported="false"
-            android:windowSoftInputMode="stateAlwaysVisible" />
-        <activity
-            android:name=".Zoom"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".IntegrationActivity"
-            android:exported="false" />
 
-        <service
-            android:name=".notification.NotificationService"
-            android:exported="false"
-            android:foregroundServiceType="mediaProjection|microphone" /> <!-- Anila Zoom Additions End -->
         <!-- ADDED BY ANILA DELETE WHEN ISSUE IS FIXED -->
         <activity
             android:name=".TreatmentPlans"
@@ -528,11 +512,51 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AI_Analysis"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".EventEditActivity" />
         <activity android:name=".WeekViewActivity" />
         <activity android:name=".CalendarMainActivity" />
+        <activity
+            android:name=".ZegoCloudHome"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".PostsessionQuestions"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".PresessionQuestions"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

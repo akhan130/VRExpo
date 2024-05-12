@@ -18,7 +18,7 @@ import com.example.vrexpo.TherapistMessages;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.SearchPatient;
 import com.example.vrexpo.WriteReport;
-import com.example.vrexpo.Zoom;
+import com.example.vrexpo.ZegoCloudHome;
 
 public class Arachnophobia extends AppCompatActivity {
     @Override
@@ -56,7 +56,7 @@ public class Arachnophobia extends AppCompatActivity {
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(Arachnophobia.this, Zoom.class);
+                Intent zoom = new Intent(Arachnophobia.this, ZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_treatmentPlans:

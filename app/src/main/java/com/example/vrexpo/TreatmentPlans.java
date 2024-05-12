@@ -53,7 +53,7 @@ public class TreatmentPlans extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TreatmentPlans.this, Zoom.class);
+                Intent zoom = new Intent(TreatmentPlans.this, ZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             default:

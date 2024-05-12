@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -30,12 +31,16 @@ import java.util.Map;
 
 public class PresessionQuestions extends AppCompatActivity {
 
+    private static final String TAG = "PresessionQuestions";
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Inflate the menu
+        // Inflate the menu
         getMenuInflater().inflate(R.menu.dashboard_menu, menu);
         return true;
     }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_dashboard:
@@ -43,7 +48,7 @@ public class PresessionQuestions extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(PresessionQuestions.this, PresessionQuestions.class);
+                Intent zoom = new Intent(PresessionQuestions.this, ZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
@@ -113,6 +118,13 @@ public class PresessionQuestions extends AppCompatActivity {
                                 String answerTwo = ((EditText) findViewById(R.id.editTextTextMultiLine3)).getText().toString();
                                 String answerThree = ((EditText) findViewById(R.id.editTextTextMultiLine4)).getText().toString();
 
+                                // Check if any of the answers is empty
+                                if (answerOne.isEmpty() || answerTwo.isEmpty() || answerThree.isEmpty()) {
+                                    Toast.makeText(PresessionQuestions.this, "Please fill in all fields before submitting.", Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                // Save session data in Firebase
                                 Map<String, String> sessionData = new HashMap<>();
                                 sessionData.put("Question1", answerOne);
                                 sessionData.put("Question2", answerTwo);
@@ -123,9 +135,23 @@ public class PresessionQuestions extends AppCompatActivity {
                                         .addOnSuccessListener(aVoid -> {
                                             Log.d(TAG, "Answers submitted successfully");
                                             Toast.makeText(PresessionQuestions.this, "Answers submitted successfully!", Toast.LENGTH_SHORT).show();
-                                            Intent sessionIntent = new Intent(PresessionQuestions.this, Session.class);
+
+                                            // Store data in SharedPreferences
+                                            SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("Question1", answerOne);
+                                            editor.putString("Question2", answerTwo);
+                                            editor.putString("Question3", answerThree);
+                                            editor.apply();
+
+                                            Log.d("Question 1: ", answerOne);
+                                            Log.d("Question 2: ", answerTwo);
+                                            Log.d("Question 3: ", answerThree);
+
+                                            Intent sessionIntent = new Intent(PresessionQuestions.this, ZegoCloudHome.class);
                                             startActivity(sessionIntent);
                                         })
+
                                         .addOnFailureListener(e -> {
                                             Log.e(TAG, "Failed to submit answers", e);
                                             Toast.makeText(PresessionQuestions.this, "Failed to submit answers.", Toast.LENGTH_SHORT).show();
@@ -144,4 +170,5 @@ public class PresessionQuestions extends AppCompatActivity {
         }
     }
 }
+
 

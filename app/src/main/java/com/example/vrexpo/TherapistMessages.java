@@ -66,7 +66,7 @@ public class TherapistMessages extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TherapistMessages.this, Zoom.class);
+                Intent zoom = new Intent(TherapistMessages.this, ZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
 

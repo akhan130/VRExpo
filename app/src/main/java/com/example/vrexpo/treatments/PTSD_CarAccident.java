@@ -19,7 +19,7 @@ import com.example.vrexpo.TherapistMessages;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.SearchPatient;
 import com.example.vrexpo.WriteReport;
-import com.example.vrexpo.Zoom;
+import com.example.vrexpo.ZegoCloudHome;
 
 public class PTSD_CarAccident extends AppCompatActivity {
     @Override
@@ -57,7 +57,7 @@ public class PTSD_CarAccident extends AppCompatActivity {
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(PTSD_CarAccident.this, Zoom.class);
+                Intent zoom = new Intent(PTSD_CarAccident.this, ZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_treatmentPlans:
