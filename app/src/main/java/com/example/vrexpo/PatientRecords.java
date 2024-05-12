@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,11 +12,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,12 +30,12 @@ import java.util.Locale;
 
 public class PatientRecords extends AppCompatActivity implements View.OnClickListener {
 
-    private ToggleButton toggleButton;
     private RelativeLayout preSessionContainer, postSessionContainer;
-
     Button btnDatePicker;
     EditText txtDate;
     private int mYear, mMonth, mDay;
+    private Switch toggleButton;
+
     FirebaseDatabase database = FirebaseDatabase.getInstance();
 
 
@@ -81,6 +81,7 @@ public class PatientRecords extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    @SuppressLint({"MissingInflatedId", "WrongViewCast"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,7 +92,7 @@ public class PatientRecords extends AppCompatActivity implements View.OnClickLis
 
         preSessionContainer = findViewById(R.id.presessionContainer);
         postSessionContainer = findViewById(R.id.postsessionContainer);
-        toggleButton = findViewById(R.id.toggleButton);
+        toggleButton = findViewById(R.id.viewQuestionButton);
 
         btnDatePicker = findViewById(R.id.dateButton);
         txtDate = findViewById(R.id.dateText);
@@ -99,22 +100,25 @@ public class PatientRecords extends AppCompatActivity implements View.OnClickLis
 
 
         toggleButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                // Post-session questions visible
-                postSessionContainer.setVisibility(View.VISIBLE);
-                preSessionContainer.setVisibility(View.GONE);
-            } else {
-                // Pre-session questions visible
-                preSessionContainer.setVisibility(View.VISIBLE);
-                postSessionContainer.setVisibility(View.GONE);
+            switchContainers(isChecked);
+            if (!txtDate.getText().toString().isEmpty()) {
+                loadDataForDate(txtDate.getText().toString(), isChecked);
             }
         });
     }
 
+    private void switchContainers(boolean isPostSession) {
+        if (isPostSession) {
+            postSessionContainer.setVisibility(View.VISIBLE);
+            preSessionContainer.setVisibility(View.GONE);
+        } else {
+            preSessionContainer.setVisibility(View.VISIBLE);
+            postSessionContainer.setVisibility(View.GONE);
+        }
+    }
+
     public void onClick(View v) {
-
         if (v == btnDatePicker) {
-
             // Get Current Date
             final Calendar c = Calendar.getInstance();
             mYear = c.get(Calendar.YEAR);
@@ -123,69 +127,52 @@ public class PatientRecords extends AppCompatActivity implements View.OnClickLis
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     (view, year, monthOfYear, dayOfMonth) -> {
-                        // Formatting the date as per Firebase keys
                         String formattedDate = String.format(Locale.getDefault(), "%02d_%02d_%d", monthOfYear + 1, dayOfMonth, year);
-                        loadDataForDate(formattedDate);
-
-                        // Update the EditText to show the date
                         String userFormattedDate = String.format(Locale.getDefault(), "%02d/%02d/%d", monthOfYear + 1, dayOfMonth, year);
                         txtDate.setText(userFormattedDate);
+                        loadDataForDate(formattedDate, toggleButton.isChecked());
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
         }
     }
 
-    private void loadDataForDate(String date) {
+    private void loadDataForDate(String date, boolean checked) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             DatabaseReference usersRef = database.getReference("PatientAccount");
 
-            // First, fetch the user's phone number using their email.
+            // Fetch the user's phone number using their email.
             usersRef.orderByChild("email").equalTo(user.getEmail()).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if (dataSnapshot.exists()) {
                         for(DataSnapshot userSnapshot : dataSnapshot.getChildren()){
-                            String phoneNumber = userSnapshot.getKey();
-                            DatabaseReference dateRef = database.getReference("PatientAccount")
-                                    .child(phoneNumber).child("Pre-Session Questions").child(date);
+                            String phoneNumber = userSnapshot.getKey();  // Extracted phone number
+
+                            // Determine which session type to query based on the toggle state
+                            String sessionType = toggleButton.isChecked() ? "Post-Session Questions" : "Pre-Session Questions";
+                            DatabaseReference dateRef = usersRef.child(phoneNumber).child(sessionType).child(date);
 
                             dateRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot questionSnapshot) {
                                     if (questionSnapshot.exists()) {
-                                        String answerQ1 = questionSnapshot.child("Q1 - What do you expect?").getValue(String.class);
-                                        String answerQ2 = questionSnapshot.child("Q2 - Notice any differences?").getValue(String.class);
-                                        String answerQ3 = questionSnapshot.child("Q3 - How has VRExpo helped?").getValue(String.class);
-
-                                        EditText preResponseQ1 = findViewById(R.id.preResponseQ1);
-                                        EditText preResponseQ2 = findViewById(R.id.preResponseQ2);
-                                        EditText preResponseQ3 = findViewById(R.id.preResponseQ3);
-
-                                        preResponseQ1.setText(answerQ1);
-                                        preResponseQ2.setText(answerQ2);
-                                        preResponseQ3.setText(answerQ3);
+                                        // Update UI with the fetched data
+                                        updateUIWithSessionData(questionSnapshot, sessionType);
                                     } else {
-                                        // Reset the fields if no data is present on the selected date
-                                        EditText preResponseQ1 = findViewById(R.id.preResponseQ1);
-                                        EditText preResponseQ2 = findViewById(R.id.preResponseQ2);
-                                        EditText preResponseQ3 = findViewById(R.id.preResponseQ3);
-
-                                        preResponseQ1.setText("");
-                                        preResponseQ2.setText("");
-                                        preResponseQ3.setText("");
-
-                                        Toast.makeText(PatientRecords.this, "No data for selected date", Toast.LENGTH_SHORT).show();                                    }
+                                        clearSessionFields();  // Reset the fields if no data is present
+                                        Toast.makeText(PatientRecords.this, "No data for selected date", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
+
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
                                     Toast.makeText(PatientRecords.this, "Failed to load question data", Toast.LENGTH_SHORT).show();
                                 }
                             });
-
                         }
                     } else {
-                        Toast.makeText(PatientRecords.this, "No data for selected date", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PatientRecords.this, "No user data found for the email", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -199,5 +186,82 @@ public class PatientRecords extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    // Use this method if updateUIWithSessionData indeed needs a String for the second parameter.
+    private void updateUIWithSessionData(DataSnapshot questionSnapshot, String sessionType) {
+        if (sessionType.equals("Pre-Session Questions")) {
 
+            EditText preResponseQ1 = findViewById(R.id.preResponseQ1);
+            EditText preResponseQ2 = findViewById(R.id.preResponseQ2);
+            EditText preResponseQ3 = findViewById(R.id.preResponseQ3);
+
+            preResponseQ1.setText(questionSnapshot.child("Q1 - What do you expect?").getValue(String.class));
+            preResponseQ2.setText(questionSnapshot.child("Q2 - Notice any differences?").getValue(String.class));
+            preResponseQ3.setText(questionSnapshot.child("Q3 - How has VRExpo helped?").getValue(String.class));
+
+        } else if (sessionType.equals("Post-Session Questions")) {
+            EditText postResponseQ1 = findViewById(R.id.postResponseQ1);
+            EditText postResponseQ2 = findViewById(R.id.postResponseQ2);
+            EditText postResponseQ3 = findViewById(R.id.postResponseQ3);
+            EditText postResponseQ4 = findViewById(R.id.postResponseQ4);
+            EditText postResponseQ5 = findViewById(R.id.postResponseQ5);
+            EditText postResponseQ6 = findViewById(R.id.postResponseQ6);
+            EditText postResponseQ7 = findViewById(R.id.postResponseQ7);
+            EditText postResponseQ8 = findViewById(R.id.postResponseQ8);
+
+            postResponseQ1.setText(questionSnapshot.child("Comfort").getValue(String.class));
+            postResponseQ2.setText(questionSnapshot.child("Immersion").getValue(String.class));
+            postResponseQ3.setText(questionSnapshot.child("Helpful or Harmful").getValue(String.class));
+            postResponseQ4.setText(questionSnapshot.child("Expectations").getValue(String.class));
+            postResponseQ5.setText(questionSnapshot.child("Difficult Components").getValue(String.class));
+            postResponseQ6.setText(questionSnapshot.child("Modifications").getValue(String.class));
+            postResponseQ7.setText(questionSnapshot.child("Ratings").getValue(String.class));
+            postResponseQ8.setText(questionSnapshot.child("Additional Feedback").getValue(String.class));
+        }
+    }
+
+//    private void updateUIWithSessionData(DataSnapshot questionSnapshot, boolean isPostSession) {
+//        if (isPostSession) {
+//            // Update post-session fields
+//            EditText postResponseQ1 = findViewById(R.id.postResponseQ1);
+//            EditText postResponseQ2 = findViewById(R.id.postResponseQ2);
+//            EditText postResponseQ3 = findViewById(R.id.postResponseQ3);
+//            EditText postResponseQ4 = findViewById(R.id.postResponseQ4);
+//            EditText postResponseQ5 = findViewById(R.id.postResponseQ5);
+//            EditText postResponseQ6 = findViewById(R.id.postResponseQ6);
+//            EditText postResponseQ7 = findViewById(R.id.postResponseQ7);
+//            EditText postResponseQ8 = findViewById(R.id.postResponseQ8);
+//
+//            postResponseQ1.setText(questionSnapshot.child("Comfort").getValue(String.class));
+//            postResponseQ2.setText(questionSnapshot.child("Immersion").getValue(String.class));
+//            postResponseQ3.setText(questionSnapshot.child("Helpful or Harmful").getValue(String.class));
+//            postResponseQ4.setText(questionSnapshot.child("Expectations").getValue(String.class));
+//            postResponseQ5.setText(questionSnapshot.child("Difficult Components").getValue(String.class));
+//            postResponseQ6.setText(questionSnapshot.child("Modifications").getValue(String.class));
+//            postResponseQ7.setText(questionSnapshot.child("Ratings").getValue(String.class));
+//            postResponseQ8.setText(questionSnapshot.child("Additional Feedback").getValue(String.class));
+//        } else {
+//            // Update pre-session fields
+//            EditText preResponseQ1 = findViewById(R.id.preResponseQ1);
+//            EditText preResponseQ2 = findViewById(R.id.preResponseQ2);
+//            EditText preResponseQ3 = findViewById(R.id.preResponseQ3);
+//
+//            preResponseQ1.setText(questionSnapshot.child("Q1 - What do you expect?").getValue(String.class));
+//            preResponseQ2.setText(questionSnapshot.child("Q2 - Notice any differences?").getValue(String.class));
+//            preResponseQ3.setText(questionSnapshot.child("Q3 - How has VRExpo helped?").getValue(String.class));
+//        }
+//    }
+
+    private void clearSessionFields() {
+        // Clear all relevant fields
+        EditText preResponseQ1 = findViewById(R.id.preResponseQ1);
+        EditText preResponseQ2 = findViewById(R.id.preResponseQ2);
+        EditText preResponseQ3 = findViewById(R.id.preResponseQ3);
+        EditText postResponseQ1 = findViewById(R.id.postResponseQ1); // Assume these IDs are correct
+
+        preResponseQ1.setText("");
+        preResponseQ2.setText("");
+        preResponseQ3.setText("");
+        postResponseQ1.setText(""); // Clear all fields
+        // Repeat for all necessary fields
+    }
 }
