@@ -13,17 +13,17 @@ public class CalendarUtils
 {
     public static LocalDate selectedDate;
 
-    public static String formattedDate(LocalDate date)
-    {
+    public static String formatDate(LocalDate date) {
         DateTimeFormatter formatter = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy");
+            formatter = DateTimeFormatter.ofPattern("MM-dd-yyyy");
         }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return date.format(formatter);
         }
         return null;
     }
+
 
     public static String formattedTime(LocalTime time)
     {

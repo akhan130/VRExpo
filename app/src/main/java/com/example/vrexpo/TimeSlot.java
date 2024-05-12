@@ -4,7 +4,7 @@ public class TimeSlot {
     private String date;
     private String appointmentTime;
     private String appointmentStatus;
-    private String patientName;
+    private String patient_name;
     private String therapistFullName;
 
     public TimeSlot() {}
@@ -33,12 +33,12 @@ public class TimeSlot {
         this.appointmentStatus = appointmentStatus;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public String getPatient_name() {
+        return patient_name;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
+    public void setPatient_name(String patient_name) {
+        this.patient_name = patient_name;
     }
 
     public String getTherapistFullName() {

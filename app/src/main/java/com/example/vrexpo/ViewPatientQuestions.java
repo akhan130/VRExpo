@@ -14,13 +14,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.Switch;
 import android.widget.ToggleButton;
 
 import java.util.Calendar;
 
-public class ViewPatientQuestions extends AppCompatActivity {
+public class ViewPatientQuestions extends AppCompatActivity implements View.OnClickListener{
 
-    private ToggleButton toggleButton;
+    private Switch viewQuestionsButton;
     private RelativeLayout preSessionContainer, postSessionContainer;
 
     Button btnDatePicker;
@@ -81,21 +82,24 @@ public class ViewPatientQuestions extends AppCompatActivity {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
+        btnDatePicker = findViewById(R.id.dateButton);
+        txtDate = findViewById(R.id.dateText);
+        btnDatePicker.setOnClickListener(this);
+
         preSessionContainer = findViewById(R.id.presessionContainer);
         postSessionContainer = findViewById(R.id.postsessionContainer);
-        toggleButton = findViewById(R.id.toggleButton);
+        viewQuestionsButton = findViewById(R.id.viewQuestionButton);
 
-        toggleButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+        viewQuestionsButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                // Post-session questions visible
-                postSessionContainer.setVisibility(View.VISIBLE);
                 preSessionContainer.setVisibility(View.GONE);
+                postSessionContainer.setVisibility(View.VISIBLE);
             } else {
-                // Pre-session questions visible
                 preSessionContainer.setVisibility(View.VISIBLE);
                 postSessionContainer.setVisibility(View.GONE);
             }
         });
+
     }
 
     public void onClick(View v) {

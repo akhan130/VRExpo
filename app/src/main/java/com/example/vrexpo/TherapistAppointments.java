@@ -89,7 +89,7 @@ public class TherapistAppointments extends AppCompatActivity {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
-        appointmentsRecyclerView = findViewById(R.id.upcoming_appointments_recycler_view);
+        appointmentsRecyclerView = findViewById(R.id.calendarRecyclerView);
 
         initializeRecyclerView();
 

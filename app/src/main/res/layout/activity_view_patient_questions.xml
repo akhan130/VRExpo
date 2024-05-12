@@ -51,17 +51,36 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/dateSelector"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_marginTop="10dp">
 
-        <ToggleButton
-            android:id="@+id/toggleButton"
+        <TextView
+            android:id="@+id/presessionQuestionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textOn="Post-session"
-            android:textOff="Pre-session"
-            android:checked="false"
-            android:layout_marginTop="10dp"/>
+            android:text="Pressesion"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            />
+
+        <Switch
+            android:id="@+id/viewQuestionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/presessionQuestionText"
+            />
+
+        <TextView
+            android:id="@+id/postsessionQuestionText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Postsession"
+            android:layout_toRightOf="@+id/viewQuestionButton"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="2dp"
+            />
+
     </RelativeLayout>
 
     <RelativeLayout

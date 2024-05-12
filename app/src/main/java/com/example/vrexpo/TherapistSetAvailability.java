@@ -39,7 +39,6 @@ public class TherapistSetAvailability extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Inflate the menu
         getMenuInflater().inflate(R.menu.therapist_dashboard_menu, menu);
         return true;
     }
@@ -87,7 +86,6 @@ public class TherapistSetAvailability extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_availability);
 
-        // Setting up the action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
@@ -161,7 +159,7 @@ public class TherapistSetAvailability extends AppCompatActivity {
 
     private void sendAvailabilityToFirebase(long selectedDate, List<String> selectedTimeSlots) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
-        String dateString = dateFormat.format(new Date(selectedDate)); // Convert the milliseconds to a Date object
+        String dateString = dateFormat.format(new Date(selectedDate));
 
         DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference("Appointments").child(dateString);
 

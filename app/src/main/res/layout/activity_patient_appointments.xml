@@ -1,78 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".PatientAppointments">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_above="@+id/my_toolbar">
 
+        <!-- Appointment Heading -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:gravity="center"
             android:text="View/Book Appointments"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Upcoming Appointments: "
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:padding="10dp"
-            />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/upcoming_appointments"
+        <!-- Week Navigation -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
 
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:onClick="nextMonthAction"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/purple_500"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/monthYearTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAlignment="center"
+                android:textSize="20sp"/>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_arrow_forward_24"
+                android:onClick="nextMonthAction"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/purple_500"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+        <!-- Calendar View -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendarRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <!-- Appointment List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appointmentListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <!-- Buttons for Appointment Management -->
         <Button
             android:id="@+id/book_appointment_button"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Book Appointment"
-            />
-
-        <Button
-            android:id="@+id/upcoming_appointment_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text="Upcoming Appointments"
-            />
+            android:text="Book Appointment"/>
 
         <Button
             android:id="@+id/cancel_appointment_button"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:text= "Cancel Appointment"
-            />
+            android:text="Cancel Appointment"/>
 
     </LinearLayout>
 
+    <!-- Toolbar at the bottom -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="10dp"
-        android:layout_alignParentBottom="true"
         android:background="@color/purple_500"
+        android:layout_alignParentBottom="true"
         android:elevation="4dp"
         android:gravity="center" />
+
 </RelativeLayout>

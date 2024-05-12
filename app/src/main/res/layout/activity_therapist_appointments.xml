@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -29,22 +30,59 @@
             android:textSize="16sp"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:padding="10dp"
             />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/upcoming_appointments_recycler_view"
+        <!-- Week Navigation -->
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            />
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp"
+            >
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_arrow_back_24"
+                android:onClick="nextMonthAction"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/purple_500"
+                app:tint="@color/white" />
+            <TextView
+                android:id="@+id/monthYearTV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:textAlignment="center"
+                android:textSize="20sp"/>
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/baseline_arrow_forward_24"
+                android:onClick="nextMonthAction"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/purple_500"
+                app:tint="@color/white" />
+        </LinearLayout>
+
+        <!-- Calendar View -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/calendarRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <!-- Appointment List -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/appointmentListView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/set_availability_button"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:text="Set Availability"
             />
 
@@ -53,8 +91,13 @@
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp"
             android:text= "Cancel Appointment"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             />
 
     </LinearLayout>
