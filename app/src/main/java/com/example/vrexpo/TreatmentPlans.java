@@ -66,6 +66,9 @@ public class TreatmentPlans extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treatment_plans);
 
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
         // Treatment 1 - Social Anxiety
         Button SocialAnxiety = findViewById(R.id.SocialAnxiety);
         SocialAnxiety.setOnClickListener(new View.OnClickListener() {
@@ -146,9 +149,5 @@ public class TreatmentPlans extends AppCompatActivity {
             }
         });
 
-
-        //Setting up the action bar
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
     }
 }
