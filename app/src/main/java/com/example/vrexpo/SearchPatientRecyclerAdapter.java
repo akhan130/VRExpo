@@ -55,8 +55,10 @@ public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Patien
             reportButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Context can be used from the adapter directly if passed or from itemView.getContext()
+                    String patientName = patientNameText.getText().toString();
                     Intent intent = new Intent(context, WriteReport.class);
+                    intent.putExtra("PATIENT_NAME", patientName);
+
                     context.startActivity(intent);
                 }
             });
@@ -64,7 +66,6 @@ public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Patien
             questionsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // Similar handling for questions button
                     Intent intent = new Intent(context, ViewPatientQuestions.class); // Update with actual Activity class
                     context.startActivity(intent);
                 }

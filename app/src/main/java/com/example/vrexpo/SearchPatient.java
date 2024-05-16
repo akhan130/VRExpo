@@ -100,7 +100,6 @@ public class SearchPatient extends AppCompatActivity {
         setSupportActionBar(myToolbar);
     }
 
-    //Searches Patients by their first name
     void setupSearchRecyclerView(String searchPatient){
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("PatientAccount");
         Query query = databaseReference.orderByChild("name")
@@ -110,7 +109,6 @@ public class SearchPatient extends AppCompatActivity {
         FirebaseRecyclerOptions<PatientModel> options = new FirebaseRecyclerOptions.Builder<PatientModel>()
                 .setQuery(query, PatientModel.class).build();
 
-        // Pass the context to the adapter constructor
         adapter = new SearchPatientRecyclerAdapter(options, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

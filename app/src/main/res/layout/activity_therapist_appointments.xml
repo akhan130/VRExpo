@@ -30,6 +30,8 @@
             android:textSize="16sp"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="10dp"
             />
 
         <!-- Week Navigation -->
@@ -43,7 +45,7 @@
                 android:layout_width="50dp"
                 android:layout_height="40dp"
                 android:src="@drawable/baseline_arrow_back_24"
-                android:onClick="nextMonthAction"
+                android:onClick="previousMonthAction"
                 android:background="@drawable/button_background"
                 android:backgroundTint="@color/purple_500"
                 app:tint="@color/white" />
@@ -84,14 +86,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Set Availability"
-            />
-
-        <Button
-            android:id="@+id/cancel_appointment_button"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text= "Cancel Appointment"
             />
 
         <TextView

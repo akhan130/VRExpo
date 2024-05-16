@@ -14,9 +14,11 @@ import java.util.List;
 public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.AppointmentViewHolder> {
 
     private List<TimeSlot> appointments;
+    private String role; // Add role parameter
 
-    public AppointmentAdapter(List<TimeSlot> appointments) {
+    public AppointmentAdapter(List<TimeSlot> appointments, String role) {
         this.appointments = appointments;
+        this.role = role; // Initialize role
     }
 
     @NonNull
@@ -29,9 +31,15 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @Override
     public void onBindViewHolder(@NonNull AppointmentViewHolder holder, int position) {
         TimeSlot appointment = appointments.get(position);
-        Log.d("AppointmentAdapter", "Binding data: Time: " + appointment.getAppointmentTime() + ", Therapist: " + appointment.getTherapistFullName());
+        Log.d("AppointmentAdapter", "Binding data: Time: " + appointment.getAppointmentTime());
+
         holder.timeTextView.setText("Time: " + appointment.getAppointmentTime());
-        holder.nameTextView.setText("Therapist: " + appointment.getPatient_name());
+
+        if ("PATIENT".equals(role)) {
+            holder.nameTextView.setText("Therapist: " + appointment.getTherapist_fullName());
+        } else if ("THERAPIST".equals(role)) {
+            holder.nameTextView.setText("Patient: " + appointment.getPatient_name());
+        }
     }
 
     @Override

@@ -105,6 +105,13 @@ public class PatientSelectAppointment extends AppCompatActivity {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year, month, dayOfMonth);
                 selectedDate = dateFormat.format(calendar.getTime());
+
+                Calendar today = Calendar.getInstance();
+                if (calendar.before(today)) {
+                    Toast.makeText(PatientSelectAppointment.this, "Cannot select a past date.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 loadTimeslots(selectedDate);
             }
         });
@@ -169,17 +176,19 @@ public class PatientSelectAppointment extends AppCompatActivity {
         timeslotRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         timeslotAdapter = new TimeslotAdapter(new ArrayList<>(), new TimeslotAdapter.OnTimeslotSelectedListener() {
             @Override
-            public void onTimeslotSelected(String timeslot) {
-                selectedTimeslot = timeslot;
+            public void onTimeslotSelected(TimeslotAdapter.Timeslot timeslot) {
+                selectedTimeslot = timeslot.getTime(); // Assuming Timeslot has a getTime() method.
+                Log.d("TimeslotSelected", "Selected Timeslot: " + selectedTimeslot);
             }
         });
-
         timeslotRecyclerView.setAdapter(timeslotAdapter);
     }
 
+
+
     private void loadTimeslots(String date) {
         DatabaseReference timeslotRef = FirebaseDatabase.getInstance().getReference().child("Appointments").child(date);
-        List<String> timeslots = new ArrayList<>();
+        List<TimeslotAdapter.Timeslot> timeslots = new ArrayList<>();
         timeslotRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -187,7 +196,8 @@ public class PatientSelectAppointment extends AppCompatActivity {
                     String status = slotSnapshot.child("appointment_status").getValue(String.class);
                     if ("Available".equals(status)) {
                         String time = slotSnapshot.child("appointmentTime").getValue(String.class);
-                        timeslots.add(time);
+                        String therapistName = slotSnapshot.child("therapist_fullName").getValue(String.class);
+                        timeslots.add(new TimeslotAdapter.Timeslot(time, therapistName));
                     }
                 }
                 timeslotAdapter.updateTimeslots(timeslots);
@@ -202,6 +212,7 @@ public class PatientSelectAppointment extends AppCompatActivity {
             }
         });
     }
+
 
     private void bookAppointment(String patientName) {
         DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference()

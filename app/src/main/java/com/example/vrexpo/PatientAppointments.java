@@ -1,8 +1,8 @@
 package com.example.vrexpo;
 
 import static com.example.vrexpo.CalendarUtils.daysInMonthArray;
-import static com.example.vrexpo.CalendarUtils.monthYearFromDate;
 import static com.example.vrexpo.CalendarUtils.formatDate;
+import static com.example.vrexpo.CalendarUtils.monthYearFromDate;
 
 import android.content.Intent;
 import android.os.Build;
@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +21,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -39,9 +40,9 @@ public class PatientAppointments extends AppCompatActivity implements CalendarAd
     private TextView monthYearText;
     private RecyclerView calendarRecyclerView, appointmentListView;
     private Map<String, List<TimeSlot>> appointmentsByDate = new HashMap<>();
-
     private List<TimeSlot> appointmentList = new ArrayList<>();
     private AppointmentAdapter appointmentAdapter;
+    private String currentPatientName;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -102,14 +103,42 @@ public class PatientAppointments extends AppCompatActivity implements CalendarAd
             startActivity(patientInfoIntent);
         });
 
-        appointmentAdapter = new AppointmentAdapter(appointmentList);
+        appointmentAdapter = new AppointmentAdapter(appointmentList, "PATIENT");
         appointmentListView.setLayoutManager(new LinearLayoutManager(this));
         appointmentListView.setAdapter(appointmentAdapter);
 
-        fetchAppointments();
+        fetchCurrentPatientName();
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+    }
+
+    private void fetchCurrentPatientName() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null && user.getEmail() != null) {
+            String email = user.getEmail();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("PatientAccount");
+
+            ref.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            currentPatientName = childSnapshot.child("name").getValue(String.class);
+                            Log.d("PatientAppointments", "Current Patient Name: " + currentPatientName);
+                            fetchAppointments(); // Now fetch appointments
+                        }
+                    } else {
+                        Log.d("PatientAppointments", "Patient not found.");
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.d("PatientAppointments", "Error fetching patient name: " + error.getMessage());
+                }
+            });
+        }
     }
 
     private void fetchAppointments() {
@@ -123,14 +152,16 @@ public class PatientAppointments extends AppCompatActivity implements CalendarAd
                     List<TimeSlot> timeSlots = new ArrayList<>();
                     for (DataSnapshot timeSlotSnapshot : dateSnapshot.getChildren()) {
                         TimeSlot timeSlot = timeSlotSnapshot.getValue(TimeSlot.class);
-                        if (timeSlot != null) {
-                            Log.d("PatientAppointments", "TimeSlot: " + timeSlot.getAppointmentTime() + ", Therapist: " + timeSlot.getTherapistFullName());
+                        if (timeSlot != null && currentPatientName != null && currentPatientName.equals(timeSlot.getPatient_name()) && timeSlot.getPatient_name() != null) {
+                            Log.d("PatientAppointments", "TimeSlot: " + timeSlot.getAppointmentTime() + ", Therapist: " + timeSlot.getTherapist_fullName());
                             timeSlots.add(timeSlot);
                         } else {
-                            Log.d("PatientAppointments", "TimeSlot is null for date: " + date);
+                            Log.d("PatientAppointments", "TimeSlot is null or does not match patient name for date: " + date);
                         }
                     }
-                    appointmentsByDate.put(date, timeSlots);
+                    if (!timeSlots.isEmpty()) {
+                        appointmentsByDate.put(date, timeSlots);
+                    }
                 }
                 updateAppointmentsForSelectedDate();
             }
@@ -142,17 +173,12 @@ public class PatientAppointments extends AppCompatActivity implements CalendarAd
         });
     }
 
-
     private void updateAppointmentsForSelectedDate() {
         // Ensure date format consistency
         String selectedDate = formatDate(CalendarUtils.selectedDate);
         appointmentList.clear();
 
-        // Debug logging
         Log.d("PatientAppointments", "Selected Date: " + selectedDate);
-        for (String date : appointmentsByDate.keySet()) {
-            Log.d("PatientAppointments", "Date in Firebase: " + date);
-        }
 
         if (appointmentsByDate.containsKey(selectedDate)) {
             appointmentList.addAll(appointmentsByDate.get(selectedDate));

@@ -6,45 +6,28 @@
     android:orientation="vertical"
     tools:context=".WriteReport">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_centerInParent="true"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/writeReportTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:padding="10dp"
             android:text="Write Report"
             android:textColor="@color/black"
             android:textSize="30sp"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:text="Date"
-            android:textColor="@color/black"
-            android:textSize="16dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/Date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/edit_text_rounded_corner"
-            android:elevation="5dp"
-            android:hint="Date of Session"
-            android:inputType="text"
-            android:padding="10dp" />
-
         <TextView
+            android:id="@+id/therapistNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/writeReportTitle"
             android:layout_marginStart="12dp"
             android:text="Therapist Name"
             android:textColor="@color/black"
@@ -55,7 +38,11 @@
             android:id="@+id/TherapistName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_below="@+id/therapistNameText"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
             android:hint="Therapist Name"
@@ -63,8 +50,10 @@
             android:padding="10dp" />
 
         <TextView
+            android:id="@+id/patientNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/TherapistName"
             android:layout_marginStart="12dp"
             android:text="Patient Name"
             android:textColor="@color/black"
@@ -75,7 +64,11 @@
             android:id="@+id/PatientName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_below="@+id/patientNameText"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
             android:hint="Patient Name"
@@ -83,8 +76,52 @@
             android:padding="10dp" />
 
         <TextView
+            android:id="@+id/dateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/PatientName"
+            android:layout_marginStart="12dp"
+            android:text="Date"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:id="@+id/DateSection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dateText">
+
+            <EditText
+                android:id="@+id/Date"
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/edit_text_rounded_corner"
+                android:elevation="5dp"
+                android:hint="Date of Session"
+                android:inputType="text"
+                android:padding="10dp" />
+
+            <Button
+                android:id="@+id/selectDateButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toRightOf="@+id/Date"
+                android:text="Select Date" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/treatmentPlanText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/DateSection"
             android:layout_marginStart="12dp"
             android:text="Treatment Plan"
             android:textColor="@color/black"
@@ -95,7 +132,11 @@
             android:id="@+id/TreatmentPlan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_below="@+id/treatmentPlanText"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
             android:hint="Treatment Plan Type"
@@ -103,28 +144,10 @@
             android:padding="10dp" />
 
         <TextView
+            android:id="@+id/commentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:text="Session Number"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/SessionNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/edit_text_rounded_corner"
-            android:elevation="5dp"
-            android:hint="Session Number"
-            android:inputType="text"
-            android:padding="10dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_below="@+id/TreatmentPlan"
             android:layout_marginStart="12dp"
             android:text="Comment"
             android:textColor="@color/black"
@@ -135,7 +158,11 @@
             android:id="@+id/Comments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_below="@+id/commentText"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/edit_text_rounded_corner"
             android:elevation="5dp"
             android:hint="Comment/Notes About Session"
@@ -146,12 +173,13 @@
             android:id="@+id/submit_button"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_below="@+id/Comments"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:background="@drawable/rounded_button"
             android:text="Submit Report" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"

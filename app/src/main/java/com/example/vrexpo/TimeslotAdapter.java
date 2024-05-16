@@ -3,29 +3,25 @@ package com.example.vrexpo;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.vrexpo.R;
 
 import java.util.List;
 
 public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.TimeslotViewHolder> {
 
-    private List<String> timeslots;
+    private List<Timeslot> timeslots;
     private OnTimeslotSelectedListener listener;
-
     private int selectedPosition = -1;
 
     public interface OnTimeslotSelectedListener {
-        void onTimeslotSelected(String timeslot);
+        void onTimeslotSelected(Timeslot timeslot);
     }
 
-
-    public TimeslotAdapter(List<String> timeslots, OnTimeslotSelectedListener listener) {
+    public TimeslotAdapter(List<Timeslot> timeslots, OnTimeslotSelectedListener listener) {
         this.timeslots = timeslots;
         this.listener = listener;
     }
@@ -39,43 +35,60 @@ public class TimeslotAdapter extends RecyclerView.Adapter<TimeslotAdapter.Timesl
 
     @Override
     public void onBindViewHolder(@NonNull TimeslotViewHolder holder, int position) {
-        String timeslot = timeslots.get(position);
-        holder.timeslotButton.setText(timeslot);
+        Timeslot timeslot = timeslots.get(position);
+        holder.timeslotButton.setText(timeslot.getTime());
+        holder.therapistNameTextView.setText(timeslot.getTherapistName());
 
         holder.timeslotButton.setChecked(position == selectedPosition);
-
         holder.timeslotButton.setOnClickListener(v -> {
             int newPosition = holder.getAdapterPosition();
             if (newPosition != RecyclerView.NO_POSITION) {
                 selectedPosition = newPosition;
                 notifyDataSetChanged();
                 if (listener != null) {
-                    listener.onTimeslotSelected(timeslots.get(newPosition));
+                    listener.onTimeslotSelected(timeslot);
                 }
             }
         });
     }
-
 
     @Override
     public int getItemCount() {
         return timeslots.size();
     }
 
-    public void updateTimeslots(List<String> newTimeslots) {
+    public void updateTimeslots(List<Timeslot> newTimeslots) {
         timeslots.clear();
         timeslots.addAll(newTimeslots);
         notifyDataSetChanged();
     }
 
-    public static class TimeslotViewHolder extends RecyclerView.ViewHolder {
+    static class TimeslotViewHolder extends RecyclerView.ViewHolder {
         RadioButton timeslotButton;
+        TextView therapistNameTextView;
 
-        public TimeslotViewHolder(View itemView) {
+        TimeslotViewHolder(View itemView) {
             super(itemView);
             timeslotButton = itemView.findViewById(R.id.appointment_time_radio_button);
+            therapistNameTextView = itemView.findViewById(R.id.therapist_name_text_view);
         }
     }
 
+    public static class Timeslot {
+        private final String time;
+        private final String therapistName;
 
+        public Timeslot(String time, String therapistName) {
+            this.time = time;
+            this.therapistName = therapistName;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public String getTherapistName() {
+            return therapistName;
+        }
+    }
 }

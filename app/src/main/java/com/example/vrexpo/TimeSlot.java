@@ -3,11 +3,12 @@ package com.example.vrexpo;
 public class TimeSlot {
     private String date;
     private String appointmentTime;
-    private String appointmentStatus;
+    private String appointment_status;
     private String patient_name;
-    private String therapistFullName;
+    private String therapist_fullName;
 
-    public TimeSlot() {}
+    public TimeSlot() {
+    }
 
     public String getDate() {
         return date;
@@ -26,11 +27,11 @@ public class TimeSlot {
     }
 
     public String getAppointmentStatus() {
-        return appointmentStatus;
+        return appointment_status;
     }
 
-    public void setAppointmentStatus(String appointmentStatus) {
-        this.appointmentStatus = appointmentStatus;
+    public void setAppointmentStatus(String appointment_status) {
+        this.appointment_status = appointment_status;
     }
 
     public String getPatient_name() {
@@ -41,11 +42,11 @@ public class TimeSlot {
         this.patient_name = patient_name;
     }
 
-    public String getTherapistFullName() {
-        return therapistFullName;
+    public String getTherapist_fullName() {
+        return therapist_fullName;
     }
 
-    public void setTherapistFullName(String therapistFullName) {
-        this.therapistFullName = therapistFullName;
+    public void setTherapist_fullName(String therapist_fullName) {
+        this.therapist_fullName = therapist_fullName;
     }
 }

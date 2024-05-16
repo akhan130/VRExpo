@@ -52,7 +52,6 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
         calendarRecyclerView.setLayoutManager(layoutManager);
         calendarRecyclerView.setAdapter(calendarAdapter);
-        setEventAdpater();
     }
 
     public void previousWeekAction(View view) {
@@ -78,12 +77,5 @@ public class WeekViewActivity extends AppCompatActivity implements CalendarAdapt
     @Override
     protected void onResume() {
         super.onResume();
-        setEventAdpater();
-    }
-
-    private void setEventAdpater() {
-        ArrayList<Event> dailyEvents = Event.eventsForDate(CalendarUtils.selectedDate);
-        EventAdapter eventAdapter = new EventAdapter(getApplicationContext(), dailyEvents);
-        eventListView.setAdapter(eventAdapter);
     }
 }

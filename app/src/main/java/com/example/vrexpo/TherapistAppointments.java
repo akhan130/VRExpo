@@ -1,17 +1,23 @@
 package com.example.vrexpo;
 
-import static android.content.ContentValues.TAG;
+import static com.example.vrexpo.CalendarUtils.daysInMonthArray;
+import static com.example.vrexpo.CalendarUtils.formatDate;
+import static com.example.vrexpo.CalendarUtils.monthYearFromDate;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,54 +29,51 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-public class TherapistAppointments extends AppCompatActivity {
+public class TherapistAppointments extends AppCompatActivity implements CalendarAdapter.OnItemListener {
 
-    private Button setAvaliabilityButton;
-    private RecyclerView appointmentsRecyclerView;
+    private Button setAvailabilityButton;
+    private TextView monthYearText;
+    private RecyclerView calendarRecyclerView, appointmentListView;
+    private Map<String, List<TimeSlot>> appointmentsByDate = new HashMap<>();
+    private List<TimeSlot> appointmentList = new ArrayList<>();
     private AppointmentAdapter appointmentAdapter;
-    private List<AppointmentModel> appointmentList = new ArrayList<>();
-
+    private String currentTherapistName;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        //Inflate the menu
         getMenuInflater().inflate(R.menu.therapist_dashboard_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_home:
-                Intent dashIntent = new Intent(TherapistAppointments.this, TherapistDashboard.class);
-                startActivity(dashIntent);
+                startActivity(new Intent(TherapistAppointments.this, TherapistDashboard.class));
                 return true;
             case R.id.action_appointments:
-                Intent appointmentsIntent = new Intent(TherapistAppointments.this, TherapistAppointments.class);
-                startActivity(appointmentsIntent);
+                startActivity(new Intent(TherapistAppointments.this, TherapistAppointments.class));
                 return true;
             case R.id.action_view_patient:
-                Intent patientInfoIntent = new Intent(TherapistAppointments.this, SearchPatient.class);
-                startActivity(patientInfoIntent);
+                startActivity(new Intent(TherapistAppointments.this, SearchPatient.class));
                 return true;
             case R.id.action_write_report:
-                Intent reportIntent = new Intent(TherapistAppointments.this, WriteReport.class);
-                startActivity(reportIntent);
+                startActivity(new Intent(TherapistAppointments.this, WriteReport.class));
                 return true;
             case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistAppointments.this, TherapistMessages.class);
-                startActivity(messagesIntent);
+                startActivity(new Intent(TherapistAppointments.this, TherapistMessages.class));
                 return true;
             case R.id.action_account_settings:
-                Intent settingsIntent = new Intent(TherapistAppointments.this, TherapistAccountSettings.class);
-                startActivity(settingsIntent);
+                startActivity(new Intent(TherapistAppointments.this, TherapistAccountSettings.class));
                 return true;
             case R.id.action_treatmentPlans:
-                Intent treatmentPlans = new Intent(TherapistAppointments.this, TreatmentPlans.class);
-                startActivity(treatmentPlans);
+                startActivity(new Intent(TherapistAppointments.this, TreatmentPlans.class));
                 return true;
             case R.id.action_zoom:
                 Intent zoom = new Intent(TherapistAppointments.this, ZegoCloudHome.class);
@@ -85,64 +88,138 @@ public class TherapistAppointments extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_therapist_appointments);
+        initWidgets();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CalendarUtils.selectedDate = LocalDate.now();
+        }
+        setMonthView();
+
+        appointmentAdapter = new AppointmentAdapter(appointmentList, "THERAPIST");
+        appointmentListView.setLayoutManager(new LinearLayoutManager(this));
+        appointmentListView.setAdapter(appointmentAdapter);
+
+        fetchCurrentTherapistName();
+
+        setAvailabilityButton = findViewById(R.id.set_availability_button);
+        setAvailabilityButton.setOnClickListener(v -> startActivity(new Intent(TherapistAppointments.this, TherapistSetAvailability.class)));
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-
-        appointmentsRecyclerView = findViewById(R.id.calendarRecyclerView);
-
-        initializeRecyclerView();
-
-        Button setAvailabilityButton = findViewById(R.id.set_availability_button);
-        setAvailabilityButton.setOnClickListener(v -> startActivity(new Intent(TherapistAppointments.this, TherapistSetAvailability.class)));
-
-        loadAppointments();
     }
 
-    private void initializeRecyclerView() {
-        appointmentsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        appointmentsRecyclerView.setAdapter(appointmentAdapter);
-    }
-
-
-    private void loadAppointments() {
+    private void fetchCurrentTherapistName() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Appointments");
-            // Let's assume that appointments are stored by date at the top level
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+        if (user != null && user.getEmail() != null) {
+            String email = user.getEmail();
+            DatabaseReference ref = FirebaseDatabase.getInstance().getReference("TherapistInfo");
+
+            ref.orderByChild("therapist_email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    List<TimeSlot> appointmentsForTheDay = new ArrayList<>();
-                    for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
-                        String date = dateSnapshot.getKey(); // The date of the appointments
-                        for (DataSnapshot timeSlotSnapshot : dateSnapshot.getChildren()) {
-                            TimeSlot slot = timeSlotSnapshot.getValue(TimeSlot.class);
-                            if (slot != null && "Upcoming".equals(slot.getAppointmentStatus()) && slot.getTherapistFullName().equals(user.getDisplayName())) {
-                                slot.setDate(date); // Assuming you add a date field in TimeSlot class
-                                appointmentsForTheDay.add(slot);
-                            }
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        for (DataSnapshot childSnapshot : snapshot.getChildren()) {
+                            currentTherapistName = childSnapshot.child("therapist_fullName").getValue(String.class);
+                            Log.d("TherapistAppointments", "Current Therapist Name: " + currentTherapistName);
+                            fetchAppointments();
                         }
+                    } else {
+                        Log.d("TherapistAppointments", "Therapist not found.");
                     }
-                    updateRecyclerView(appointmentsForTheDay);
                 }
 
                 @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Log.w(TAG, "loadAppointments:onCancelled", databaseError.toException());
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.d("TherapistAppointments", "Error fetching therapist name: " + error.getMessage());
                 }
             });
         }
     }
 
-    private void updateRecyclerView(List<TimeSlot> appointments) {
-        AppointmentAdapter adapter = (AppointmentAdapter) appointmentsRecyclerView.getAdapter();
-        if (adapter != null) {
-            adapter.setAppointments(appointments);
-            adapter.notifyDataSetChanged();
+    private void fetchAppointments() {
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Appointments");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                appointmentsByDate.clear();
+                for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
+                    String date = dateSnapshot.getKey();
+                    List<TimeSlot> timeSlots = new ArrayList<>();
+                    for (DataSnapshot timeSlotSnapshot : dateSnapshot.getChildren()) {
+                        TimeSlot timeSlot = timeSlotSnapshot.getValue(TimeSlot.class);
+                        if (timeSlot != null && currentTherapistName != null && currentTherapistName.equals(timeSlot.getTherapist_fullName()) && timeSlot.getPatient_name() != null) {
+                            Log.d("TherapistAppointments", "TimeSlot: " + timeSlot.getAppointmentTime() + ", Patient: " + timeSlot.getPatient_name());
+                            timeSlots.add(timeSlot);
+                        } else {
+                            Log.d("TherapistAppointments", "TimeSlot is null or does not match therapist name for date: " + date);
+                        }
+                    }
+                    if (!timeSlots.isEmpty()) {
+                        appointmentsByDate.put(date, timeSlots);
+                    }
+                }
+                updateAppointmentsForSelectedDate();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle possible errors
+            }
+        });
+    }
+
+    private void updateAppointmentsForSelectedDate() {
+        String selectedDate = formatDate(CalendarUtils.selectedDate);
+        appointmentList.clear();
+
+        Log.d("TherapistAppointments", "Selected Date: " + selectedDate);
+
+        if (appointmentsByDate.containsKey(selectedDate)) {
+            appointmentList.addAll(appointmentsByDate.get(selectedDate));
         } else {
-            appointmentAdapter = new AppointmentAdapter(appointments);
-            appointmentsRecyclerView.setAdapter(appointmentAdapter);
+            Log.d("TherapistAppointments", "No appointments found for the selected date: " + selectedDate);
+        }
+        appointmentAdapter.notifyDataSetChanged();
+    }
+
+    private void initWidgets() {
+        calendarRecyclerView = findViewById(R.id.calendarRecyclerView);
+        monthYearText = findViewById(R.id.monthYearTV);
+        appointmentListView = findViewById(R.id.appointmentListView);
+    }
+
+    private void setMonthView() {
+        monthYearText.setText(monthYearFromDate(CalendarUtils.selectedDate));
+        ArrayList<LocalDate> daysInMonth = daysInMonthArray(CalendarUtils.selectedDate);
+
+        CalendarAdapter calendarAdapter = new CalendarAdapter(daysInMonth, this);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getApplicationContext(), 7);
+        calendarRecyclerView.setLayoutManager(layoutManager);
+        calendarRecyclerView.setAdapter(calendarAdapter);
+    }
+
+    public void previousMonthAction(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CalendarUtils.selectedDate = CalendarUtils.selectedDate.minusMonths(1);
+            setMonthView();
+            updateAppointmentsForSelectedDate();
+        }
+    }
+
+    public void nextMonthAction(View view) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CalendarUtils.selectedDate = CalendarUtils.selectedDate.plusMonths(1);
+            setMonthView();
+            updateAppointmentsForSelectedDate();
+        }
+    }
+
+    @Override
+    public void onItemClick(int position, LocalDate date) {
+        if (date != null) {
+            CalendarUtils.selectedDate = date;
+            setMonthView();
+            updateAppointmentsForSelectedDate();
         }
     }
 }

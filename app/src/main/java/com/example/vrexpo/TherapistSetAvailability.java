@@ -26,9 +26,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class TherapistSetAvailability extends AppCompatActivity {
 
@@ -100,6 +104,12 @@ public class TherapistSetAvailability extends AppCompatActivity {
                 Calendar selectedCalendar = Calendar.getInstance();
                 selectedCalendar.set(year, month, dayOfMonth);
                 selectedDate = selectedCalendar.getTimeInMillis();
+
+                Calendar today = Calendar.getInstance();
+                if (selectedCalendar.before(today)) {
+                    Toast.makeText(TherapistSetAvailability.this, "Cannot select a past date.", Toast.LENGTH_SHORT).show();
+                    return;
+                }
             }
         });
 
@@ -161,6 +171,28 @@ public class TherapistSetAvailability extends AppCompatActivity {
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy", Locale.getDefault());
         String dateString = dateFormat.format(new Date(selectedDate));
 
+        // Sort the timeslots
+        Collections.sort(selectedTimeSlots, new Comparator<String>() {
+            @Override
+            public int compare(String t1, String t2) {
+                return convertTimeTo24Hour(t1).compareTo(convertTimeTo24Hour(t2));
+            }
+
+            private String convertTimeTo24Hour(String time) {
+                try {
+                    SimpleDateFormat twelveHourFormat = new SimpleDateFormat("hh:mm a", Locale.getDefault());
+                    SimpleDateFormat twentyFourHourFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+                    // Extract the start time from the timeslot
+                    String startTime = time.split("-")[0];
+                    Date date = twelveHourFormat.parse(startTime);
+                    return twentyFourHourFormat.format(date);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return time;
+                }
+            }
+        });
+
         DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference("Appointments").child(dateString);
 
         if (therapistFullName == null || therapistFullName.isEmpty()) {
@@ -170,14 +202,45 @@ public class TherapistSetAvailability extends AppCompatActivity {
 
         for (String timeSlot : selectedTimeSlots) {
             DatabaseReference timeSlotRef = appointmentsRef.child(timeSlot);
-            timeSlotRef.child("appointmentTime").setValue(timeSlot);
-            timeSlotRef.child("therapist_fullName").setValue(therapistFullName);
-            timeSlotRef.child("appointment_status").setValue("Available");
+
+            timeSlotRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    String existingTherapists = "";
+                    if (snapshot.exists() && snapshot.child("therapist_fullName").exists()) {
+                        existingTherapists = snapshot.child("therapist_fullName").getValue(String.class);
+                    }
+
+                    List<String> therapistsList = new ArrayList<>();
+                    if (!existingTherapists.isEmpty()) {
+                        Collections.addAll(therapistsList, existingTherapists.split(", "));
+                    }
+
+                    if (!therapistsList.contains(therapistFullName)) {
+                        therapistsList.add(therapistFullName);
+                    }
+
+                    String updatedTherapists = String.join(", ", therapistsList);
+
+                    Map<String, Object> updates = new HashMap<>();
+                    updates.put("appointmentTime", timeSlot);
+                    updates.put("appointment_status", "Available");
+                    updates.put("therapist_fullName", updatedTherapists);
+
+                    timeSlotRef.updateChildren(updates);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.d("sendAvailability", "Error updating availability: " + error.getMessage());
+                }
+            });
         }
 
         clearCheckboxes();
         Toast.makeText(this, "Availability sent successfully!", Toast.LENGTH_SHORT).show();
     }
+
 
     private void clearCheckboxes(){
         int[] checkBoxIds = {

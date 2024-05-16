@@ -1,19 +1,18 @@
 package com.example.vrexpo;
 
 public class ReportHelperClass {
-    String date, therapistName, patientName, treatmentPlan, sessionNumber, comments;
+    String date, therapistName, patientName, treatmentPlan, comments;
 
 
     // Required empty constructor for Firebase
     public ReportHelperClass() {
     }
 
-    public ReportHelperClass(String date, String therapistName, String patientName, String phobia, String sessionNumber, String comments) {
+    public ReportHelperClass(String date, String therapistName, String patientName, String phobia, String comments) {
         this.date = date;
         this.therapistName = therapistName;
         this.patientName = patientName;
         this.treatmentPlan = phobia;
-        this.sessionNumber = sessionNumber;
         this.comments = comments;
     }
 
@@ -48,14 +47,6 @@ public class ReportHelperClass {
 
     public void setPhobia(String phobia) {
         this.treatmentPlan = phobia;
-    }
-
-    public String getSessionNumber() {
-        return sessionNumber;
-    }
-
-    public void setSessionNumber(String sessionNumber) {
-        this.sessionNumber = sessionNumber;
     }
 
     public String getComments() {
