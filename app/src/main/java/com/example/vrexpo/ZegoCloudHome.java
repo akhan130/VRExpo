@@ -5,8 +5,14 @@ import android.app.Application;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.zegocloud.uikit.components.audiovideocontainer.ZegoLayout;
 import com.zegocloud.uikit.components.audiovideocontainer.ZegoLayoutGalleryConfig;
@@ -22,14 +28,60 @@ import com.zegocloud.uikit.prebuilt.call.invite.internal.ZegoUIKitPrebuiltCallCo
 
 import java.util.Arrays;
 
-public class ZegoCloudHome extends Activity {
+public class ZegoCloudHome extends AppCompatActivity {
     EditText userIdEditText;
     Button startBtn;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Inflate the menu
+        getMenuInflater().inflate(R.menu.dashboard_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch(item.getItemId()){
+            case R.id.action_dashboard:
+                Intent dashIntent = new Intent(ZegoCloudHome.this, Dashboard.class);
+                startActivity(dashIntent);
+                return true;
+            case R.id.action_accountInfo:
+                Intent actInfoIntent = new Intent(ZegoCloudHome.this, AccountInfo.class);
+                startActivity(actInfoIntent);
+                return true;
+            case R.id.action_find_therapist:
+                Intent findIntent = new Intent(ZegoCloudHome.this, FindTherapist.class);
+                startActivity(findIntent);
+                return true;
+            case R.id.action_appointments:
+                Intent appointmentsIntent = new Intent(ZegoCloudHome.this, PatientAppointments.class);
+                startActivity(appointmentsIntent);
+                return true;
+            case R.id.action_sessionStart:
+                Intent sessionStart = new Intent(ZegoCloudHome.this, SessionStart.class);
+                startActivity(sessionStart);
+                return true;
+            case R.id.action_messages:
+                Intent messages = new Intent(ZegoCloudHome.this, PatientMessages.class);
+                startActivity(messages);
+                return true;
+            case R.id.action_patient_settings:
+                Intent settingsIntent = new Intent(ZegoCloudHome.this, PatientSettings.class);
+                startActivity(settingsIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zegocloud_home);
+
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
         userIdEditText = findViewById(R.id.user_id_edit_text);
         startBtn = findViewById(R.id.start_btn);
