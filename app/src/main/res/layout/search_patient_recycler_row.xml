@@ -48,16 +48,16 @@
         android:padding="0dp"
         android:background="@null" />
 
-    <ImageButton
-        android:id="@+id/questions_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:src="@drawable/questions"
-        android:scaleType="fitEnd"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:padding="0dp"
-        android:background="@null" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/questions_button"-->
+<!--        android:layout_width="40dp"-->
+<!--        android:layout_height="40dp"-->
+<!--        android:src="@drawable/questions"-->
+<!--        android:scaleType="fitEnd"-->
+<!--        android:layout_gravity="center"-->
+<!--        android:layout_marginLeft="10dp"-->
+<!--        android:padding="0dp"-->
+<!--        android:background="@null" />-->
     />
 
 </LinearLayout>

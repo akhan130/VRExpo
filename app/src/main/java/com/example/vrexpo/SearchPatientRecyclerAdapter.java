@@ -50,7 +50,7 @@ public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Patien
             phoneNumberText = itemView.findViewById(R.id.phone_number);
             profilePic = itemView.findViewById(R.id.profile_pic_image_view);
             reportButton = itemView.findViewById(R.id.report_button);
-            questionsButton = itemView.findViewById(R.id.questions_button);
+//            questionsButton = itemView.findViewById(R.id.questions_button);
 
             reportButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -63,13 +63,13 @@ public class SearchPatientRecyclerAdapter extends FirebaseRecyclerAdapter<Patien
                 }
             });
 
-            questionsButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context, ViewPatientQuestions.class); // Update with actual Activity class
-                    context.startActivity(intent);
-                }
-            });
+//            questionsButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(context, ViewPatientQuestions.class); // Update with actual Activity class
+//                    context.startActivity(intent);
+//                }
+//            });
         }
     }
 }
