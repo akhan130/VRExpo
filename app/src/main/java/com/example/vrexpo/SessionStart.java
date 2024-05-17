@@ -46,7 +46,7 @@ public class SessionStart extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(SessionStart.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(SessionStart.this, ZegoCloudHomePatient.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
@@ -60,10 +60,6 @@ public class SessionStart extends AppCompatActivity {
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(SessionStart.this, FindTherapist.class);
                 startActivity(findIntent);
-                return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(SessionStart.this, PatientMessages.class);
-                startActivity(messages);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(SessionStart.this, PatientSettings.class);
@@ -130,7 +126,7 @@ public class SessionStart extends AppCompatActivity {
                             reference.child(currentPhoneNumber).child("Pre-Session Questions").child(dateTimeKey).setValue(sessionData)
                                     .addOnSuccessListener(aVoid -> {
                                         Toast.makeText(SessionStart.this, "Answers submitted successfully!", Toast.LENGTH_SHORT).show();
-                                        Intent sessionIntent = new Intent(SessionStart.this, ZegoCloudHome.class);
+                                        Intent sessionIntent = new Intent(SessionStart.this, ZegoCloudHomePatient.class);
                                         startActivity(sessionIntent);
                                     })
                                     .addOnFailureListener(e -> {

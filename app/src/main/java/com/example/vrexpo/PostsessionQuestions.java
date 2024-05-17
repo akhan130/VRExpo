@@ -23,7 +23,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -63,7 +62,7 @@ public class PostsessionQuestions extends AppCompatActivity {
                 startActivity(new Intent(PostsessionQuestions.this, Dashboard.class));
                 return true;
             case R.id.action_sessionStart:
-                startActivity(new Intent(PostsessionQuestions.this, ZegoCloudHome.class));
+                startActivity(new Intent(PostsessionQuestions.this, ZegoCloudHomePatient.class));
                 return true;
             case R.id.action_accountInfo:
                 startActivity(new Intent(PostsessionQuestions.this, AccountInfo.class));
@@ -73,9 +72,6 @@ public class PostsessionQuestions extends AppCompatActivity {
                 return true;
             case R.id.action_find_therapist:
                 startActivity(new Intent(PostsessionQuestions.this, FindTherapist.class));
-                return true;
-            case R.id.action_messages:
-                startActivity(new Intent(PostsessionQuestions.this, PatientMessages.class));
                 return true;
             case R.id.action_patient_settings:
                 startActivity(new Intent(PostsessionQuestions.this, PatientSettings.class));

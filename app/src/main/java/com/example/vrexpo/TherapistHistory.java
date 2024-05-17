@@ -1,7 +1,5 @@
 package com.example.vrexpo;
 
-import static org.apache.commons.lang3.ObjectUtils.isEmpty;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,10 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class TherapistHistory extends AppCompatActivity {
@@ -60,10 +55,6 @@ public class TherapistHistory extends AppCompatActivity {
                 Intent reportIntent = new Intent(TherapistHistory.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistHistory.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(TherapistHistory.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
@@ -73,7 +64,7 @@ public class TherapistHistory extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TherapistHistory.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(TherapistHistory.this, ZegoCloudHomeTherapist.class);
                 startActivity(zoom);
                 return true;
             default:

@@ -65,10 +65,6 @@ public class TherapistSetAvailability extends AppCompatActivity {
                 Intent reportIntent = new Intent(TherapistSetAvailability.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistSetAvailability.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(TherapistSetAvailability.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
@@ -78,7 +74,7 @@ public class TherapistSetAvailability extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TherapistSetAvailability.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(TherapistSetAvailability.this, ZegoCloudHomeTherapist.class);
                 startActivity(zoom);
                 return true;
             default:

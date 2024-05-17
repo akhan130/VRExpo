@@ -1,8 +1,6 @@
 package com.example.vrexpo;
 
-import android.app.Activity;
 import android.app.Application;
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -28,7 +26,7 @@ import com.zegocloud.uikit.prebuilt.call.invite.internal.ZegoUIKitPrebuiltCallCo
 
 import java.util.Arrays;
 
-public class ZegoCloudHome extends AppCompatActivity {
+public class ZegoCloudHomePatient extends AppCompatActivity {
     EditText userIdEditText;
     Button startBtn;
 
@@ -43,31 +41,27 @@ public class ZegoCloudHome extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_dashboard:
-                Intent dashIntent = new Intent(ZegoCloudHome.this, Dashboard.class);
+                Intent dashIntent = new Intent(ZegoCloudHomePatient.this, Dashboard.class);
                 startActivity(dashIntent);
                 return true;
             case R.id.action_accountInfo:
-                Intent actInfoIntent = new Intent(ZegoCloudHome.this, AccountInfo.class);
+                Intent actInfoIntent = new Intent(ZegoCloudHomePatient.this, AccountInfo.class);
                 startActivity(actInfoIntent);
                 return true;
             case R.id.action_find_therapist:
-                Intent findIntent = new Intent(ZegoCloudHome.this, FindTherapist.class);
+                Intent findIntent = new Intent(ZegoCloudHomePatient.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
             case R.id.action_appointments:
-                Intent appointmentsIntent = new Intent(ZegoCloudHome.this, PatientAppointments.class);
+                Intent appointmentsIntent = new Intent(ZegoCloudHomePatient.this, PatientAppointments.class);
                 startActivity(appointmentsIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent sessionStart = new Intent(ZegoCloudHome.this, SessionStart.class);
+                Intent sessionStart = new Intent(ZegoCloudHomePatient.this, SessionStart.class);
                 startActivity(sessionStart);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(ZegoCloudHome.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
-                Intent settingsIntent = new Intent(ZegoCloudHome.this, PatientSettings.class);
+                Intent settingsIntent = new Intent(ZegoCloudHomePatient.this, PatientSettings.class);
                 startActivity(settingsIntent);
                 return true;
             default:
@@ -93,7 +87,7 @@ public class ZegoCloudHome extends AppCompatActivity {
             }
             // Start the service
             startService(userID);
-            Intent intent = new Intent(ZegoCloudHome.this, CallActivity.class);
+            Intent intent = new Intent(ZegoCloudHomePatient.this, CallActivity.class);
             intent.putExtra("userID", userID);
             startActivity(intent);
         });

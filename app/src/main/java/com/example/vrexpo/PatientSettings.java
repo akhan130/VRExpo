@@ -41,10 +41,6 @@ public class PatientSettings extends AppCompatActivity {
                 Intent findIntent = new Intent(PatientSettings.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PatientSettings.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PatientSettings.this, PatientSettings.class);
                 startActivity(settingsIntent);
@@ -58,17 +54,6 @@ public class PatientSettings extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_settings);
-
-        Button infoBtn = findViewById(R.id.infoButton);
-
-        infoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open patient info
-                Intent infoIntent = new Intent(PatientSettings.this, PatientInfo.class);
-                startActivity(infoIntent);
-            }
-        });
 
         Button updateBtn = findViewById(R.id.updateButton);
         updateBtn.setOnClickListener(new View.OnClickListener() {

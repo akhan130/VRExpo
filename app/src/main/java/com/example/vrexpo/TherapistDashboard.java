@@ -43,10 +43,6 @@ public class TherapistDashboard extends AppCompatActivity {
                 Intent reportIntent = new Intent(TherapistDashboard.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistDashboard.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(TherapistDashboard.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
@@ -56,7 +52,7 @@ public class TherapistDashboard extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TherapistDashboard.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(TherapistDashboard.this, ZegoCloudHomeTherapist.class);
                 startActivity(zoom);
                 return true;
 

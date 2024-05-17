@@ -60,10 +60,6 @@ public class PatientHistory extends AppCompatActivity {
                 Intent findIntent = new Intent(PatientHistory.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PatientHistory.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PatientHistory.this, PatientSettings.class);
                 startActivity(settingsIntent);

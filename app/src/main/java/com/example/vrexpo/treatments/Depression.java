@@ -15,11 +15,10 @@ import com.example.vrexpo.R;
 import com.example.vrexpo.TherapistAccountSettings;
 import com.example.vrexpo.TherapistAppointments;
 import com.example.vrexpo.TherapistDashboard;
-import com.example.vrexpo.TherapistMessages;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.SearchPatient;
 import com.example.vrexpo.WriteReport;
-import com.example.vrexpo.ZegoCloudHome;
+import com.example.vrexpo.ZegoCloudHomePatient;
 
 public class Depression extends AppCompatActivity {
     @Override
@@ -48,16 +47,12 @@ public class Depression extends AppCompatActivity {
                 Intent reportIntent = new Intent(Depression.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(Depression.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(Depression.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(Depression.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(Depression.this, ZegoCloudHomePatient.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_treatmentPlans:

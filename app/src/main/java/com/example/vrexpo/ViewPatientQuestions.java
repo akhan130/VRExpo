@@ -15,7 +15,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
-import android.widget.ToggleButton;
 
 import java.util.Calendar;
 
@@ -53,10 +52,6 @@ public class ViewPatientQuestions extends AppCompatActivity implements View.OnCl
                 Intent reportIntent = new Intent(ViewPatientQuestions.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(ViewPatientQuestions.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(ViewPatientQuestions.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
@@ -66,7 +61,7 @@ public class ViewPatientQuestions extends AppCompatActivity implements View.OnCl
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(ViewPatientQuestions.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(ViewPatientQuestions.this, ZegoCloudHomeTherapist.class);
                 startActivity(zoom);
                 return true;
             default:

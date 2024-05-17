@@ -1,7 +1,5 @@
 package com.example.vrexpo;
 
-import static androidx.constraintlayout.widget.ConstraintLayoutStates.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -48,7 +46,7 @@ public class PresessionQuestions extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(PresessionQuestions.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(PresessionQuestions.this, ZegoCloudHomePatient.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
@@ -62,10 +60,6 @@ public class PresessionQuestions extends AppCompatActivity {
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(PresessionQuestions.this, FindTherapist.class);
                 startActivity(findIntent);
-                return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PresessionQuestions.this, PatientMessages.class);
-                startActivity(messages);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PresessionQuestions.this, PatientSettings.class);
@@ -148,7 +142,7 @@ public class PresessionQuestions extends AppCompatActivity {
                                             Log.d("Question 2: ", answerTwo);
                                             Log.d("Question 3: ", answerThree);
 
-                                            Intent sessionIntent = new Intent(PresessionQuestions.this, ZegoCloudHome.class);
+                                            Intent sessionIntent = new Intent(PresessionQuestions.this, ZegoCloudHomePatient.class);
                                             startActivity(sessionIntent);
                                         })
 

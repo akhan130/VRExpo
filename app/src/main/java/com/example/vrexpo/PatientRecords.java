@@ -68,10 +68,6 @@ public class PatientRecords extends AppCompatActivity implements View.OnClickLis
                 Intent findIntent = new Intent(PatientRecords.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PatientRecords.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PatientRecords.this, PatientSettings.class);
                 startActivity(settingsIntent);

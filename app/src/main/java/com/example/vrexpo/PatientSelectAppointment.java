@@ -71,10 +71,6 @@ public class PatientSelectAppointment extends AppCompatActivity {
                 Intent findIntent = new Intent(PatientSelectAppointment.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PatientSelectAppointment.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PatientSelectAppointment.this, PatientSettings.class);
                 startActivity(settingsIntent);

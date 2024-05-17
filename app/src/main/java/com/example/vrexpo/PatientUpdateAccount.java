@@ -37,7 +37,7 @@ public class PatientUpdateAccount extends AppCompatActivity {
                 startActivity(dashIntent);
                 return true;
             case R.id.action_sessionStart:
-                Intent zoom = new Intent(PatientUpdateAccount.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(PatientUpdateAccount.this, ZegoCloudHomePatient.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_accountInfo:
@@ -51,10 +51,6 @@ public class PatientUpdateAccount extends AppCompatActivity {
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(PatientUpdateAccount.this, FindTherapist.class);
                 startActivity(findIntent);
-                return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PatientUpdateAccount.this, PatientMessages.class);
-                startActivity(messages);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PatientUpdateAccount.this, PatientSettings.class);

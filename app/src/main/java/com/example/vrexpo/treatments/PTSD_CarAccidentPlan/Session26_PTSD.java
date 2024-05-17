@@ -18,11 +18,9 @@ import com.example.vrexpo.SearchPatient;
 import com.example.vrexpo.TherapistAccountSettings;
 import com.example.vrexpo.TherapistAppointments;
 import com.example.vrexpo.TherapistDashboard;
-import com.example.vrexpo.TherapistMessages;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.WriteReport;
-import com.example.vrexpo.ZegoCloudHome;
-import com.example.vrexpo.treatments.acrophobiaPlan.Session1_ACRO;
+import com.example.vrexpo.ZegoCloudHomePatient;
 
 public class Session26_PTSD extends AppCompatActivity {
 
@@ -52,10 +50,6 @@ public class Session26_PTSD extends AppCompatActivity {
                 Intent reportIntent = new Intent(Session26_PTSD.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(Session26_PTSD.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(Session26_PTSD.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
@@ -65,7 +59,7 @@ public class Session26_PTSD extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(Session26_PTSD.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(Session26_PTSD.this, ZegoCloudHomePatient.class);
                 startActivity(zoom);
                 return true;
 

@@ -75,10 +75,6 @@ public class WriteReport extends AppCompatActivity implements View.OnClickListen
                 Intent reportIntent = new Intent(WriteReport.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(WriteReport.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(WriteReport.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
@@ -88,7 +84,7 @@ public class WriteReport extends AppCompatActivity implements View.OnClickListen
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(WriteReport.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(WriteReport.this, ZegoCloudHomeTherapist.class);
                 startActivity(zoom);
                 return true;
             default:
@@ -186,12 +182,26 @@ public class WriteReport extends AppCompatActivity implements View.OnClickListen
         if (validateFields()) {
             ReportHelperClass helperClass = new ReportHelperClass(date, therapistName, patientName, treatmentPlan, comments);
 
-            // Save the additional user data to the Realtime Database
-            reference.child(patientName).setValue(helperClass);
-
-            Toast.makeText(WriteReport.this, "Report submitted successfully", Toast.LENGTH_SHORT).show();
+            reference.child(patientName).setValue(helperClass).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Toast.makeText(WriteReport.this, "Report submitted successfully", Toast.LENGTH_SHORT).show();
+                    clearFields();
+                    finish();
+                } else {
+                    Toast.makeText(WriteReport.this, "Failed to submit report", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
+
+    private void clearFields() {
+        dateEditText.setText("");
+        therapistNameEditText.setText("");
+        patientNameEditText.setText("");
+        treatmentPlanEditText.setText("");
+        commentsEditText.setText("");
+    }
+
 
 
     private Boolean validateDate() {

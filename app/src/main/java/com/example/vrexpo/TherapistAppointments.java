@@ -66,9 +66,6 @@ public class TherapistAppointments extends AppCompatActivity implements Calendar
             case R.id.action_write_report:
                 startActivity(new Intent(TherapistAppointments.this, WriteReport.class));
                 return true;
-            case R.id.action_messages:
-                startActivity(new Intent(TherapistAppointments.this, TherapistMessages.class));
-                return true;
             case R.id.action_account_settings:
                 startActivity(new Intent(TherapistAppointments.this, TherapistAccountSettings.class));
                 return true;
@@ -76,7 +73,7 @@ public class TherapistAppointments extends AppCompatActivity implements Calendar
                 startActivity(new Intent(TherapistAppointments.this, TreatmentPlans.class));
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TherapistAppointments.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(TherapistAppointments.this, ZegoCloudHomeTherapist.class);
                 startActivity(zoom);
                 return true;
             default:

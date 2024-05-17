@@ -67,10 +67,6 @@ public class NLP_Matching extends AppCompatActivity {
                 Intent findIntent = new Intent(NLP_Matching.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(NLP_Matching.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(NLP_Matching.this, PatientSettings.class);
                 startActivity(settingsIntent);
@@ -126,10 +122,20 @@ public class NLP_Matching extends AppCompatActivity {
 
         // Go to treatment plan page
         Button TreatmentPlans = findViewById(R.id.treatmentPlansButton);
+
+        Button FindTherapist = findViewById(R.id.findtherapistButton);
         TreatmentPlans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent TreatmentPlans = new Intent(NLP_Matching.this, ML_matching.class);
+                startActivity(TreatmentPlans);
+            }
+        });
+
+        FindTherapist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent TreatmentPlans = new Intent(NLP_Matching.this, FindTherapist.class);
                 startActivity(TreatmentPlans);
             }
         });

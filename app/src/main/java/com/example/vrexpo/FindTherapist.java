@@ -57,10 +57,6 @@ public class FindTherapist extends AppCompatActivity {
                 Intent findIntent = new Intent(FindTherapist.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(FindTherapist.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(FindTherapist.this, PatientSettings.class);
                 startActivity(settingsIntent);
