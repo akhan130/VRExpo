@@ -15,6 +15,7 @@ import com.example.vrexpo.TherapistAccountSettings;
 import com.example.vrexpo.TherapistAppointments;
 import com.example.vrexpo.TherapistDashboard;
 import com.example.vrexpo.TherapistMessages;
+import com.example.vrexpo.TherapistZegoCloudHome;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.WriteReport;
 import com.example.vrexpo.ZegoCloudHome;
@@ -60,7 +61,7 @@ public class Session1_ARACH extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(Session1_ARACH.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(Session1_ARACH.this, TherapistZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
 

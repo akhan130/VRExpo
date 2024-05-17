@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".TherapistCallActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hey User"
+        android:id="@+id/hey_user_text_view"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:fontFamily="monospace"
+        android:layout_marginTop="150dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Lets start a call"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:fontFamily="monospace" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="40dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/rounded_corner"
+            android:hint="User ID"
+            android:paddingHorizontal="12dp"
+            android:layout_marginTop="40dp"
+            android:id="@+id/user_id_edit_text"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/voice_call_btn"/>
+
+        <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/voice_call_btn"
+            android:layout_toLeftOf="@id/video_call_btn"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/purple_700"/>
+
+        <com.zegocloud.uikit.prebuilt.call.invite.widget.ZegoSendCallInvitationButton
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/video_call_btn"
+            android:layout_marginHorizontal="10dp"
+            android:background="@color/purple_700"/>
+
+        <!-- "Complete Session" button at the bottom -->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:text="Complete Session"
+            android:layout_marginHorizontal="40dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/rounded_corner"
+            android:backgroundTint="@color/purple_700"
+            android:id="@+id/completeSession"
+            android:textColor="@color/white"/>
+    </RelativeLayout>
+</LinearLayout>
+
+

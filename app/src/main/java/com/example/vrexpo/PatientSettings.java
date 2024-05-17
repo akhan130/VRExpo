@@ -59,17 +59,6 @@ public class PatientSettings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_settings);
 
-        Button infoBtn = findViewById(R.id.infoButton);
-
-        infoBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open patient info
-                Intent infoIntent = new Intent(PatientSettings.this, PatientInfo.class);
-                startActivity(infoIntent);
-            }
-        });
-
         Button updateBtn = findViewById(R.id.updateButton);
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override

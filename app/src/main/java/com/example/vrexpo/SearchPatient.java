@@ -65,7 +65,7 @@ public class SearchPatient extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(SearchPatient.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(SearchPatient.this, TherapistZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
 

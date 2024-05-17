@@ -56,7 +56,7 @@ public class TherapistDashboard extends AppCompatActivity {
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(TherapistDashboard.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(TherapistDashboard.this, TherapistZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
 

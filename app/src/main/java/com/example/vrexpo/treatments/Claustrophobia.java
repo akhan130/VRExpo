@@ -16,6 +16,7 @@ import com.example.vrexpo.TherapistAccountSettings;
 import com.example.vrexpo.TherapistAppointments;
 import com.example.vrexpo.TherapistDashboard;
 import com.example.vrexpo.TherapistMessages;
+import com.example.vrexpo.TherapistZegoCloudHome;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.SearchPatient;
 import com.example.vrexpo.WriteReport;
@@ -57,7 +58,7 @@ public class Claustrophobia extends AppCompatActivity {
                 startActivity(settingsIntent);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(Claustrophobia.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(Claustrophobia.this, TherapistZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             case R.id.action_treatmentPlans:

@@ -39,6 +39,12 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".TherapistZegoCloudHome"
+            android:exported="false" />
+        <activity
+            android:name=".TherapistCallActivity"
+            android:exported="false" />
+        <activity
             android:name=".CallActivity"
             android:exported="false" />
         <activity
@@ -98,14 +104,14 @@
         <activity
             android:name=".PatientHistory"
             android:exported="false" />
-
-        <!--<activity
+        <!--
+<activity
             android:name=".PostsessionQuestions"
             android:exported="false" />
         <activity
             android:name=".PresessionQuestions"
-            android:exported="false" /> -->
-
+            android:exported="false" />
+        -->
         <activity
             android:name=".Dashboard"
             android:exported="false" />
@@ -147,9 +153,7 @@
         <activity
             android:name=".TherapistHistory"
             android:exported="false" /> <!-- Other -->
-        <activity android:name=".Session" />
-
-        <!-- ADDED BY ANILA DELETE WHEN ISSUE IS FIXED -->
+        <activity android:name=".Session" /> <!-- ADDED BY ANILA DELETE WHEN ISSUE IS FIXED -->
         <activity
             android:name=".TreatmentPlans"
             android:exported="true">
@@ -537,7 +541,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".PostsessionQuestions"
             android:exported="true">
@@ -547,7 +550,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".PresessionQuestions"
             android:exported="true">

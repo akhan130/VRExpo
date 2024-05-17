@@ -88,7 +88,7 @@ public class WriteReport extends AppCompatActivity implements View.OnClickListen
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(WriteReport.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(WriteReport.this, TherapistZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             default:
