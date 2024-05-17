@@ -31,7 +31,7 @@ import java.util.Arrays;
 
 public class TherapistZegoCloudHome extends AppCompatActivity {
     EditText userIdEditText;
-    Button startBtn;
+    Button startBtn, cancelBtn;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,6 +90,7 @@ public class TherapistZegoCloudHome extends AppCompatActivity {
 
         userIdEditText = findViewById(R.id.user_id_edit_text);
         startBtn = findViewById(R.id.start_btn);
+        cancelBtn = findViewById(R.id.cancel_btn);
 
         startBtn.setOnClickListener((v) -> {
             String userID = userIdEditText.getText().toString().trim();
@@ -101,6 +102,11 @@ public class TherapistZegoCloudHome extends AppCompatActivity {
             Intent intent = new Intent(TherapistZegoCloudHome.this, TherapistCallActivity.class);
             intent.putExtra("userID", userID);
             startActivity(intent);
+        });
+
+        cancelBtn.setOnClickListener((v) -> {
+            Intent cancelIntent = new Intent(TherapistZegoCloudHome.this, TherapistDashboard.class);
+            startActivity(cancelIntent);
         });
     }
 

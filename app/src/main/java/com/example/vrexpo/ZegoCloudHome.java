@@ -30,7 +30,7 @@ import java.util.Arrays;
 
 public class ZegoCloudHome extends AppCompatActivity {
     EditText userIdEditText;
-    Button startBtn;
+    Button startBtn, cancelBtn;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -85,6 +85,7 @@ public class ZegoCloudHome extends AppCompatActivity {
 
         userIdEditText = findViewById(R.id.user_id_edit_text);
         startBtn = findViewById(R.id.start_btn);
+        cancelBtn = findViewById(R.id.cancel_btn);
 
         startBtn.setOnClickListener((v) -> {
             String userID = userIdEditText.getText().toString().trim();
@@ -96,6 +97,11 @@ public class ZegoCloudHome extends AppCompatActivity {
             Intent intent = new Intent(ZegoCloudHome.this, CallActivity.class);
             intent.putExtra("userID", userID);
             startActivity(intent);
+        });
+
+        cancelBtn.setOnClickListener((v) -> {
+            Intent cancelIntent = new Intent(ZegoCloudHome.this, Dashboard.class);
+            startActivity(cancelIntent);
         });
     }
 
