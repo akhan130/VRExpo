@@ -129,6 +129,15 @@ public class NLP_Matching extends AppCompatActivity {
                 startActivity(TreatmentPlans);
             }
         });
+
+        Button FindTherapist = findViewById(R.id.findtherapistButton);
+        FindTherapist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent TreatmentPlans = new Intent(NLP_Matching.this, FindTherapist.class);
+                startActivity(TreatmentPlans);
+            }
+        });
     }
 
     private void performNLPMatching() {
