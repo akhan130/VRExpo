@@ -21,11 +21,15 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.DialogInterface;
+import androidx.appcompat.app.AlertDialog;
+
+
 public class AdminViewPatientDetails extends AppCompatActivity {
 
     private EditText nameEditText, emailEditText, phoneEditText, passwordEditText, dobEditText, addressEditText, genderEditText;
 
-    Button cancelButton, updateButton;
+    Button cancelButton, updateButton, deleteButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +45,8 @@ public class AdminViewPatientDetails extends AppCompatActivity {
         passwordEditText = findViewById(R.id.passwordEditText);
         cancelButton = findViewById(R.id.cancelButton);
         updateButton = findViewById(R.id.updateButton);
+        deleteButton = findViewById(R.id.deleteButton);
+
 
         // Get the phone number passed from the AdminViewPatient activity
         String patientPhone = getIntent().getStringExtra("phone");
@@ -89,6 +95,14 @@ public class AdminViewPatientDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDeleteConfirmationDialog();
+            }
+        });
+
     }
 
     private void updateProfile() {
@@ -101,10 +115,10 @@ public class AdminViewPatientDetails extends AppCompatActivity {
         String password = passwordEditText.getText().toString();
 
         // Get the phone number passed from the AdminViewPatient activity
-        String therapistPhone = getIntent().getStringExtra("phone");
+        String patientPhone = getIntent().getStringExtra("phone");
 
         // Reference to the therapist's data in Firebase using the phone number as the key
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("PatientAccount").child(therapistPhone);
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("PatientAccount").child(patientPhone);
 
         // Create a Map to hold the updated values
         Map<String, Object> updateValues = new HashMap<>();
@@ -129,5 +143,52 @@ public class AdminViewPatientDetails extends AppCompatActivity {
                     }
                 });
     }
+
+    private void deletePatientAccount() {
+        String patientPhone = getIntent().getStringExtra("phone");
+
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("PatientAccount").child(patientPhone);
+
+        // Delete the patient account
+        databaseReference.removeValue()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(AdminViewPatientDetails.this, "Account deleted successfully!", Toast.LENGTH_SHORT).show();
+                            // Redirect to the list of patients or home
+                            Intent intent = new Intent(AdminViewPatientDetails.this, AdminViewPatient.class);
+                            startActivity(intent);
+                            finish();  // Close this activity
+                        } else {
+                            Toast.makeText(AdminViewPatientDetails.this, "Failed to delete account: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+    }
+
+    private void showDeleteConfirmationDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(AdminViewPatientDetails.this);
+        builder.setTitle("Confirm Deletion");
+        builder.setMessage("Are you sure you want to delete this account?");
+        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                deletePatientAccount();
+            }
+        });
+        builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (dialog != null) {
+                    dialog.dismiss();
+                }
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+
 
 }
