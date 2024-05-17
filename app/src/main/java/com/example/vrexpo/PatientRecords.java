@@ -210,7 +210,7 @@ public class PatientRecords extends AppCompatActivity implements View.OnClickLis
             postResponseQ4.setText(questionSnapshot.child("Expectations").getValue(String.class));
             postResponseQ5.setText(questionSnapshot.child("Difficult Components").getValue(String.class));
             postResponseQ6.setText(questionSnapshot.child("Modifications").getValue(String.class));
-            postResponseQ7.setText(questionSnapshot.child("Ratings").getValue(String.class));
+            postResponseQ7.setText(questionSnapshot.child("Rating").getValue(String.class));
             postResponseQ8.setText(questionSnapshot.child("Additional Feedback").getValue(String.class));
         }
     }
