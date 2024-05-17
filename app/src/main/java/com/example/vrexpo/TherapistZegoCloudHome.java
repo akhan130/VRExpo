@@ -59,10 +59,6 @@ public class TherapistZegoCloudHome extends AppCompatActivity {
                 Intent reportIntent = new Intent(TherapistZegoCloudHome.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistZegoCloudHome.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(TherapistZegoCloudHome.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);

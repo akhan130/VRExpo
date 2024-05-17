@@ -53,10 +53,6 @@ public class ViewPatientQuestions extends AppCompatActivity implements View.OnCl
                 Intent reportIntent = new Intent(ViewPatientQuestions.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(ViewPatientQuestions.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(ViewPatientQuestions.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);
@@ -66,7 +62,7 @@ public class ViewPatientQuestions extends AppCompatActivity implements View.OnCl
                 startActivity(treatmentPlans);
                 return true;
             case R.id.action_zoom:
-                Intent zoom = new Intent(ViewPatientQuestions.this, ZegoCloudHome.class);
+                Intent zoom = new Intent(ViewPatientQuestions.this, TherapistZegoCloudHome.class);
                 startActivity(zoom);
                 return true;
             default:
@@ -103,25 +99,19 @@ public class ViewPatientQuestions extends AppCompatActivity implements View.OnCl
     }
 
     public void onClick(View v) {
-
         if (v == btnDatePicker) {
-
-            // Get Current Date
             final Calendar c = Calendar.getInstance();
             mYear = c.get(Calendar.YEAR);
             mMonth = c.get(Calendar.MONTH);
             mDay = c.get(Calendar.DAY_OF_MONTH);
 
-
             DatePickerDialog datePickerDialog = new DatePickerDialog(this,
                     new DatePickerDialog.OnDateSetListener() {
 
                         @Override
-                        public void onDateSet(DatePicker view, int year,
-                                              int monthOfYear, int dayOfMonth) {
-
-                            txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
-
+                        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                            String formattedDate = String.format("%02d-%02d-%d", monthOfYear + 1, dayOfMonth, year);
+                            txtDate.setText(formattedDate);
                         }
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();

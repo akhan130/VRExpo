@@ -55,10 +55,6 @@ public class Dashboard extends AppCompatActivity {
                 Intent sessionStart = new Intent(Dashboard.this, SessionStart.class);
                 startActivity(sessionStart);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(Dashboard.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(Dashboard.this, PatientSettings.class);
                 startActivity(settingsIntent);

@@ -49,6 +49,7 @@ public class PatientSelectAppointment extends AppCompatActivity {
         return true;
     }
 
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch(item.getItemId()){
             case R.id.action_dashboard:
@@ -70,10 +71,6 @@ public class PatientSelectAppointment extends AppCompatActivity {
             case R.id.action_find_therapist:
                 Intent findIntent = new Intent(PatientSelectAppointment.this, FindTherapist.class);
                 startActivity(findIntent);
-                return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PatientSelectAppointment.this, PatientMessages.class);
-                startActivity(messages);
                 return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PatientSelectAppointment.this, PatientSettings.class);
@@ -106,22 +103,23 @@ public class PatientSelectAppointment extends AppCompatActivity {
                 calendar.set(year, month, dayOfMonth);
                 selectedDate = dateFormat.format(calendar.getTime());
 
-                Calendar today = Calendar.getInstance();
-                if (calendar.before(today)) {
-                    Toast.makeText(PatientSelectAppointment.this, "Cannot select a past date.", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+//                Calendar today = Calendar.getInstance();
+//                if (calendar.before(today)) {
+//                    Toast.makeText(PatientSelectAppointment.this, "Cannot select a past date.", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
 
                 loadTimeslots(selectedDate);
             }
         });
+    }
 
+    private void setupBookButtonListener() {
         bookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (selectedTimeslot != null && !selectedTimeslot.isEmpty()) {
-                    fetchPatientFullName();
-                    bookAppointment(patientName);
+                    fetchPatientFullName(); // This now initiates fetching the patient name and booking the appointment
                 } else {
                     Toast.makeText(PatientSelectAppointment.this, "Please select a timeslot first.", Toast.LENGTH_SHORT).show();
                 }
@@ -159,19 +157,6 @@ public class PatientSelectAppointment extends AppCompatActivity {
         }
     }
 
-    private void setupBookButtonListener() {
-        bookButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (selectedTimeslot != null && !selectedTimeslot.isEmpty()) {
-                    fetchPatientFullName(); // This now initiates fetching the patient name and booking the appointment
-                } else {
-                    Toast.makeText(PatientSelectAppointment.this, "Please select a timeslot first.", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-    }
-
     private void setupRecyclerView() {
         timeslotRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         timeslotAdapter = new TimeslotAdapter(new ArrayList<>(), new TimeslotAdapter.OnTimeslotSelectedListener() {
@@ -183,8 +168,6 @@ public class PatientSelectAppointment extends AppCompatActivity {
         });
         timeslotRecyclerView.setAdapter(timeslotAdapter);
     }
-
-
 
     private void loadTimeslots(String date) {
         DatabaseReference timeslotRef = FirebaseDatabase.getInstance().getReference().child("Appointments").child(date);
@@ -212,7 +195,6 @@ public class PatientSelectAppointment extends AppCompatActivity {
             }
         });
     }
-
 
     private void bookAppointment(String patientName) {
         DatabaseReference appointmentsRef = FirebaseDatabase.getInstance().getReference()

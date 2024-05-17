@@ -33,7 +33,7 @@
         android:id="@+id/action_treatmentPlans"
         android:icon="@drawable/plan"
         android:title="Treatment Plans"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/action_zoom"

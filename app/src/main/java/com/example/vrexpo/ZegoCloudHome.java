@@ -62,10 +62,6 @@ public class ZegoCloudHome extends AppCompatActivity {
                 Intent sessionStart = new Intent(ZegoCloudHome.this, SessionStart.class);
                 startActivity(sessionStart);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(ZegoCloudHome.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(ZegoCloudHome.this, PatientSettings.class);
                 startActivity(settingsIntent);

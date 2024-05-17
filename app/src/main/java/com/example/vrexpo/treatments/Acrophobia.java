@@ -15,12 +15,10 @@ import com.example.vrexpo.R;
 import com.example.vrexpo.TherapistAccountSettings;
 import com.example.vrexpo.TherapistAppointments;
 import com.example.vrexpo.TherapistDashboard;
-import com.example.vrexpo.TherapistMessages;
 import com.example.vrexpo.TherapistZegoCloudHome;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.SearchPatient;
 import com.example.vrexpo.WriteReport;
-import com.example.vrexpo.ZegoCloudHome;
 
 public class Acrophobia extends AppCompatActivity {
     @Override
@@ -48,10 +46,6 @@ public class Acrophobia extends AppCompatActivity {
             case R.id.action_write_report:
                 Intent reportIntent = new Intent(Acrophobia.this, WriteReport.class);
                 startActivity(reportIntent);
-                return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(Acrophobia.this, TherapistMessages.class);
-                startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(Acrophobia.this, TherapistAccountSettings.class);

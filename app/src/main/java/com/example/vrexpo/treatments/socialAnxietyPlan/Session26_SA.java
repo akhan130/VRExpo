@@ -18,12 +18,9 @@ import com.example.vrexpo.SearchPatient;
 import com.example.vrexpo.TherapistAccountSettings;
 import com.example.vrexpo.TherapistAppointments;
 import com.example.vrexpo.TherapistDashboard;
-import com.example.vrexpo.TherapistMessages;
 import com.example.vrexpo.TherapistZegoCloudHome;
 import com.example.vrexpo.TreatmentPlans;
 import com.example.vrexpo.WriteReport;
-import com.example.vrexpo.ZegoCloudHome;
-import com.example.vrexpo.treatments.acrophobiaPlan.Session1_ACRO;
 
 public class Session26_SA extends AppCompatActivity {
 
@@ -52,10 +49,6 @@ public class Session26_SA extends AppCompatActivity {
             case R.id.action_write_report:
                 Intent reportIntent = new Intent(Session26_SA.this, WriteReport.class);
                 startActivity(reportIntent);
-                return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(Session26_SA.this, TherapistMessages.class);
-                startActivity(messagesIntent);
                 return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(Session26_SA.this, TherapistAccountSettings.class);

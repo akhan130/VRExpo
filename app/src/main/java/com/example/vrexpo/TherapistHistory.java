@@ -60,10 +60,6 @@ public class TherapistHistory extends AppCompatActivity {
                 Intent reportIntent = new Intent(TherapistHistory.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistHistory.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(TherapistHistory.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);

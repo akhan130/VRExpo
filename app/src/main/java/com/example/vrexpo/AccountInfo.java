@@ -45,10 +45,6 @@ public class AccountInfo extends AppCompatActivity {
                 Intent findIntent = new Intent(AccountInfo.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(AccountInfo.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(AccountInfo.this, PatientSettings.class);
                 startActivity(settingsIntent);

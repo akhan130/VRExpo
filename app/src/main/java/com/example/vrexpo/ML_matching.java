@@ -54,10 +54,6 @@ public class ML_matching extends AppCompatActivity {
                 Intent findIntent = new Intent(ML_matching.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(ML_matching.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(ML_matching.this, PatientSettings.class);
                 startActivity(settingsIntent);

@@ -61,10 +61,6 @@ public class SessionStart extends AppCompatActivity {
                 Intent findIntent = new Intent(SessionStart.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(SessionStart.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(SessionStart.this, PatientSettings.class);
                 startActivity(settingsIntent);

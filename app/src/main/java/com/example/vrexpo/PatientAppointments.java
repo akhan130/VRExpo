@@ -73,10 +73,6 @@ public class PatientAppointments extends AppCompatActivity implements CalendarAd
                 Intent findIntent = new Intent(PatientAppointments.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(PatientAppointments.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(PatientAppointments.this, PatientSettings.class);
                 startActivity(settingsIntent);

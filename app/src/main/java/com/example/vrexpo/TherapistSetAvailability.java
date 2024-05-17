@@ -65,10 +65,6 @@ public class TherapistSetAvailability extends AppCompatActivity {
                 Intent reportIntent = new Intent(TherapistSetAvailability.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(TherapistSetAvailability.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(TherapistSetAvailability.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);

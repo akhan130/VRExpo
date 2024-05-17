@@ -75,10 +75,6 @@ public class WriteReport extends AppCompatActivity implements View.OnClickListen
                 Intent reportIntent = new Intent(WriteReport.this, WriteReport.class);
                 startActivity(reportIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messagesIntent = new Intent(WriteReport.this, TherapistMessages.class);
-                startActivity(messagesIntent);
-                return true;
             case R.id.action_account_settings:
                 Intent settingsIntent = new Intent(WriteReport.this, TherapistAccountSettings.class);
                 startActivity(settingsIntent);

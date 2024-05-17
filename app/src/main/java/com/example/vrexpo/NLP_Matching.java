@@ -67,10 +67,6 @@ public class NLP_Matching extends AppCompatActivity {
                 Intent findIntent = new Intent(NLP_Matching.this, FindTherapist.class);
                 startActivity(findIntent);
                 return true;
-            case R.id.action_messages:
-                Intent messages = new Intent(NLP_Matching.this, PatientMessages.class);
-                startActivity(messages);
-                return true;
             case R.id.action_patient_settings:
                 Intent settingsIntent = new Intent(NLP_Matching.this, PatientSettings.class);
                 startActivity(settingsIntent);
